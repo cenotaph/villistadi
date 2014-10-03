@@ -1,0 +1,43 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ *= require foundation_and_overrides
+
+ */
+
+$raleway: 'Raleway', sans-serif;
+$opensans: 'Open Sans', sans-serif;
+header {
+  background: url(/assets/cropped-panorama-okko.jpg)  no-repeat center center;
+  background-size: cover;
+  min-height: 360px;
+
+  
+  #logo {
+    padding-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    vertical-align: middle;
+  }
+  
+  .tagline {
+    text-transform: uppercase;
+    color: white;
+    p { font-size: 1.3rem;
+       font-weight: 400;
+       font-family: $raleway;
+     }
+    margin: 20px 0px;
+  }
+}

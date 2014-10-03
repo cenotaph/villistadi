@@ -1,4 +1,0 @@
-villistadi
-==========
-
-Villi Stadi, Helsinki

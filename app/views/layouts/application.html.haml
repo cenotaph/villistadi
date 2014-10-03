@@ -1,0 +1,36 @@
+!!! 5
+%html{ :lang => "en"}
+  %head
+    %meta{ :charset => "utf-8" }
+    = display_meta_tags :site => 'Villi Stadi' 
+    %meta{ :name => "viewport", :content => "width=device-width, initial-scale=1.0" }
+    %link{:href => "http://fonts.googleapis.com/css?family=Open+Sans:400,300,800", :rel => "stylesheet", :type => "text/css"}/
+    %link{:href => "http://fonts.googleapis.com/css?family=Raleway:300,400,700", :rel => "stylesheet", :type => "text/css"}/
+
+
+
+    = stylesheet_link_tag "application"
+    = javascript_include_tag "vendor/modernizr"
+    = csrf_meta_tag
+
+  %body
+    %header
+      %nav.top-bar{:"data-topbar" => '', :role => :navigation}
+        %section.top-bar-section
+          %ul.left
+            %li.has-dropdown= link_to t(:urban_wild), '#'
+            %li.has-dropdown= link_to t(:where_to_go), '#'
+            %li= link_to t(:what_to_do), '#'
+            %li= link_to t(:join_in), '#'
+            %li= link_to t(:happening), '#'
+            %li= link_to t(:more_info), '#'
+      #logo
+        %center= image_tag 'logo2.png'
+      .columns.tagline
+        %p.text-center= t :tagline
+
+    %section
+    
+    = yield
+
+    = javascript_include_tag "application"
