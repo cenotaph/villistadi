@@ -10,3 +10,5 @@ YAML.load(ENV['ROLES']).each do |role|
   Role.where(:name => role).first_or_create
   puts 'role: ' << role
 end
+
+City.create(:name => 'Helsinki')

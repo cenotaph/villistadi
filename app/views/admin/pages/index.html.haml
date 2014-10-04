@@ -1,0 +1,26 @@
+.row
+  .small-12.columns
+    %h2= t :pages
+
+.row
+  .small-12.columns= link_to t(:create_new_page), new_admin_page_path, :class => [:button, :tiny, :radius]
+.row
+  .small-12.columns
+    %table
+      %thead
+        %th id
+        %th Name
+        %th For
+        %th Actions
+      %tbody
+        - @pages.each do |page|
+          %tr
+            %td= page.id
+            %td= page.name
+            %td= page.city.try(:name)
+            %td 
+              = link_to t(:view), page, :class => [:button, :tiny, :radius]
+              - if can? :edit, page
+                = link_to t(:edit), edit_admin_page_path(page), :class => [:button, :tiny, :radius]
+              - if can? :destroy, page
+                = link_to t(:delete), [:admin, page], :method => :delete, :class => [:button, :tiny, :radius, :alert], :data => {:confirm => 'Are you sure?'}

@@ -22,3 +22,34 @@
 en:
   hello: "Hello world"
   tagline: 'Helsingin Henkireiät'
+  locale_name: 'English'
+  more_info: 'More info'
+  happening: 'Happening'
+  join_in: 'Join in'
+  save: 'Save'
+  start_a: ' Start a '
+  add_to: ' Add to '
+  reorder_submenu: 'Reorder sub-menu'
+  delete_menu: "Delete this menu entry"
+  what_to_do: 'What to do'
+  where_to_go: 'Where to go'
+  connect_with_facebook: 'Sign in via Facebook'
+  connect_with_twitter: 'Sign in via Twitter'
+  connect_with_google: 'Sign in via Google'
+  leave_blank_for_top_level_menu: 'Leave blank for top level menu'
+  none_of_the_above: 'None of the above - create account'
+  create_new_menu_item: 'Create new menu item'
+  new_page: 'New page'
+  what_city: 'Which city?'
+  leave_blank_for_all: 'Leave blank to be site-wide (for all cities)'
+  new_menu_entry: 'New menu entry'
+  edit_menu_entry: 'Edit menu entry'
+  flash:
+    actions:
+      create:
+        notice: "%{resource_name} was successfully created."
+      update:
+        notice: "%{resource_name} was successfully updated."
+      destroy:
+        notice: "%{resource_name} was successfully destroyed."
+        alert: "%{resource_name} could not be destroyed."

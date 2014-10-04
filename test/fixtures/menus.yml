@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  city_id: 
+  item_type: MyString
+  item_id: 1
+  parent_id: 1
+  sort_order: 1
+  published: false
+  url: MyString
+
+two:
+  city_id: 
+  item_type: MyString
+  item_id: 1
+  parent_id: 1
+  sort_order: 1
+  published: false
+  url: MyString

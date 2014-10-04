@@ -8,6 +8,7 @@ gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails', '3.1'
+gem 'jquery-ui-rails'
 gem 'therubyracer',  platforms: :ruby
 
 gem 'capistrano', '~> 3.1.0'
@@ -18,9 +19,11 @@ gem 'capistrano-bundler'
 
 
 
-gem 'cancan'
+gem 'cancancan', '~> 1.9'
 gem 'carrierwave'
 gem 'chosen-rails'
+gem 'ckeditor'
+gem 'closure_tree'
 gem 'devise'
 gem 'figaro'
 gem 'fog'
@@ -49,6 +52,7 @@ gem 'omniauth-twitter'
 gem 'rails4-autocomplete' 
 gem 'randumb'
 gem 'recaptcha'
+gem 'responders'
 gem 'rolify'
 gem 'shog'
 #gem 'textacular', '~> 3.0'

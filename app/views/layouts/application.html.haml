@@ -24,10 +24,32 @@
             %li= link_to t(:join_in), '#'
             %li= link_to t(:happening), '#'
             %li= link_to t(:more_info), '#'
+          - if user_signed_in?
+            %ul.right
+              %li.has-dropdown
+                = link_to current_user.name, '#'
+                %ul.dropdown
+                  %li= link_to t(:sign_out), destroy_user_session_path, :method => :delete
+          - else
+            %ul.right
+              %li.has-dropdown
+                = link_to t(:sign_in), '#'
+                %ul.dropdown
+                  %li= link_to t( ), '/auth/facebook'
+                  %li= link_to t(:connect_with_twitter), '/auth/twitter'
+                  %li= link_to t(:connect_with_google), '/auth/google_oauth2'
+                  %li= link_to t(:none_of_the_above), new_user_registration_path
       #logo
         %center= image_tag 'logo2.png'
       .columns.tagline
         %p.text-center= t :tagline
+    - unless flash.empty?
+      #flash
+        .row
+          .small-12.columns
+            - flash.each do |name, msg|
+              - if msg.is_a?(String)
+                = content_tag :div, msg, :id => "flash_#{name}"
 
     %section
     

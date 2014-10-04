@@ -1,0 +1,29 @@
+= semantic_form_for [:admin, @page], :html => {:class => "custom", :multipart => true} do |f|
+  .row
+    
+    .small-6.columns= f.input :city,  :as => :select, :collection => City.accessible_by(current_ability),  :include_blank => true, :hint => t(:leave_blank_for_all), :label => t(:what_city)
+  .row
+    %dl.tabs{"data-tab" => ""}
+      - I18n.available_locales.each_with_index do |locale, i|
+        %dd{:class => (i == 0 ? :active : false)}
+          = link_to t(:locale_name, :locale => locale), "##{locale}"
+    .tabs-content
+      - I18n.available_locales.each_with_index do |locale, i|
+        .content{:class => (i == 0 ? :active : false), :id => "#{locale}"}
+          = f.globalize_fields_for locale do |en|
+            .row
+              .small-12.columns
+                %b= "Name of page in #{t :locale_name, :locale => locale}"
+                = en.text_field :name  
+            .row
+              .small-12.columns
+                %b= "Page content in #{t :locale_name, :locale => locale}"
+                = en.cktext_area :body
+  .row
+    .small-5.columns
+      %h5 Parent page?
+      = f.input :parent, :as => :select, :collection => recurse_options_from_tree_collection_for_select(Page.roots, :id, :name), :hint => 'Leave blank for top level'
+  .row
+    .small-3.columns= f.input :published
+  .row
+    .small-2.columns= f.submit 'Save', :class => [:button, :round]

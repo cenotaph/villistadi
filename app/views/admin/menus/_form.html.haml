@@ -1,0 +1,56 @@
+= semantic_form_for([:admin, @menu]) do |f|
+  .row
+    .small-6.columns
+      = f.input :city, :label => t(:menu_for_which_site?), :include_blank => false
+    .small-6.columns
+      = f.input :item_type, :as => :select, :label => t(:type_of_menu_link), :collection => [["Page", "Page"], ["Internal Link", "Internallink"], ["External URL", "external_link"]]
+  .row
+    .small-12.columns= f.input :parent_id, :as => :select, :collection => Menu.all.to_a.delete_if{|x| x == f.object }.map{|x| [x.item.name, x.id]}, :hint => t(:leave_blank_for_top_level_menu)
+  .row
+    .small-12.columns= f.input :item_id, :as => :select , :collection => (f.object.item.nil? ? [] : f.object.item_type.constantize.all.map{|x| [x.name, x.id]})
+  .row
+    .small-12.columns= f.input :published
+  .row
+    .small-12.columns
+      = f.submit t(:save), :class => [:button, :small, :radius]
+  
+= content_for :jquery do
+  :plain
+    $("#menu_item_type").change(function(e) {
+      if ($("#menu_item_type").val() == 'Page') {
+        var city = $('#menu_city_id').val();
+        $("#menu_item_id_input").fadeIn();
+        $("#menu_item_id").find("option:gt(0)").remove();
+        $("#menu_item_id").find("option:first").text("Loading...");
+        $.getJSON("/admin/pages.json?by_city=" + city, function (data) {
+          var html = '';
+          var len = data.length;
+            
+          for (var i = 0; i< len; i++) {
+        
+              html += '<option value="' + data[i].id + '">' + data[i].name + '</option>';
+
+          }
+          $("#menu_item_id").find("option:first").remove();
+          $('select#menu_item_id').append(html);
+        });
+      }
+      else if ($("#menu_item_type").val() == 'Internallink') {
+        var city = $('#menu_city_id').val();
+        $("#menu_item_id_input").fadeIn();
+        $("#menu_item_id").find("option:gt(0)").remove();
+        $("#menu_item_id").find("option:first").text("Loading...");
+        $.getJSON("/admin/internallinks.json?by_city=" + city, function (data) {
+          var html = '';
+          var len = data.length;
+          for (var i = 0; i< len; i++) {
+              html += '<option value="' + data[i].id + '">' + data[i].name + '</option>';
+          }
+          $("#menu_item_id").find("option:first").remove();
+          $('select#menu_item_id').append(html);
+        });      
+      }
+      else {
+        $("#menu_item_id_input").fadeOut();  
+      }
+    });

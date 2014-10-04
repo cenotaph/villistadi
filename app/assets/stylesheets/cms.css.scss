@@ -12,17 +12,17 @@
  *
  *= require_self
  *= require foundation_and_overrides
+ *= require jquery-ui/sortable
 
  */
-
+@import 'foundation_and_overrides';
 $raleway: 'Raleway', sans-serif;
 $opensans: 'Open Sans', sans-serif;
-header {
-  background: url(/assets/cropped-panorama-okko.jpg)  no-repeat center center;
-  background-size: cover;
-  min-height: 360px;
 
-  
+header {
+  background: none;
+  min-height: 160px;
+  overflow:hidden;
   #logo {
     padding-top: 30px;
     margin-left: auto;
@@ -32,7 +32,7 @@ header {
   
   .tagline {
     text-transform: uppercase;
-    color: white;
+    color: black;
     p { font-size: 1.3rem;
        font-weight: 400;
        font-family: $raleway;
@@ -40,14 +40,59 @@ header {
     margin: 20px 0px 0px 0px;
   }
 }
+.submenu_cms {
+  padding: 15px;
+}
+.number {
+  font-size: 2.2em;
+  font-weight: bold;
+  float: left;
+  margin-right: 10px;
+}
+.cms_grid {
 
-#flash {
-  min-height: 25px;
-  background-color: red;
-  color: white;
-  font-size: 1.1em;
-  padding: 5px 0px;
-  div {
-    text-align: center !important;
+  .menu_item {
+    border: 2px dotted $secondary-color;
+    padding: 5px;
+    margin: 10px 0px;
+    p {
+      margin: 2px 0px;
+    }
+    .title {
+      font-size: 14px;
+      font-weight: bold;
+    }
+  }
+  
+  .submenu_item {
+    float: left;
+    border: 1px solid $secondary-color;
+    padding: 3px;
+    margin-right: 3px;
+    p {
+      margin: 2px 0px;
+    }
+  }
+}  
+
+
+form {
+  label.label {
+    background: none !important;
+    font-size: 1.1rem;
+    padding: 0.25rem 0.5rem 0.25rem 0rem;
+    color: #555;
+  }
+  li {
+    list-style-type: none;
+    &.boolean {
+      input {
+        margin-right: 0.45rem;
+      }
+    }
+  }
+  p.inline-hints {
+    margin-top: -15px;
+    font-size: 0.8rem;
   }
 }

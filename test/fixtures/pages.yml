@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  slug: MyString
+  published: false
+  city_id: 
+  parent_id: 1
+
+two:
+  slug: MyString
+  published: false
+  city_id: 
+  parent_id: 1

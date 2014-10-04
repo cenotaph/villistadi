@@ -1,0 +1,38 @@
+!!! 5
+%html{ :lang => "en"}
+  %head
+    %meta{ :charset => "utf-8" }
+    = display_meta_tags :site => 'Villi Stadi' 
+    %meta{ :name => "viewport", :content => "width=device-width, initial-scale=1.0" }
+    %link{:href => "http://fonts.googleapis.com/css?family=Open+Sans:400,300,800", :rel => "stylesheet", :type => "text/css"}/
+    %link{:href => "http://fonts.googleapis.com/css?family=Raleway:300,400,700", :rel => "stylesheet", :type => "text/css"}/
+
+
+
+    = stylesheet_link_tag "application"
+    = stylesheet_link_tag 'cms'
+    = javascript_include_tag "vendor/modernizr"
+    = csrf_meta_tag
+
+  %body
+    %header
+      %nav.top-bar{:"data-topbar" => '', :role => :navigation}= render :partial => 'layouts/top_bar'
+    .row
+      .small-4.columns#logo
+        = image_tag 'vs_black_small.png'
+        .tagline
+          %p.text-center Admin Side
+      .small-8.columns
+        %ul.button-group.round
+          %li= link_to t(:pages), admin_pages_path, :class => [:button, :radius]
+          %li= link_to t(:menus), admin_menus_path, :class => [:button, :radius]
+
+    %section
+    
+    = yield
+
+    = javascript_include_tag "application"
+    :javascript
+      $(document).ready(function() {
+        #{yield :jquery}
+      });
