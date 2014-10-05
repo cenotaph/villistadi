@@ -1,0 +1,25 @@
+.row
+  .small-12.columns
+    %h2 Spots
+.row
+  .small-12.columns=link_to t(:add_new_spot), new_admin_spot_path, :class => [:button, :radius, :small]
+  
+.row
+  .small-12.columns.cms_grid
+    %table
+      %thead
+        %th ID
+        %th Name
+        %th Place
+        %th &nbsp;
+      %tbody
+        - @spots.each do |spot|
+          %tr
+            %td= spot.id.to_s
+            %td= spot.name
+            %td= spot.place.name
+            %td
+              - if can? :edit, spot
+                = link_to t(:edit), edit_admin_spot_path(spot), :class => [:button, :radius, :small]
+              - if can? :destroy, spot
+                = link_to t(:delete), [:admin, spot], :method => :delete,  :class => [:button, :radius, :small, :alert], :data => {:confirm => 'Are you sure?'}

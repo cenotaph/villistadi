@@ -8,7 +8,10 @@ class Spot < ActiveRecord::Base
   validate :title_present_in_at_least_one_locale
   accepts_nested_attributes_for :translations, :reject_if => proc {|x| x['name'].blank? && x['description'].blank? }
   mount_uploader :icon, ImageUploader
+  validates_presence_of :place_id, :latitude, :longitude
   
+  scope :published, -> () {where(published: true)}
+  scope :by_place, -> (x) { where(place_id: x) }
   
   def name_fi
     self.name(:fi)
