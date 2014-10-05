@@ -1,12 +1,12 @@
 %section.top-bar-section
   %ul.left
-    - Menu.roots.includes(:item).by_city(1).published.sort_by(&:sort_order).each do |menu|
+    - Menu.roots.by_city(1).published.sort_by(&:sort_order).each do |menu|
       %li{:class => menu.children.empty? ? false : 'has-dropdown'}
-        = link_to menu.item.name, menu.item
+        = link_to menu.item_name, menu.link
         - unless menu.children.empty?
           %ul.dropdown
             - menu.children.sort_by(&:sort_order).each do |child|
-              %li= link_to child.item.name, child.item
+              %li= link_to child.item_name, child.link
 
   - if user_signed_in?
     %ul.right

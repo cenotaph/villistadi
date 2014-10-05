@@ -1,6 +1,20 @@
-class Admin::MenusController < Admin::BaseController
+class Admin::MenusController < ApplicationController
+  layout 'admin'
+
+  before_filter :authenticate_user!
+  #load_and_authorize_resource
+  # check_authorization
+  load_and_authorize_resource 
+  skip_before_filter :require_no_authentication
+ 
+
   responders :location, :flash
   respond_to :html
+ 
+  def check_permissions
+    authorize! :create, resource
+  end
+  
   
   def create
     @menu = Menu.new(menu_params)
@@ -12,7 +26,7 @@ class Admin::MenusController < Admin::BaseController
   
   def destroy
     @menu = Menu.find(params[:id])
-    @menu.destroy!
+    @menu.destroy
     redirect_to admin_menus_path
   end
   
@@ -32,7 +46,6 @@ class Admin::MenusController < Admin::BaseController
   end
   
   def sort
-    
     @menus = Menu.all
     @menus.each do |menu|
       next if params['menu'].index(menu.id.to_s).nil?
@@ -52,6 +65,6 @@ class Admin::MenusController < Admin::BaseController
   private
   
   def menu_params
-    params.require(:menu).permit(:item_type, :item_id, :published, :url, :parent_id, :sort_order, :city_id)
+    params.require(:menu).permit(:item_type, :item_id, :published, :url, :parent_id, :sort_order, :city_id, translations_attributes: [:id, :locale, :display_name])
   end
 end

@@ -1,0 +1,30 @@
+= semantic_form_for([:admin, @internallink], :html => {:novalidate => :novalidate}) do |f|
+  .row
+    .columns.small-12
+      %dl.tabs{"data-tab" => ""}
+        - I18n.available_locales.each_with_index do |locale, i|
+          %dd{:class => (i == 0 ? :active : false)}
+            = link_to t(:locale_name, :locale => locale), "##{locale}#{@internallink.id.to_s}"
+      .tabs-content
+        - I18n.available_locales.each_with_index do |locale, i|
+          .content{:class => (i == 0 ? :active : false), :id => "#{locale}#{@internallink.id.to_s}"}
+            = f.globalize_fields_for locale do |en|
+              %b= "Name in #{t :locale_name, :locale => locale}"
+              = en.text_field :display_name
+  .row
+    .columns.small-12
+      = f.input :name, :label => 'Internal name for this link (optional)'
+  .row
+    .columns.small-4
+      = f.input :controller
+    .columns.small-4= f.input :action
+    .columns.small-4= f.input :parameter
+  .row
+    .columns.small-12
+      = f.input :custom_url
+  .row
+    .columns.small-12
+      = f.input :published
+  .row
+    .columns.small-12
+  = f.submit t :save

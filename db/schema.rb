@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141005201552) do
+ActiveRecord::Schema.define(version: 20141005211130) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,41 @@ ActiveRecord::Schema.define(version: 20141005201552) do
   add_index "ckeditor_assets", ["assetable_type", "assetable_id"], name: "idx_ckeditor_assetable", using: :btree
   add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], name: "idx_ckeditor_assetable_type", using: :btree
 
+  create_table "friendly_id_slugs", force: true do |t|
+    t.string   "slug",                      null: false
+    t.integer  "sluggable_id",              null: false
+    t.string   "sluggable_type", limit: 50
+    t.string   "scope"
+    t.datetime "created_at"
+  end
+
+  add_index "friendly_id_slugs", ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true, using: :btree
+  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
+  add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
+  add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
+
+  create_table "internallink_translations", force: true do |t|
+    t.integer  "internallink_id", null: false
+    t.string   "locale",          null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "display_name"
+  end
+
+  add_index "internallink_translations", ["internallink_id"], name: "index_internallink_translations_on_internallink_id", using: :btree
+  add_index "internallink_translations", ["locale"], name: "index_internallink_translations_on_locale", using: :btree
+
+  create_table "internallinks", force: true do |t|
+    t.string   "controller"
+    t.string   "action"
+    t.string   "parameter"
+    t.string   "name"
+    t.boolean  "published"
+    t.string   "custom_url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "menu_hierarchies", force: true do |t|
     t.integer "ancestor_id",   null: false
     t.integer "descendant_id", null: false
@@ -58,6 +93,17 @@ ActiveRecord::Schema.define(version: 20141005201552) do
 
   add_index "menu_hierarchies", ["ancestor_id", "descendant_id", "generations"], name: "menu_anc_desc_udx", unique: true, using: :btree
   add_index "menu_hierarchies", ["descendant_id"], name: "menu_desc_idx", using: :btree
+
+  create_table "menu_translations", force: true do |t|
+    t.integer  "menu_id",      null: false
+    t.string   "locale",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "display_name"
+  end
+
+  add_index "menu_translations", ["locale"], name: "index_menu_translations_on_locale", using: :btree
+  add_index "menu_translations", ["menu_id"], name: "index_menu_translations_on_menu_id", using: :btree
 
   create_table "menus", force: true do |t|
     t.integer  "city_id"

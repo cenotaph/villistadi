@@ -1,0 +1,23 @@
+.row
+  .small-12.columns
+    %h2 Internal links
+    %p Can be added to menus
+.row
+  .small-12.columns.cms_grid
+    %table
+      %thead
+        %th ID
+        %th Name
+        %th
+      %tbody
+        - @internallinks.each do |il|
+          %tr
+            %td= il.id
+            %td= il.display_name
+            %td
+              - if can? :edit, il
+                = link_to t(:edit), edit_admin_internallink_path(il), :class => [:button, :tiny, :radius]
+              - if can? :destroy, il
+                = link_to t(:delete), [:admin, il], :method => :delete, :class => [:button, :tiny, :alert, :radius]
+.ten.columns
+  %p= link_to 'create new internal link', new_admin_internallink_path, :class => [:button, :radius, :small]

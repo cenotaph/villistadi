@@ -3,9 +3,21 @@
     .small-6.columns
       = f.input :city, :label => t(:menu_for_which_site?), :include_blank => false
     .small-6.columns
-      = f.input :item_type, :as => :select, :label => t(:type_of_menu_link), :collection => [["Page", "Page"], ["Internal Link", "Internallink"], ["External URL", "external_link"]]
+      = f.input :item_type, :as => :select, :label => t(:type_of_menu_link), :collection => [["Page", "Page"], ["Internal Link", "Internallink"], ["External URL", "external_link"], ["nothing, just a dropdown", 'nothing']]
+  .row#translation_fields{:style => "display: none"}
+    .columns.small-12
+      %dl.tabs{"data-tab" => ""}
+        - I18n.available_locales.each_with_index do |locale, i|
+          %dd{:class => (i == 0 ? :active : false)}
+            = link_to t(:locale_name, :locale => locale), "##{locale}#{@menu.id.to_s}"
+      .tabs-content
+        - I18n.available_locales.each_with_index do |locale, i|
+          .content{:class => (i == 0 ? :active : false), :id => "#{locale}#{@menu.id.to_s}"}
+            = f.globalize_fields_for locale do |en|
+              %b= "Menu title in #{t :locale_name, :locale => locale}"
+              = en.text_field :display_name      
   .row
-    .small-12.columns= f.input :parent_id, :as => :select, :collection => Menu.all.to_a.delete_if{|x| x == f.object }.map{|x| [x.item.name, x.id]}, :hint => t(:leave_blank_for_top_level_menu)
+    .small-12.columns= f.input :parent_id, :as => :select, :collection => Menu.all.to_a.delete_if{|x| x == f.object }.map{|x| [x.item_name, x.id]}, :hint => t(:leave_blank_for_top_level_menu)
   .row
     .small-12.columns= f.input :item_id, :as => :select , :collection => (f.object.item.nil? ? [] : f.object.item_type.constantize.all.map{|x| [x.name, x.id]})
   .row
@@ -34,6 +46,9 @@
           $("#menu_item_id").find("option:first").remove();
           $('select#menu_item_id').append(html);
         });
+      }
+      else if ($("#menu_item_type").val() == 'nothing') {
+        $('#translation_fields').fadeIn();
       }
       else if ($("#menu_item_type").val() == 'Internallink') {
         var city = $('#menu_city_id').val();

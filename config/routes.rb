@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :authentications
   
   namespace :admin do
+    resources :internallinks
     resources :menus do
       collection do 
         post :sort
