@@ -15,6 +15,7 @@
 //= require jquery-ui/sortable
 //= require foundation
 //= require ckeditor/init
+//= require jquery_nested_form
 //= require_tree .
 
 $(function(){ $(document).foundation(); });

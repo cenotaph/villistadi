@@ -3,18 +3,22 @@
   .row
     .large-6.columns= f.input :email
   .row
-    .large-6.columns= f.input :name, :label => 'Your real/full name'
+    .large-6.columns= f.input :name, :label => t(:real_name)
   .row
-    .large-6.columns= f.input :username, :label => "Username/nickname"
-  %p You can add your Facebook and Twitter usernames here to allow sign-in with those services too.
-  = f.fields_for :authentications do |ff|
-    .fieldset
+    .large-6.columns= f.input :username, :label => t(:username_nickname)
+  .row
+    .small-12.columns
+      %p= t(:you_can_other_auth)
+      = f.fields_for :authentications do |ff|
+        .fieldset
       
-      .row
-        .small-4.columns
-          = ff.input :provider, :as => :select, :collection => [ ['Facebook', 'facebook'], ['Google', 'google_oauth2'], ['Twitter', 'twitter']]
-          = ff.input :username
-    :javascript
-      $(document).foundation();
-  = f.link_to_add 'Add another authentication method', :authentications
-  = f.submit
+          .row
+            .small-4.columns
+              = ff.input :provider, :as => :select, :collection => [ ['Facebook', 'facebook'], ['Google', 'google_oauth2'], ['Twitter', 'twitter']]
+              = ff.input :username
+        :javascript
+          $(document).foundation();
+  .row
+    .small-6.columns= f.link_to_add t(:add_other_auth), :authentications, :class => [:button, :radius, :secondary, :tiny]
+  .row
+    .small-6.columns= f.submit t(:create_account), :class => [:button, :radius, :small]

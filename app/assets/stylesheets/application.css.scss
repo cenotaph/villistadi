@@ -52,3 +52,25 @@ header {
     text-align: center !important;
   }
 }
+
+
+form {
+  label.label {
+    background: none !important;
+    font-size: 1.1rem;
+    padding: 0.25rem 0.5rem 0.25rem 0rem;
+    color: #555;
+  }
+  li {
+    list-style-type: none;
+    &.boolean {
+      input {
+        margin-right: 0.45rem;
+      }
+    }
+  }
+  p.inline-hints {
+    margin-top: -15px;
+    font-size: 0.8rem;
+  }
+}
