@@ -13,7 +13,7 @@ class CreatePosts < ActiveRecord::Migration
       t.integer :creator_id, index: true
       t.timestamps
     end
-    Post.create_translation_table! :title => :string, :body => :text, :excerpt => :text
+    Post.create_translation_table! :title => :string, :body => :text
   end
   def self.down
     drop_table :posts

@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     
     resources :pages
     resources :places
+    resources :spots
   end
   
   resources :pages
