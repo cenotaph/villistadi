@@ -22,6 +22,9 @@ class User < ActiveRecord::Base
       self.name = omniauth['info']['first_name'] + ' ' + omniauth['info']['last_name']
       self.name.strip!
       identifier = self.username
+      if identifier.blank?
+        identified = self.name
+      end
       # self.location = omniauth['extra']['user_hash']['location']['name'] if location.blank?
     elsif omniauth['provider'] == 'google_oauth2'
       self.email = omniauth['info']['email'] 
