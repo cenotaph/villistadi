@@ -1,5 +1,6 @@
 class Place < ActiveRecord::Base
   belongs_to :city
+  has_many :menus, as: :item
   translates :name, :description
   extend FriendlyId
   friendly_id :name_fi, :use => [ :slugged, :finders]

@@ -26,6 +26,8 @@ class Menu < ActiveRecord::Base
   def link
     if item_type == 'Page'
       "/pages/" + item.slug
+    elsif item_type == 'Place'
+      "/places/" + item.slug
     elsif item_type == 'nothing'
       '#'
     elsif item_type == 'Internallink'

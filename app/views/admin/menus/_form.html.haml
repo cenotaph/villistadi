@@ -3,7 +3,7 @@
     .small-6.columns
       = f.input :city, :label => t(:menu_for_which_site?), :include_blank => false
     .small-6.columns
-      = f.input :item_type, :as => :select, :label => t(:type_of_menu_link), :collection => [["Page", "Page"], ["Internal Link", "Internallink"], ["External URL", "external_link"], ["nothing, just a dropdown", 'nothing']]
+      = f.input :item_type, :as => :select, :label => t(:type_of_menu_link), :collection => [["Page", "Page"], ["Internal Link", "Internallink"], ["Place", "Place"], ["External URL", "external_link"], ["nothing, just a dropdown", 'nothing']]
   .row#translation_fields{:style => "display: none"}
     .columns.small-12
       %dl.tabs{"data-tab" => ""}
@@ -47,6 +47,24 @@
           $('select#menu_item_id').append(html);
         });
       }
+      if ($("#menu_item_type").val() == 'Place') {
+        var city = $('#menu_city_id').val();
+        $("#menu_item_id_input").fadeIn();
+        $("#menu_item_id").find("option:gt(0)").remove();
+        $("#menu_item_id").find("option:first").text("Loading...");
+        $.getJSON("/admin/places.json?by_city=" + city, function (data) {
+          var html = '';
+          var len = data.length;
+            
+          for (var i = 0; i< len; i++) {
+        
+              html += '<option value="' + data[i].id + '">' + data[i].name + '</option>';
+
+          }
+          $("#menu_item_id").find("option:first").remove();
+          $('select#menu_item_id').append(html);
+        });
+      }      
       else if ($("#menu_item_type").val() == 'nothing') {
         $('#translation_fields').fadeIn();
       }
