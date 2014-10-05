@@ -1,0 +1,30 @@
+.row
+  .small-12.columns
+    %h2= t :posts
+.row
+  .small-12.columns
+    = link_to t(:create_new_post), new_admin_post_path, :class => [:button, :small, :radius]
+    
+.row
+  .small-12.columns
+    %table
+      %thead
+        %th ID
+        %th Name
+        %th City
+        %th Published
+        %th
+      %tbody
+        - @posts.each do |post|
+          %tr
+            %td= post.id.to_s
+            %td= post.title
+            %td= post.city.try(:name)
+            %td= post.published == true ? l(post.published_at, :format => :short) : t(:no)
+            %td
+              = link_to t(:view), post, :target => :_blank, :class => [:button, :radius, :tiny]
+              - if can? :edit, post
+                = link_to t(:edit), edit_admin_post_path(post), :class => [:button, :radius, :tiny]
+              - if can? :destroy, post
+                = link_to t(:delete), [:admin, post], :method => :delete, :class => [:button, :radius, :tiny], :data => {:confirm => t(:are_you_sure)}
+      

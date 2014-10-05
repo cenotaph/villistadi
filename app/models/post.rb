@@ -4,27 +4,14 @@ class Post < ActiveRecord::Base
   translates :title, :body, :fallbacks_for_empty_translations => true
   extend FriendlyId
   friendly_id :title_fi , :use => [ :slugged, :finders]
-  before_save :update_image_attributes
-  before_save :check_published
+  before_save :update_icon_attributes
+
   validate :title_present_in_at_least_one_locale
   accepts_nested_attributes_for :translations, :reject_if => proc {|x| x['title'].blank? && x['body'].blank? }
   mount_uploader :icon, ImageUploader
   
-  def check_published
-    if self.published == true
-      self.published_at ||= Time.now
-      unless self.new_record? || hide_from_feed != false
-        add_to_feed('created')
-      end
-    else
-      unless feeds.empty?
-        feeds.map(&:destroy)
-      end
-    end
-    if self.creator_id.blank?
-      self.creator_id = self.last_modified_id
-    end
-  end
+  scope :published, -> () {where(published: true)}
+
   
   def description
     body

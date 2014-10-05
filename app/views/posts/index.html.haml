@@ -1,0 +1,17 @@
+.row
+  .small-7.columns.small-offset-2
+    %h2= t :posts
+
+- @posts.each do |post|
+  .post
+    .row
+      .small-7.columns.small-offset-2
+        %h3= post.title
+  
+    .row
+      .small-7.columns.small-offset-2
+        = t(:posted_by, :poster => post.creator.name) + " - " + l(post.published_at, :format => :long)
+
+    .row.body
+      .small-7.columns.small-offset-2
+        = raw post.body

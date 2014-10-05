@@ -1,0 +1,28 @@
+= semantic_form_for([:admin, @post], :html => {:multipart => true, :"data-abide" => ''}) do |f|
+  .row
+    .small-6.columns= f.input :city,  :as => :select, :collection => City.accessible_by(current_ability),  :include_blank => true, :hint => t(:leave_blank_for_all), :label => t(:what_city)
+  .row
+    .columns.small-12
+      %dl.tabs{"data-tab" => ""}
+        - I18n.available_locales.each_with_index do |locale, i|
+          %dd{:class => (i == 0 ? :active : false)}
+            = link_to t(:locale_name, :locale => locale), "##{locale}#{@post.id.to_s}"
+      .tabs-content
+        - I18n.available_locales.each_with_index do |locale, i|
+          .content{:class => (i == 0 ? :active : false), :id => "#{locale}#{@post.id.to_s}"}
+            = f.globalize_fields_for locale do |en|
+              %b= "Title of post in #{t :locale_name, :locale => locale}"
+              = en.text_field :title
+              %b= "Body of post in #{t :locale_name, :locale => locale}"
+              = en.cktext_area :body
+  .row
+    .columns.small-12= f.input :creator_id, :as => :select, :collection => User.all, :include_blank => false
+  .row
+    .columns.small-12
+      - if f.object.icon?
+        = image_tag f.object.icon.url(:thumb)
+      = f.input :icon, :label => (f.object.icon? ? t(:replace_image) : t(:upload_image))
+  .row
+    .columns.small-12= f.input :published
+  .row
+    .columns.small-6= f.submit t(:save), :class => [:button, :small, :radius]
