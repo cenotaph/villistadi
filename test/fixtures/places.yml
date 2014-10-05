@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  city_id: 
+  sw_lat: 9.99
+  sw_lng: 9.99
+  ne_lat: 9.99
+  ne_lng: 9.99
+  slug: MyString
+  published: false
+  description: MyText
+
+two:
+  city_id: 
+  sw_lat: 9.99
+  sw_lng: 9.99
+  ne_lat: 9.99
+  ne_lng: 9.99
+  slug: MyString
+  published: false
+  description: MyText

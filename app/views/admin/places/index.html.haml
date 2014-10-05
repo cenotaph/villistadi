@@ -1,0 +1,27 @@
+.row
+  .small-12.columns
+    %h2= t :places
+    
+.row
+  .small-12.columns= link_to t(:new_place), new_admin_place_path, :class => [:button, :small, :radius]
+  
+.row
+  .small-12.columns.cms_grid
+    %table
+      %thead
+        %th ID
+        %th Name
+        %th Published?
+        %th
+      %tbody
+        - @places.each do |place|
+          %tr
+            %td= place.id
+            %td= place.name
+            %td= place.published == true ? t(:yes) : t(:no)
+            %td.actions
+              = link_to t(:view), place, :class => [:button, :small, :radius]
+              - if can? :edit, place
+                = link_to t(:edit), edit_admin_place_path(place), :class => [:button, :small, :radius]
+              - if can? :destroy, place
+                = link_to t(:delete), [:admin, place], :method => :delete, :class => [:button, :small, :radius, :alert], :data => {:confirm => 'Are you sure?'}

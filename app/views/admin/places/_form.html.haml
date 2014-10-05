@@ -1,0 +1,34 @@
+= semantic_form_for([:admin, @place], :html => {:class => "custom", :"data-abide" => '' }) do |f|
+  .row
+    .columns.small-12
+      %dl.tabs{"data-tab" => ""}
+        - I18n.available_locales.each_with_index do |locale, i|
+          %dd{:class => (i == 0 ? :active : false)}
+            = link_to t(:locale_name, :locale => locale), "##{locale}#{@place.id.to_s}"
+      .tabs-content
+        - I18n.available_locales.each_with_index do |locale, i|
+          .content{:class => (i == 0 ? :active : false), :id => "#{locale}#{@place.id.to_s}"}
+            = f.globalize_fields_for locale do |en|
+              %b= "Name in #{t :locale_name, :locale => locale}"
+              = en.text_field :name
+              %b= "Description in #{t :locale_name, :locale => locale}"
+              = en.cktext_area :description
+  .row
+    .small-12.columns
+      %h3 Latitude & Longitude
+      %p
+        = t :latlng_helper
+        = link_to 'Get latitude & longitude', 'http://dbsgeo.com/latlon/', :target => :_blank
+  .row
+    .small-6.columns= f.input :ne_lat, :label => t(:ne_lat), :input_html => {:required => ''}
+    .small-6.columns= f.input :ne_lng, :label => t(:ne_lng), :input_html => {:required => ""}
+  .row
+    .small-6.columns= f.input :sw_lat, :label => t(:sw_lat), :input_html => {:required => ""}
+    .small-6.columns= f.input :sw_lng, :label => t(:sw_lng), :input_html => {:required => ""}
+  .row
+    .small-6.columns= f.input :published
+  .row
+    .small-6.columns= f.input :city, :as => :select, :collection => City.all, :include_blank => false, :input_html => {:required => "" }
+  .row
+    .small-6.columns=f.submit t(:save), :class => [:button, :round, :small]
+  

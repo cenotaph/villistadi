@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141004150818) do
+ActiveRecord::Schema.define(version: 20141005142059) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -105,6 +105,62 @@ ActiveRecord::Schema.define(version: 20141004150818) do
 
   add_index "pages", ["city_id"], name: "index_pages_on_city_id", using: :btree
 
+  create_table "place_translations", force: true do |t|
+    t.integer  "place_id",    null: false
+    t.string   "locale",      null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
+    t.text     "description"
+  end
+
+  add_index "place_translations", ["locale"], name: "index_place_translations_on_locale", using: :btree
+  add_index "place_translations", ["place_id"], name: "index_place_translations_on_place_id", using: :btree
+
+  create_table "places", force: true do |t|
+    t.integer  "city_id"
+    t.decimal  "sw_lat",     precision: 10, scale: 6
+    t.decimal  "sw_lng",     precision: 10, scale: 6
+    t.decimal  "ne_lat",     precision: 10, scale: 6
+    t.decimal  "ne_lng",     precision: 10, scale: 6
+    t.string   "slug"
+    t.boolean  "published"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "places", ["city_id"], name: "index_places_on_city_id", using: :btree
+
+  create_table "post_translations", force: true do |t|
+    t.integer  "post_id",    null: false
+    t.string   "locale",     null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "title"
+    t.text     "body"
+    t.text     "excerpt"
+  end
+
+  add_index "post_translations", ["locale"], name: "index_post_translations_on_locale", using: :btree
+  add_index "post_translations", ["post_id"], name: "index_post_translations_on_post_id", using: :btree
+
+  create_table "posts", force: true do |t|
+    t.integer  "city_id"
+    t.string   "slug"
+    t.string   "icon"
+    t.integer  "icon_width"
+    t.integer  "icon_height"
+    t.string   "icon_content_type"
+    t.integer  "icon_size",         limit: 8
+    t.boolean  "published"
+    t.datetime "published_at"
+    t.integer  "creator_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "posts", ["city_id"], name: "index_posts_on_city_id", using: :btree
+
   create_table "roles", force: true do |t|
     t.string   "name"
     t.integer  "resource_id"
@@ -115,6 +171,35 @@ ActiveRecord::Schema.define(version: 20141004150818) do
 
   add_index "roles", ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id", using: :btree
   add_index "roles", ["name"], name: "index_roles_on_name", using: :btree
+
+  create_table "spot_translations", force: true do |t|
+    t.integer  "spot_id",     null: false
+    t.string   "locale",      null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
+    t.text     "description"
+  end
+
+  add_index "spot_translations", ["locale"], name: "index_spot_translations_on_locale", using: :btree
+  add_index "spot_translations", ["spot_id"], name: "index_spot_translations_on_spot_id", using: :btree
+
+  create_table "spots", force: true do |t|
+    t.decimal  "latitude"
+    t.decimal  "longitude"
+    t.string   "slug"
+    t.string   "image"
+    t.integer  "image_size",         limit: 8
+    t.integer  "image_width"
+    t.integer  "image_height"
+    t.string   "image_content_type"
+    t.integer  "creator_id"
+    t.integer  "place_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "spots", ["place_id"], name: "index_spots_on_place_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

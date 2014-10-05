@@ -16,8 +16,7 @@
 
  */
 @import 'foundation_and_overrides';
-$raleway: 'Raleway', sans-serif;
-$opensans: 'Open Sans', sans-serif;
+@import 'variables';
 
 header {
   background: none;

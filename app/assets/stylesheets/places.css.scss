@@ -1,0 +1,11 @@
+@import 'foundation_and_overrides';
+@import 'variables';
+
+#map {
+
+  height: 600px;
+}
+
+.gmnoprint img {
+    max-width: none; 
+}

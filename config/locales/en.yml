@@ -44,6 +44,20 @@ en:
   leave_blank_for_all: 'Leave blank to be site-wide (for all cities)'
   new_menu_entry: 'New menu entry'
   edit_menu_entry: 'Edit menu entry'
+  places: 'Places'
+  edit_place: 'Edit place'
+  new_place: 'Define new place'
+  yes: 'Yes'
+  no: 'No'
+  view: 'View'
+  edit: 'Edit'
+  delete: 'Delete'
+  sw_lng: 'Longitude of southwest map boundary'
+  sw_lat: 'Latitude of southwest map boundary'
+  ne_lng: 'Longitude of northeast map boundary'
+  ne_lat: 'Latitude of northeast map boundary'
+  not_yet_public: 'This resource is not yet public'
+  latlng_helper: 'You can use this tool to find the latitude and longitude of any point: '
   flash:
     actions:
       create:

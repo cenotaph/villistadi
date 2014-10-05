@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  city_id: 
+  slug: MyString
+  icon: MyString
+  icon_width: 1
+  icon_height: 1
+  icon_content_type: MyString
+  icon_size: 1
+  published: false
+  published_at: 2014-10-05 13:14:44
+  creator_id: 1
+
+two:
+  city_id: 
+  slug: MyString
+  icon: MyString
+  icon_width: 1
+  icon_height: 1
+  icon_content_type: MyString
+  icon_size: 1
+  published: false
+  published_at: 2014-10-05 13:14:44
+  creator_id: 1
