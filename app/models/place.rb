@@ -7,6 +7,7 @@ class Place < ActiveRecord::Base
   accepts_nested_attributes_for :translations, :reject_if => proc {|x| x['name'].blank? && x['description'].blank? }
   validates_presence_of :city_id
   validates_presence_of :ne_lat, :ne_lng, :sw_lat, :sw_lng
+  has_many :spots
   
   scope :published, -> () { where(published: true) }
   scope :by_city, -> (x) { where(["city_id is null or city_id = ?", x])}

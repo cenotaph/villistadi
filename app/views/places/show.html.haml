@@ -7,6 +7,24 @@
     %p= raw @place.description
   .small-8.columns#map
 
+%script{:type => "text/javascript"}
+  function set_spots() {
+  var infoWindow = new google.maps.InfoWindow();
+  var markers = [];
+  - @place.spots.each do |spot|
+    var marker_#{spot.id.to_s} = new google.maps.Marker({
+    position: new google.maps.LatLng(#{spot.latitude}, #{spot.longitude}),
+    map: map,
+    title: "#{spot.name}"
+    });
+    markers.push(marker_#{spot.id.to_s});
+    google.maps.event.addListener(marker_#{spot.id.to_s}, 'click', function() {
+    var html='<div style="clear: float;"><strong>#{spot.name}</strong></div>';
+    infoWindow.setContent(html);
+    infoWindow.open(map, marker_#{spot.id.to_s})
+    });
+  }
+  
 :javascript
   function buildmap() {
     var myOptions = {
@@ -23,7 +41,8 @@
     var ne = new google.maps.LatLng(#{@place.ne_lat}, #{@place.ne_lng});
     var sw = new google.maps.LatLng(#{@place.sw_lat}, #{@place.sw_lng});
     var bounds = new google.maps.LatLngBounds(sw, ne);
-    // map.fitBounds(bounds);
+    // map.fitBounds(bounds)
+    set_spots();
     return map;
   }
   
