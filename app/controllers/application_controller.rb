@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
     end
     
     if session[:locale].blank?
-      available  = %w{en fi fr}
+      available  = %w{fi en}
       I18n.locale = http_accept_language.compatible_language_from(available)
       session[:locale] = I18n.locale
     else

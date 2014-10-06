@@ -7,7 +7,7 @@ class Spot < ActiveRecord::Base
   before_save :update_image_attributes
   validate :title_present_in_at_least_one_locale
   accepts_nested_attributes_for :translations, :reject_if => proc {|x| x['name'].blank? && x['description'].blank? }
-  mount_uploader :icon, ImageUploader
+  mount_uploader :image, ImageUploader
   validates_presence_of :place_id, :latitude, :longitude
   
   scope :published, -> () {where(published: true)}

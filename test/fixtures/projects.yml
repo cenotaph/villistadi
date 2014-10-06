@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  city: 
+  slug: MyString
+  restricted_membership: false
+  private: false
+  maximum_members: 1
+  has_forum: false
+  members_can_create_forum_topics: false
+  notify_admin_of_new_member: false
+  owner_id: 1
+  image: MyString
+  image_size: 1
+  image_width: 1
+  image_height: 1
+  image_content_type: MyString
+
+two:
+  city: 
+  slug: MyString
+  restricted_membership: false
+  private: false
+  maximum_members: 1
+  has_forum: false
+  members_can_create_forum_topics: false
+  notify_admin_of_new_member: false
+  owner_id: 1
+  image: MyString
+  image_size: 1
+  image_width: 1
+  image_height: 1
+  image_content_type: MyString

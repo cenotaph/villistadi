@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141005211130) do
+ActiveRecord::Schema.define(version: 20141006153852) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -206,6 +206,47 @@ ActiveRecord::Schema.define(version: 20141005211130) do
   end
 
   add_index "posts", ["city_id"], name: "index_posts_on_city_id", using: :btree
+
+  create_table "project_translations", force: true do |t|
+    t.integer  "project_id",  null: false
+    t.string   "locale",      null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
+    t.text     "tagline"
+    t.text     "description"
+  end
+
+  add_index "project_translations", ["locale"], name: "index_project_translations_on_locale", using: :btree
+  add_index "project_translations", ["project_id"], name: "index_project_translations_on_project_id", using: :btree
+
+  create_table "projects", force: true do |t|
+    t.integer  "city_id"
+    t.string   "slug"
+    t.boolean  "restricted_membership"
+    t.boolean  "private"
+    t.integer  "maximum_members"
+    t.boolean  "has_forum"
+    t.boolean  "members_can_create_forum_topics"
+    t.boolean  "notify_admin_of_new_member"
+    t.integer  "owner_id"
+    t.string   "image"
+    t.integer  "image_size",                      limit: 8
+    t.integer  "image_width"
+    t.integer  "image_height"
+    t.string   "image_content_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "projects_users", id: false, force: true do |t|
+    t.integer "project_id", null: false
+    t.integer "user_id",    null: false
+  end
+
+  add_index "projects_users", ["project_id", "user_id"], name: "by_project_and_user", unique: true, using: :btree
+  add_index "projects_users", ["project_id"], name: "index_projects_users_on_project_id", using: :btree
+  add_index "projects_users", ["user_id"], name: "index_projects_users_on_user_id", using: :btree
 
   create_table "roles", force: true do |t|
     t.string   "name"

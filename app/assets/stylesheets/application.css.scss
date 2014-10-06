@@ -17,6 +17,7 @@
  */
 
 @import 'variables';
+@import 'foundation_and_overrides';
 
 header {
   background: url(/assets/cropped-panorama-okko.jpg)  no-repeat center center;
@@ -42,6 +43,16 @@ header {
   }
 }
 
+.language {
+  padding-left: 3em;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: white;
+  float: left;
+  a {
+    color: $secondary-color;
+  }
+}
 #flash {
   min-height: 25px;
   background-color: red;
