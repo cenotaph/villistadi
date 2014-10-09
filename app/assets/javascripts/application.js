@@ -19,3 +19,18 @@
 //= require_tree .
 
 $(function(){ $(document).foundation(); });
+
+function resizeDiv() {
+  vpw = $(window).width();
+  vph = $(window).height();
+  $('.title-card').css({'height': vph + 'px'});
+}
+
+function scrollTo(target) { 
+  $('html, body').stop().animate({
+      'scrollTop': $(target).offset().top + 150
+  }, 900, 'swing', function () {
+      window.location.hash = target;
+  });
+  return false;
+}

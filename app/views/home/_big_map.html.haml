@@ -1,0 +1,38 @@
+%script{:type => "text/javascript"}
+  function set_places() {
+  var bounds = new google.maps.LatLngBounds();
+  var infoWindow = new google.maps.InfoWindow();
+  var markers = [];
+  - @places.each do |place|
+    var myLatLng = new google.maps.LatLng(#{place.center.first}, #{place.center.last});
+    var marker_#{place.id.to_s} = new google.maps.Marker({
+    position: myLatLng,
+    map: map,
+    title: "#{place.name}"
+    });
+    markers.push(marker_#{place.id.to_s});
+    bounds.extend(myLatLng);
+    google.maps.event.addListener(marker_#{place.id.to_s}, 'click', function() {
+    var html='<div style="clear: float;"><p><strong>#{place.name}</strong></p><p><a href="/places/#{place.slug}">#{t(:read_more)}</a></p></div>';
+    infoWindow.setContent(html);
+    infoWindow.open(map, marker_#{place.id.to_s})
+    });
+    map.fitBounds(bounds);
+  }
+  
+:javascript
+  function buildmap() {
+    var myOptions = {
+      zoom: 14,
+      center: new google.maps.LatLng(60.17332, 24.94102),
+       mapTypeId: google.maps.MapTypeId.SATELLITE
+    }
+    return new google.maps.Map(document.getElementById("front_map"), myOptions);
+  }
+
+  function initialize() {
+
+    map = buildmap();
+    set_places();
+    return map;
+  }

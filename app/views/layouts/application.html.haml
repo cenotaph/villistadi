@@ -8,7 +8,7 @@
     %link{:href => "http://fonts.googleapis.com/css?family=Raleway:300,400,700", :rel => "stylesheet", :type => "text/css"}/
     
     -# only load Google Maps js if necessary
-    - if controller.controller_name == 'places'
+    - if controller.controller_name == 'places' || controller.controller_name == 'home' 
       %script{:src => "http://maps.google.com/maps/api/js?sensor=false", :type => "text/javascript"}
 
 
@@ -16,11 +16,12 @@
     = javascript_include_tag "vendor/modernizr"
     = csrf_meta_tag
 
-  %body{:onload => (controller.controller_name == 'places' ?  'initialize()' : false)}
-    %header
-      %nav.top-bar{:"data-topbar" => '', :role => :navigation}= render :partial => 'layouts/top_bar'
+  %body{:onload => (controller.controller_name == 'places' || controller.controller_name == 'home' ?  'initialize()' : false)}
+    %header{:class => controller.controller_name}
+      .sticky
+        %nav.top-bar{:"data-topbar" => '', :role => :navigation}= render :partial => 'layouts/top_bar'
       #logo
-        %center= image_tag 'logo2.png'
+        %center= image_tag "logo_#{session[:locale]}.png"
       .columns.tagline
         %p.text-center= t :tagline
     - unless flash.empty?
@@ -36,3 +37,7 @@
     = yield
 
     = javascript_include_tag "application"
+    :javascript
+      $(document).ready(function(){
+        #{yield :jquery}
+      });

@@ -1,1 +1,30 @@
-Future home of Villi Stadi
+%section
+  .title-card
+    .row
+      .small-12.columns.small-centered.text-center
+        #logo
+          %center= image_tag "logo_#{session[:locale].to_s}.png"
+        .columns.tagline
+          %p.text-center= t :tagline
+        = link_to t(:see_more), '#', :id => :moresite, :class => [:btn, :"btn-default", :"btn-lg"], :onclick => 'scrollTo("#introduction")';
+
+%section
+  .row#introduction
+    .small-10.columns.small-centered.text-center
+      %h1= t :take_a_walk_on_the_wild_side
+      %p= t :wildside_blurb
+      
+%section
+  .row
+    .small-12.columns.text-left
+      %h2= t :oasis_in_map
+  .row
+    .small-12.columns#front_map= render :partial => 'big_map'
+      
+= content_for :jquery do
+  :plain
+    resizeDiv();
+
+    window.onresize = function(event) {
+      resizeDiv();
+    }

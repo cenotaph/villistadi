@@ -23,3 +23,5 @@
 config/deploy/*
 Capfile
 public/uploads/*
+sync_db
+*.sql
