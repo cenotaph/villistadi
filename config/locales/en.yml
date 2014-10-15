@@ -20,15 +20,6 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-
-        alert: "%{resource_name} could not be destroyed."
-        notice: "%{resource_name} was successfully created."
-        notice: "%{resource_name} was successfully destroyed."
-        notice: "%{resource_name} was successfully updated."
-      create:
-      destroy:
-      update:
-    actions:
   add_new_spot: 'Add new spot'
   add_other_auth: 'Add another authentication method'
   add_to: ' Add to '
@@ -40,9 +31,9 @@ en:
   create_new_menu_item: 'Create new menu item'
   create_new_post: 'Create new post'
   create_new_project: 'Create new project'
+  description_in: 'Short description of this project, in %{lang}'
   delete: 'Delete'
   delete_menu: "Delete this menu entry"
-  description_in: 'Short description of this project, in %{lang}'
   edit: 'Edit'
   edit_menu_entry: 'Edit menu entry'
   edit_place: 'Edit place'
@@ -50,11 +41,11 @@ en:
   edit_project_settings: 'Edit project settings'
   edit_spot: 'Edit spot'
   enable_forum: 'Enable the group forum?'
-  flash:
   happening: 'Happening'
   hello: "Hello world"
   hidden_content: 'Is content hidden from non-members?'
   join_in: 'Join in'
+  latest_posts: 'Latest posts'
   latlng_helper: 'You can use this tool to find the latitude and longitude of any point: '
   leave_blank_for_all: 'Leave blank to be site-wide (for all cities)'
   leave_blank_for_top_level_menu: 'Leave blank for top level menu'
@@ -74,32 +65,49 @@ en:
   new_spot: 'New spot'
   no: 'No'
   none_of_the_above: 'None of the above - create account'
-  not_yet_public: 'This resource is not yet public'
   notify_admin_of_new_member: 'Notify admin when a new member joins by email?'
-  oasis_in_map: 'Find your oasis in the map'
+  not_yet_public: 'This resource is not yet public'
+  oasis_in_map: 'Find your oasis on the map'
   places: 'Places'
-  posted_by: 'Posted by %{poster} '
+  posted_by: 'Posted by %{poster} on %{when}'
   posts: 'Posts'
   projects: 'Projects'
   read_more: 'Read more...'
   real_name: 'Your real name: '
   reorder_submenu: 'Reorder sub-menu'
   replace_image: 'Replace image? '
+  take_a_walk_on_the_wild_side: 'Take a walk on the wild side'
+  where_are_you_now: 'Where are you now?'
+  wildside_blurb: "Somewhere, a few hundred metres from your doorstep, is a wild place with wild woods where you can go and retreat, relax and recharge before returning to the buzz of the urban world. And the best thing is that it's completely free."
   save: 'Save'
-  sign_in: 'Sign in '
   start_a: ' Start a '
+  sign_in: 'Sign in '
   sw_lat: 'Latitude of southwest map boundary'
   sw_lng: 'Longitude of southwest map boundary'
-  tagline: "Helsinki's Spirit Holes"
+  tagline: "Helsinki's breathing spaces"
   tagline_in: 'Tagline in %{lang}'
-  take_a_walk_on_the_wild_side: 'Take a walk on the wild side'
   upload_image: 'Upload an image'
   username_nickname: 'Username/nickname: '
   view: 'View'
   what_city: 'Which city?'
+  what_is_villi_stadi: 'What is Villi Stadi?'
+  what_is_villi_stadi_blurb: 'Avain kokoaa harrastukset, tilat ja tapahtumat useasta lähteestä samalle kartalle. Käytä mihin haluat.'
+  wild_ideas: 'Wild Ideas'
+  wild_ideas_blurb: 'Kiinnostaako musiikki tai tanssi? blah blah blah blah blah'
+  call_of_the_wild: 'Call of the wild'
+  call_of_the_wild_blurb: 'Blah I hate nature and I hate the fucking woods and I want to bulldoze them all and build more basketball courts'
   what_to_do: 'What to do'
   where_to_go: 'Where to go'
-  wildside_blurb: "Somewhere, a few hundred metres from your doorstep, is a wild place with wild woods where you can go and retreat, relax and recharge before returning to the buzz of the urban world. And the best thing is that it's completely free."
   yes: 'Yes'
   you_can_other_auth: 'You can add other accounts (Google, Facebook and Twitter are supported) to allow sign-in with those services too.'
   you_cannot_edit_another_project: "You cannot edit someone else's project!"
+
+  flash:
+    actions:
+      create:
+        notice: "%{resource_name} was successfully created."
+      update:
+        notice: "%{resource_name} was successfully updated."
+      destroy:
+        notice: "%{resource_name} was successfully destroyed."
+        alert: "%{resource_name} could not be destroyed."

@@ -5,13 +5,19 @@ class Post < ActiveRecord::Base
   extend FriendlyId
   friendly_id :title_fi , :use => [ :slugged, :finders]
   before_save :update_icon_attributes
-
+  before_save :check_published
+  validates_presence_of :creator_id, :icon
   validate :title_present_in_at_least_one_locale
   accepts_nested_attributes_for :translations, :reject_if => proc {|x| x['title'].blank? && x['body'].blank? }
   mount_uploader :icon, ImageUploader
   
   scope :published, -> () {where(published: true)}
 
+  def check_published
+    if self.published == true
+      self.published_at ||= Time.now
+    end
+  end
   
   def description
     body

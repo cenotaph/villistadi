@@ -28,7 +28,7 @@ function resizeDiv() {
 
 function scrollTo(target) { 
   $('html, body').stop().animate({
-      'scrollTop': $(target).offset().top + 150
+      'scrollTop': $(target).offset().top - 40
   }, 900, 'swing', function () {
       window.location.hash = target;
   });

@@ -3,28 +3,58 @@
     .row
       .small-12.columns.small-centered.text-center
         #logo
-          %center= image_tag "logo_#{session[:locale].to_s}.png"
+          %center= image_tag "logo_fi.png"
         .columns.tagline
           %p.text-center= t :tagline
-        = link_to t(:see_more), '#', :id => :moresite, :class => [:btn, :"btn-default", :"btn-lg"], :onclick => 'scrollTo("#introduction")';
+    .row
+      .small-3.small-centered.columns.search_box.text-center
+        = form_tag '/home/map_search', :remote => true do
+          = text_field_tag :location, t(:where_are_you_now)
+          = submit_tag ''
 
 %section
   .row#introduction
     .small-10.columns.small-centered.text-center
       %h1= t :take_a_walk_on_the_wild_side
       %p= t :wildside_blurb
+      = link_to t(:see_more), '#', :id => :moresite, :class => [:btn, :"btn-default", :"btn-lg"], :onclick => 'scrollTo("#three_across")';
       
-%section
+%section#latest_posts
   .row
-    .small-12.columns.text-left
+    .small-12.columns.text-center
+      %h3= t :latest_posts
+      
+  .row
+    - @posts.each do |post|
+      .small-3.columns
+        - if post.icon?
+          = image_tag post.icon.url(:box)
+        %h4= link_to post.title, post, :target => :_blank
+        .metadata= t(:posted_by, :poster => post.creator.name, :when => l(post.published_at, :format => :short))
+        .body= raw truncate_html(post.body, :length => 400)
+        .read_more.text-center= link_to t(:read_more), post, :target => :blank
+
+%section#three_across
+  .row
+    .small-4.columns.text-center
+      = image_tag '187408-evergreen.jpg'
+      %h4= t :what_is_villi_stadi
+      %p.text-center= t :what_is_villi_stadi_blurb
+    .small-4.columns.text-center
+      = image_tag 'wild idea 2.jpg'
+      %h4= t :wild_ideas
+      %p.text-center= t :wild_ideas_blurb
+    .small-4.columns.text-center
+      = image_tag 'wolf howling at moon.gif'
+      %h4= t :call_of_the_wild
+      %p.text-center= t :call_of_the_wild_blurb
+%section#map_section
+  .row
+    .small-12.columns.text-center
       %h2= t :oasis_in_map
   .row
     .small-12.columns#front_map= render :partial => 'big_map'
       
 = content_for :jquery do
   :plain
-    resizeDiv();
-
-    window.onresize = function(event) {
-      resizeDiv();
-    }
+    $('.search_box #location').clearField();

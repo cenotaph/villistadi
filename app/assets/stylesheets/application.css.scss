@@ -81,11 +81,84 @@ header {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  padding-top: 25vH;
+  padding: 10vH 0px;
+
+  #logo {
+    -webkit-animation: dropHeader 1 0.75s ease-in;
+    -moz-animation: dropHeader 1 0.75s ease-in;
+    -o-animation: dropHeader 1 0.75s ease-in;
+    animation: dropHeader 1 0.75s ease-in;
+  }
+  .tagline {
+    text-transform: uppercase;
+    color: white;
+    p { font-size: 1.3rem;
+       font-weight: 400;
+       font-family: $raleway;
+     }
+    margin: 20px 0px 0px 0px;
+  }
+  form {
+
+    input[type=text] {
+      float: left;
+      width: 80%;
+      height: 40px;
+    }
+    input[type=submit] {
+      background-color: $secondary-color;
+      border: none;
+      outline: none;
+      float: left;
+      height: 40px;
+      width: 40px;
+    }
+  }
+}
+
+#latest_posts {
+    padding: 35px 0px;
+    border-bottom: 3px solid #eee;
+
+  h4 {
+    font-size: 1.2rem;
+    margin-bottom: 3px;
+  }
+  .metadata {
+    font-size: 0.7rem;
+    color: #333;
+    margin-bottom: 5px;
+  }
+  .body {
+    p {
+      font-size: 0.85rem;
+      color: #666;
+      margin-bottom: 5px;
+    }
+    margin-bottom: 0px;
+  }
+  .read_more {
+    a {
+      font-size: 0.9rem;
+    }
+  }
+}
+
+#map_section {
+    padding: 35px 0px;
+  #front_map {
+    margin-top: 25px;
+    width: 100%;
+    height: 500px;
+  }
+}
+
+#introduction {
+  padding: 60px 48px 10px 48px;
   #moresite {
-    margin-top: 50px;
+    margin-top: 10px;
     border: 1px solid #fff;
-    color: #fff;
+    color: #666;
     font-weight: normal;
     padding: 10px 25px;
     display: inline-block;
@@ -109,31 +182,6 @@ header {
       outline: 0;
     }
   }
-  #logo {
-    -webkit-animation: dropHeader 1 0.75s ease-in;
-    -moz-animation: dropHeader 1 0.75s ease-in;
-    -o-animation: dropHeader 1 0.75s ease-in;
-    animation: dropHeader 1 0.75s ease-in;
-  }
-  .tagline {
-    text-transform: uppercase;
-    color: white;
-    p { font-size: 1.3rem;
-       font-weight: 400;
-       font-family: $raleway;
-     }
-    margin: 20px 0px 0px 0px;
-  }
-}
-
-#front_map {
-  width: 100%;
-  height: 500px;
-}
-
-#introduction {
-  padding: 60px 48px;
-
   &:before { 
     width: 50%;
     margin-left: 25%;
@@ -148,6 +196,19 @@ header {
     height: 30px;
     border: 0;
     border-bottom: 3px solid #eee;
+  }
+}
+
+#three_across {
+  padding: 50px 0px;
+  border-bottom: 1px solid #eee;
+  img {
+    text-align: center;
+    max-height: 200px;
+  }
+  p {
+    color: #666;
+    padding: 0em 2em;
   }
 }
 
