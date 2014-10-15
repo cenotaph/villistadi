@@ -20,6 +20,15 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+
+        alert: "%{resource_name} could not be destroyed."
+        notice: "%{resource_name} was successfully created."
+        notice: "%{resource_name} was successfully destroyed."
+        notice: "%{resource_name} was successfully updated."
+      create:
+      destroy:
+      update:
+    actions:
   add_new_spot: 'Add new spot'
   add_other_auth: 'Add another authentication method'
   add_to: ' Add to '
@@ -31,9 +40,9 @@ en:
   create_new_menu_item: 'Create new menu item'
   create_new_post: 'Create new post'
   create_new_project: 'Create new project'
-  description_in: 'Short description of this project, in %{lang}'
   delete: 'Delete'
   delete_menu: "Delete this menu entry"
+  description_in: 'Short description of this project, in %{lang}'
   edit: 'Edit'
   edit_menu_entry: 'Edit menu entry'
   edit_place: 'Edit place'
@@ -41,6 +50,7 @@ en:
   edit_project_settings: 'Edit project settings'
   edit_spot: 'Edit spot'
   enable_forum: 'Enable the group forum?'
+  flash:
   happening: 'Happening'
   hello: "Hello world"
   hidden_content: 'Is content hidden from non-members?'
@@ -64,8 +74,8 @@ en:
   new_spot: 'New spot'
   no: 'No'
   none_of_the_above: 'None of the above - create account'
-  notify_admin_of_new_member: 'Notify admin when a new member joins by email?'
   not_yet_public: 'This resource is not yet public'
+  notify_admin_of_new_member: 'Notify admin when a new member joins by email?'
   oasis_in_map: 'Find your oasis in the map'
   places: 'Places'
   posted_by: 'Posted by %{poster} '
@@ -75,31 +85,21 @@ en:
   real_name: 'Your real name: '
   reorder_submenu: 'Reorder sub-menu'
   replace_image: 'Replace image? '
-  take_a_walk_on_the_wild_side: 'Take a walk on the wild side'
-  wildside_blurb: "Somewhere, a few hundred metres from your doorstep, is a wild place with wild woods where you can go and retreat, relax and recharge before returning to the buzz of the urban world. And the best thing is that it's completely free."
   save: 'Save'
-  start_a: ' Start a '
   sign_in: 'Sign in '
+  start_a: ' Start a '
   sw_lat: 'Latitude of southwest map boundary'
   sw_lng: 'Longitude of southwest map boundary'
   tagline: "Helsinki's Spirit Holes"
   tagline_in: 'Tagline in %{lang}'
+  take_a_walk_on_the_wild_side: 'Take a walk on the wild side'
   upload_image: 'Upload an image'
   username_nickname: 'Username/nickname: '
   view: 'View'
   what_city: 'Which city?'
   what_to_do: 'What to do'
   where_to_go: 'Where to go'
+  wildside_blurb: "Somewhere, a few hundred metres from your doorstep, is a wild place with wild woods where you can go and retreat, relax and recharge before returning to the buzz of the urban world. And the best thing is that it's completely free."
   yes: 'Yes'
   you_can_other_auth: 'You can add other accounts (Google, Facebook and Twitter are supported) to allow sign-in with those services too.'
   you_cannot_edit_another_project: "You cannot edit someone else's project!"
-
-  flash:
-    actions:
-      create:
-        notice: "%{resource_name} was successfully created."
-      update:
-        notice: "%{resource_name} was successfully updated."
-      destroy:
-        notice: "%{resource_name} was successfully destroyed."
-        alert: "%{resource_name} could not be destroyed."
