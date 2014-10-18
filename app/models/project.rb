@@ -8,9 +8,10 @@ class Project < ActiveRecord::Base
   accepts_nested_attributes_for :translations, :reject_if => proc {|x| x['name'].blank? && x['description'].blank? && x['tagline'].blank? }
   mount_uploader :image, ImageUploader
   validate :title_present_in_at_least_one_locale
-  has_and_belongs_to_many :users
+  has_many :projects_users
+  has_many :users, through: :projects_users
   before_save :check_that_owner_is_member
-  
+  has_many :posts
   
   def check_that_owner_is_member
     owner = User.find(owner_id)

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141006153852) do
+ActiveRecord::Schema.define(version: 20141018204337) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,18 @@ ActiveRecord::Schema.define(version: 20141006153852) do
 
   add_index "ckeditor_assets", ["assetable_type", "assetable_id"], name: "idx_ckeditor_assetable", using: :btree
   add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], name: "idx_ckeditor_assetable_type", using: :btree
+
+  create_table "comments", force: true do |t|
+    t.integer  "post_id"
+    t.integer  "user_id"
+    t.boolean  "published"
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "comments", ["post_id"], name: "index_comments_on_post_id", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "friendly_id_slugs", force: true do |t|
     t.string   "slug",                      null: false
@@ -165,10 +177,10 @@ ActiveRecord::Schema.define(version: 20141006153852) do
 
   create_table "places", force: true do |t|
     t.integer  "city_id"
-    t.decimal  "sw_lat",     precision: 10, scale: 6
-    t.decimal  "sw_lng",     precision: 10, scale: 6
-    t.decimal  "ne_lat",     precision: 10, scale: 6
-    t.decimal  "ne_lng",     precision: 10, scale: 6
+    t.decimal  "sw_lat",     precision: 10, scale: 8
+    t.decimal  "sw_lng",     precision: 10, scale: 8
+    t.decimal  "ne_lat",     precision: 10, scale: 8
+    t.decimal  "ne_lng",     precision: 10, scale: 8
     t.string   "slug"
     t.boolean  "published"
     t.datetime "created_at"
@@ -184,7 +196,6 @@ ActiveRecord::Schema.define(version: 20141006153852) do
     t.datetime "updated_at"
     t.string   "title"
     t.text     "body"
-    t.text     "excerpt"
   end
 
   add_index "post_translations", ["locale"], name: "index_post_translations_on_locale", using: :btree
@@ -203,6 +214,7 @@ ActiveRecord::Schema.define(version: 20141006153852) do
     t.integer  "creator_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "project_id"
   end
 
   add_index "posts", ["city_id"], name: "index_posts_on_city_id", using: :btree
@@ -240,8 +252,10 @@ ActiveRecord::Schema.define(version: 20141006153852) do
   end
 
   create_table "projects_users", id: false, force: true do |t|
-    t.integer "project_id", null: false
-    t.integer "user_id",    null: false
+    t.integer "project_id",     null: false
+    t.integer "user_id",        null: false
+    t.boolean "is_admin"
+    t.boolean "receive_emails"
   end
 
   add_index "projects_users", ["project_id", "user_id"], name: "by_project_and_user", unique: true, using: :btree

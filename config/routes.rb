@@ -30,5 +30,9 @@ Rails.application.routes.draw do
   resources :pages
   resources :places
   resources :posts
-  resources :projects
+  resources :projects do
+    resources :posts do
+      resources :comments
+    end
+  end
 end

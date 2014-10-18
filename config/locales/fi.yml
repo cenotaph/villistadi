@@ -1,5 +1,6 @@
 fi:
   locale_name: 'Suomeksi'
+  
   add_new_spot: 'Add new spot'
   add_other_auth: 'Add another authentication method'
   add_to: ' Add to '
@@ -28,7 +29,6 @@ fi:
   latlng_helper: 'You can use this tool to find the latitude and longitude of any point: '
   leave_blank_for_all: 'Leave blank to be site-wide (for all cities)'
   leave_blank_for_top_level_menu: 'Leave blank for top level menu'
-  locale_name: 'English'
   maximum_members: 'Maximum number of members (leave blank for unlimited)'
   members: 'Members'
   members_can_create_forum_topics: 'Allow members to create forum topics?'

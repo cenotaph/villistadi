@@ -12,7 +12,9 @@
  *
  *= require_self
  *= require places
+ *= require projects
  *= require foundation_and_overrides
+ *= require punymce/editor
 
  */
 
@@ -238,4 +240,9 @@ form {
   .body {
     margin-top: 25px;
   }
+}
+
+
+.project_container {
+  padding: 35px 0px;
 }

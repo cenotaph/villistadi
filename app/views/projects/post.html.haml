@@ -1,0 +1,34 @@
+.project_container.project_post
+  .row
+    .small-12.columns
+      %h2= @post.project.name
+      
+  .row
+    .small-10.columns
+      %h4= @post.title
+      .metadata= t(:posted_by, :poster => @post.creator.name, :when => l(@post.created_at, :format => :long))
+      
+  .row
+    .small-8.columns.body
+      = raw @post.body
+      
+  - unless @post.comments.empty?
+    .comments
+      - @post.comments.each do |c|
+        .comment.row
+          .small-2.columns.metadata= t(:comment_posted_by, :poster => c.user.name, :when => l(c.created_at, :format => :long))
+          .small-8.columns.end= raw c.content
+      
+      
+      - if user_signed_in?
+        - if @post.project.users.include?(current_user)
+          .row.comment_form
+            = semantic_form_for([@post.project, @post, @post.comments.build]) do |c|
+              = c.input :content, :label => t(:add_a_comment_to_this_post), :row => 4
+              = c.input :user_id, :as => :hidden, :value => current_user.id.to_s
+              = c.input :post_id, :as => :hidden, :value => @post.id.to_s
+              = c.submit t(:save), :class => [:button, :radius, :small]
+          = content_for :jquery do
+            var puny_mce = new punymce.Editor({id : 'comment_content'});
+.row
+  .small-5.columns= link_to t(:return_to_forum), @post.project

@@ -1,0 +1,33 @@
+.project_container
+  .row
+    .small-12.columns
+      %h3
+        = @project.name
+        = ": " + t(:new_post)
+    
+  = semantic_form_for([@project, @post]) do |f|
+    .row
+      .small-12.columns
+        %p= t(:post_in_either_language)
+    .row
+      .columns.small-12
+        %dl.tabs{"data-tab" => ""}
+          - I18n.available_locales.each_with_index do |locale, i|
+            %dd{:class => (i == 0 ? :active : false)}
+              = link_to t(:locale_name, :locale => locale), "##{locale}#{@post.id.to_s}"
+        .tabs-content
+          - I18n.available_locales.each_with_index do |locale, i|
+            .content{:class => (i == 0 ? :active : false), :id => "#{locale}#{@post.id.to_s}"}
+              = f.globalize_fields_for locale do |en|
+                %b= "Title of post in #{t :locale_name, :locale => locale}"
+                = en.text_field :title
+                %b= "Body of post in #{t :locale_name, :locale => locale}"
+                = en.text_area :body, :rows => 12
+    .row
+      .small-12.columns
+        = f.input :creator_id, :value => current_user.id.to_s, :as => :hidden
+        = f.submit t(:create_post), :class => [:button, :radius, :small]
+    
+  = content_for :jquery do
+    var puny_mce = new punymce.Editor({id : 'post_translations_attributes_1_body'});
+    var puny_mce2 = new punymce.Editor({id : 'post_translations_attributes_2_body'});

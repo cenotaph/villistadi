@@ -6,13 +6,18 @@ class Post < ActiveRecord::Base
   friendly_id :title_fi , :use => [ :slugged, :finders]
   before_save :update_icon_attributes
   before_save :check_published
-  validates_presence_of :creator_id, :icon
-  validate :title_present_in_at_least_one_locale
+  validates_presence_of :creator_id
+  validate :title_present_in_at_least_one_locale, :image_unless_project
+  belongs_to :project
   accepts_nested_attributes_for :translations, :reject_if => proc {|x| x['title'].blank? && x['body'].blank? }
   mount_uploader :icon, ImageUploader
+  has_many :comments
+  
   
   scope :published, -> () {where(published: true)}
-
+  scope :no_project, -> () { where(project_id: nil) }
+  scope :by_project, -> (project_id) { where(project_id: project_id) }
+  
   def check_published
     if self.published == true
       self.published_at ||= Time.now
@@ -27,6 +32,12 @@ class Post < ActiveRecord::Base
     self.title(:fi)
   end
 
+  def image_unless_project
+    if icon.blank? && project.blank?
+      errors.add(:icon, "You must have an image on a post.")
+    end
+  end
+  
   def title_present_in_at_least_one_locale
     if I18n.available_locales.map { |locale| translation_for(locale).title }.compact.empty?
       errors.add(:base, "You must specify a page title in at least one available language.")

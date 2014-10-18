@@ -2,6 +2,7 @@ class ProjectsController < ApplicationController
   before_filter :authenticate_user!, :only => [:new, :create, :update, :edit, :destroy]
   responders :location, :flash
   respond_to :html, :json
+  # load_and_authorize_resource through: :user
   
   def create
     @project = Project.new(project_params)

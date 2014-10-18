@@ -1,0 +1,38 @@
+@import 'foundation_and_overrides';
+@import 'variables';
+
+.forum {
+  .row {
+    padding: 10px;
+    border: 1px solid $secondary-color;
+  }
+}
+
+.project_post  {
+  h4 {
+    margin-bottom: 0px;
+  }
+  .metadata {
+    font-size: 0.8rem;
+    font-weight: 300;
+    font-style: italic;
+  }
+  
+  .body {
+    margin: 10px 0px;
+  }
+  
+  .comments {
+    margin-top: 35px;
+    
+    .comment {
+      padding: 10px 0px;
+      border-bottom: 1px dotted $secondary-color;
+      .metadata {
+        font-size: 0.8rem;
+        font-weight: 300;
+        font-style: italic;
+      }
+    }
+  }
+}

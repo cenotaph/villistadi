@@ -11,7 +11,7 @@
             - if project.image?
               = link_to image_tag(project.image.url(:box)), project
           .small-10.columns
-            .title= project.name
+            .title= link_to project.name, project
             .member_count= t(:members) + ": " + project.users.size.to_s
             .admin= "Admin: " + project.owner.name
         .row

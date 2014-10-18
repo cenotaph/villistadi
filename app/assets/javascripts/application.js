@@ -16,7 +16,7 @@
 //= require foundation
 //= require ckeditor/init
 //= require jquery_nested_form
-//= require_tree .
+//= require punymce/puny_mce
 
 $(function(){ $(document).foundation(); });
 

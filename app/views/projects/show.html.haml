@@ -6,3 +6,18 @@
   .small-6.columns
     - if @project.image?
       = image_tag @project.image.url(:standard)
+.row
+  .small-12.columns
+    - if can? :create, @project.posts.build
+      = link_to t(:create_new_post), new_project_post_path(@project), :class =>  [:button, :tiny, :radius]
+    - if can? :edit, @project
+      = link_to t(:edit_project_settings), edit_project_path(@project), :class => [:button, :tiny, :radius]
+
+- if @project.has_forum
+  .row.forum
+    - @project.posts.each do |p|
+      - next if p.new_record?
+      .row
+        .small-6.columns
+          .title= link_to p.title, project_post_path(@project, p)
+          .metadata= t(:posted_by, :poster => p.creator.name, :when => l(p.created_at, :format => :long))
