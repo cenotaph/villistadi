@@ -11,7 +11,7 @@ class Post < ActiveRecord::Base
   belongs_to :project
   accepts_nested_attributes_for :translations, :reject_if => proc {|x| x['title'].blank? && x['body'].blank? }
   mount_uploader :icon, ImageUploader
-  has_many :comments
+  has_many :comments, as: :commentable
   
   
   scope :published, -> () {where(published: true)}
@@ -36,6 +36,10 @@ class Post < ActiveRecord::Base
     if icon.blank? && project.blank?
       errors.add(:icon, "You must have an image on a post.")
     end
+  end
+  
+  def name
+    title
   end
   
   def title_present_in_at_least_one_locale

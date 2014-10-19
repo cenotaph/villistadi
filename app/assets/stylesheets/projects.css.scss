@@ -36,3 +36,52 @@
     }
   }
 }
+
+.project_index {
+  .project {
+    padding: 20px 0px;
+    border-bottom: 1px solid $secondary-color;
+    
+    .title {
+      font-weight: 500;
+      font-size: 1.2rem;
+    }
+    .tagline {
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: #666;
+      padding: 10px 0px;
+    }
+    .controls {
+      .button.tiny {
+         font-size: 0.55rem;
+      }
+    }
+  }
+}
+
+#announcements {
+  .post {
+    padding: 10px 0px;
+    border-bottom: 1px solid $secondary-color;
+    .title {
+      font-size: 1.1rem;
+    }
+    .metadata {
+      font-weight: 300;
+      font-size: 0.85rem;
+      color: #666;
+      margin-bottom: 10px;
+    }
+    .excerpt {
+      margin-bottom: 15px;
+    }
+    .read_more a {
+      font-weight: 700;
+      &:hover {
+        color: $secondary-color;
+      }
+      font-size: 0.9rem;
+    }
+  }
+}

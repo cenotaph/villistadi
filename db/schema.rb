@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141018204337) do
+ActiveRecord::Schema.define(version: 20141019094314) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,10 +57,25 @@ ActiveRecord::Schema.define(version: 20141018204337) do
     t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "commentable_type"
+    t.integer  "commentable_id"
   end
 
   add_index "comments", ["post_id"], name: "index_comments_on_post_id", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
+
+  create_table "forumposts", force: true do |t|
+    t.integer  "project_id"
+    t.integer  "user_id"
+    t.string   "title"
+    t.text     "body"
+    t.boolean  "sticky"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "forumposts", ["project_id"], name: "index_forumposts_on_project_id", using: :btree
+  add_index "forumposts", ["user_id"], name: "index_forumposts_on_user_id", using: :btree
 
   create_table "friendly_id_slugs", force: true do |t|
     t.string   "slug",                      null: false
@@ -322,6 +337,7 @@ ActiveRecord::Schema.define(version: 20141018204337) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
+    t.string   "slug"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree

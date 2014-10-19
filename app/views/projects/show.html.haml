@@ -1,23 +1,44 @@
-.row
-  .small-12.columns
-    %h2= @project.name
+.project_container
+  .row
+    .small-12.columns
+      %h2= @project.name
 
-.row
-  .small-6.columns
-    - if @project.image?
-      = image_tag @project.image.url(:standard)
-.row
-  .small-12.columns
-    - if can? :create, @project.posts.build
-      = link_to t(:create_new_post), new_project_post_path(@project), :class =>  [:button, :tiny, :radius]
-    - if can? :edit, @project
-      = link_to t(:edit_project_settings), edit_project_path(@project), :class => [:button, :tiny, :radius]
-
-- if @project.has_forum
-  .row.forum
-    - @project.posts.each do |p|
-      - next if p.new_record?
-      .row
-        .small-6.columns
-          .title= link_to p.title, project_post_path(@project, p)
-          .metadata= t(:posted_by, :poster => p.creator.name, :when => l(p.created_at, :format => :long))
+  .row
+    .small-6.columns
+      - if @project.image?
+        = image_tag @project.image.url(:standard)
+  .row
+    .small-12.columns
+      - if can? :create, @project.posts.build
+        = link_to t(:create_new_post), new_project_post_path(@project), :class =>  [:button, :tiny, :radius]
+      - if can? :edit, @project
+        = link_to t(:edit_project_settings), edit_project_path(@project), :class => [:button, :tiny, :radius]
+  .row
+    %dl.tabs{:"data-tab" => ""}
+      %dd.active= link_to t(:announcements), '#announcements'
+      - if @project.has_forum
+        %dd= link_to t(:forum), '#forum'
+      %dd= link_to t(:members), '#members'
+    .tabs-content
+      #announcements.content.active.row
+        .small-12.columns
+          - @project.posts.to_a.delete_if{|p| p.new_record? }.sort_by{|x| x.published_at }.each do |p|
+            - next if p.new_record?
+            .row.post
+              .small-8.columns
+                .title= link_to p.title, project_post_path(@project, p)
+                .metadata= t(:posted_by, :poster => p.creator.name, :when => l(p.created_at, :format => :long))
+                .excerpt= raw truncate_html(sanitize(p.body, tags: %w(table tr b strong i em u a td), attributes: %w(href src name)), :length => 600)
+                .read_more= link_to t(:read_more), project_post_path(@project, p)
+      - if @project.has_forum
+        #forum.content
+          forum
+      #members.content
+        .row
+          - @project.users.each do |user|
+            .small-3.columns.end
+              = link_to user.name, user
+              - if user.projects_users(:project_id => @project.id).first.is_admin == true
+                %p
+                  %b= t(:project_admin)
+            

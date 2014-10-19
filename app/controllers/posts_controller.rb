@@ -8,6 +8,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @project.posts << @post
     @post.published = true  # all project posts are published
+    @post.published_at = Time.now
     if @post.save
       respond_with @post, location: -> { @post.project }
     end

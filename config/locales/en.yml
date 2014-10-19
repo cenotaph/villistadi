@@ -20,6 +20,7 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  project_admin: "Project Administrator"
   add_a_comment_to_this_post: 'Add a comment to this discussion:'
   add_new_spot: 'Add new spot'
   add_other_auth: 'Add another authentication method'
@@ -48,6 +49,7 @@ en:
   hello: "Hello world"
   hidden_content: 'Is content hidden from non-members?'
   join_in: 'Join in'
+  latest_post: 'Latest post: '
   latest_posts: 'Latest posts'
   latlng_helper: 'You can use this tool to find the latitude and longitude of any point: '
   leave_blank_for_all: 'Leave blank to be site-wide (for all cities)'
