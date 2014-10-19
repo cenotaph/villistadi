@@ -21,6 +21,12 @@
 @import 'variables';
 @import 'foundation_and_overrides';
 
+@font-face {
+  font-family: "Kankin";
+  src: url(/assets/Kankin.otf) format("truetype");
+}
+
+
 span.translation_missing {
   background-color: red;
   color: white;
@@ -56,6 +62,18 @@ header {
        font-family: $raleway;
      }
     margin: 20px 0px 0px 0px;
+  }
+}
+
+body.places {
+  header {
+    background: none;
+    min-height: 300px;
+    #logo {
+      img {
+        max-height: 150px;
+      }
+    }
   }
 }
 
@@ -251,6 +269,6 @@ form {
 }
 
 
-.project_container, .posts_container, .page_container {
+.project_container, .posts_container, .page_container, .place_container {
   padding: 35px 0px;
 }

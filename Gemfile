@@ -38,7 +38,7 @@ gem 'haml-rails'
 #gem 'handles_sortable_columns'
 gem 'has_scope'
 gem 'http_accept_language'
-#gem 'inherited_resources', github: 'josevalim/inherited_resources'
+gem "jquery-slick-rails"
 gem 'kaminari'
 gem 'meta-tags', require: 'meta_tags'
 gem 'mini_magick'

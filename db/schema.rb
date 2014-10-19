@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141019094314) do
+ActiveRecord::Schema.define(version: 20141019124725) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -178,13 +178,44 @@ ActiveRecord::Schema.define(version: 20141019094314) do
 
   add_index "pages", ["city_id"], name: "index_pages_on_city_id", using: :btree
 
+  create_table "photo_translations", force: true do |t|
+    t.integer  "photo_id",   null: false
+    t.string   "locale",     null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "title"
+  end
+
+  add_index "photo_translations", ["locale"], name: "index_photo_translations_on_locale", using: :btree
+  add_index "photo_translations", ["photo_id"], name: "index_photo_translations_on_photo_id", using: :btree
+
+  create_table "photos", force: true do |t|
+    t.string   "image"
+    t.integer  "image_width"
+    t.integer  "image_height"
+    t.string   "image_content_type"
+    t.integer  "image_size"
+    t.integer  "imageable_id"
+    t.string   "imageable_type"
+    t.string   "credit"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "photos", ["imageable_id", "imageable_type"], name: "index_photos_on_imageable_id_and_imageable_type", using: :btree
+
   create_table "place_translations", force: true do |t|
-    t.integer  "place_id",    null: false
-    t.string   "locale",      null: false
+    t.integer  "place_id",           null: false
+    t.string   "locale",             null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
     t.text     "description"
+    t.text     "getting_there"
+    t.text     "see_and_experience"
+    t.text     "more_information"
+    t.text     "facts"
+    t.text     "future_of"
   end
 
   add_index "place_translations", ["locale"], name: "index_place_translations_on_locale", using: :btree
@@ -192,14 +223,20 @@ ActiveRecord::Schema.define(version: 20141019094314) do
 
   create_table "places", force: true do |t|
     t.integer  "city_id"
-    t.decimal  "sw_lat",     precision: 10, scale: 8
-    t.decimal  "sw_lng",     precision: 10, scale: 8
-    t.decimal  "ne_lat",     precision: 10, scale: 8
-    t.decimal  "ne_lng",     precision: 10, scale: 8
+    t.decimal  "sw_lat",                            precision: 10, scale: 8
+    t.decimal  "sw_lng",                            precision: 10, scale: 8
+    t.decimal  "ne_lat",                            precision: 10, scale: 8
+    t.decimal  "ne_lng",                            precision: 10, scale: 8
     t.string   "slug"
     t.boolean  "published"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "background"
+    t.integer  "background_width"
+    t.integer  "background_height"
+    t.integer  "background_size",         limit: 8
+    t.string   "background_content_type"
+    t.string   "pdf"
   end
 
   add_index "places", ["city_id"], name: "index_places_on_city_id", using: :btree

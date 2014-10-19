@@ -37,7 +37,7 @@ class Admin::PlacesController < Admin::BaseController
   private
   
   def place_params
-    params.require(:place).permit(:published, :slug, :sw_lat, :sw_lng, :ne_lat, :ne_lng, :city_id, translations_attributes: [:id, :locale, :name, :description])
+    params.require(:place).permit(:published, :slug, :sw_lat, :sw_lng, :ne_lat, :ne_lng, :city_id, :background, :pdf, translations_attributes: [:id, :locale, :name, :description, :getting_there, :see_and_experience, :more_information, :facts, :future_of], photos_attributes: [:id, :locale, :image, :credit, translations_attributes: [:id, :locale, :title]])
   end
   
 end

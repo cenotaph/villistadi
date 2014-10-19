@@ -2,10 +2,42 @@
 @import 'variables';
 
 #map {
-
-  height: 600px;
+  width: 548px;
+  height: 350px;
 }
 
 .gmnoprint img {
     max-width: none; 
+}
+
+.place_container {
+  background-color: white;
+  
+  h1 {
+    font-family: 'Kankin';
+    color: #009999;
+    font-size: 4.8rem;
+  }
+  
+  .description {
+    color: #666;
+  }
+  
+  h2 {
+    font-family: 'Georgia';
+    color: #ff6600;
+    font-size: 2.8rem;
+  }
+  
+  h3 {
+    font-family: 'Georgia';
+    font-size: 1.7rem;
+    color: #FFF;
+  }
+  .facts_box {
+    padding: 8px;
+    margin: 25px 0px;
+    background-color: #009999;
+    color: white;
+  }
 }

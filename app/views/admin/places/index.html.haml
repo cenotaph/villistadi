@@ -18,7 +18,7 @@
           %tr
             %td= place.id
             %td= place.name
-            %td= place.published == true ? t(:yes) : t(:no)
+            %td= place.published == true ? t(:affirmative) : t(:no)
             %td.actions
               = link_to t(:view), place, :class => [:button, :small, :radius]
               - if can? :edit, place

@@ -15,7 +15,7 @@
     = javascript_include_tag "vendor/modernizr"
     = csrf_meta_tag
 
-  %body{:onload => (controller.controller_name == 'places' || controller.controller_name == 'home' ?  'initialize()' : false)}
+  %body{:class => controller.controller_name, :onload => (controller.controller_name == 'places' || controller.controller_name == 'home' ?  'initialize()' : false), :style => @background_css.nil? ? false : @background_css}
     %header{:class => controller.controller_name}
       .sticky
         %nav.top-bar{:"data-topbar" => '', :role => :navigation}= render :partial => 'layouts/top_bar'

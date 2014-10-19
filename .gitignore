@@ -24,4 +24,5 @@ config/deploy/*
 Capfile
 public/uploads/*
 sync_db
+.DS_Store
 *.sql

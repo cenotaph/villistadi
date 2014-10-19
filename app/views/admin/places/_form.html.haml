@@ -1,4 +1,4 @@
-= semantic_form_for([:admin, @place], :html => {:class => "custom", :"data-abide" => '' }) do |f|
+= semantic_nested_form_for([:admin, @place], :html => {:class => "custom", :"data-abide" => '' }) do |f|
   .row
     .columns.small-12
       %dl.tabs{"data-tab" => ""}
@@ -13,6 +13,16 @@
               = en.text_field :name
               %b= "Description in #{t :locale_name, :locale => locale}"
               = en.cktext_area :description
+              %b= "Getting There section in #{t :locale_name, :locale => locale}"
+              = en.cktext_area :getting_there
+              %b= "See & Experience section in  #{t :locale_name, :locale => locale}"
+              = en.cktext_area :see_and_experience
+              %b= "More information section in #{t :locale_name, :locale => locale}"
+              = en.cktext_area :more_information
+              %b= "Future of section in  #{t :locale_name, :locale => locale}"
+              = en.cktext_area :future_of
+              %b= "Facts section in  #{t :locale_name, :locale => locale}"
+              = en.cktext_area :facts              
   .row
     .small-12.columns
       %h3 Latitude & Longitude
@@ -26,6 +36,31 @@
     .small-6.columns= f.input :sw_lat, :label => t(:sw_lat), :input_html => {:required => ""}
     .small-6.columns= f.input :sw_lng, :label => t(:sw_lng), :input_html => {:required => ""}
   .row
+    .small-12.columns
+      = f.input :pdf
+  .row
+    .small-12.columns
+      %fieldset
+        %legend= t :photos
+        = f.fields_for :photos do |ff|
+          - if ff.object.image?
+            = image_tag ff.object.image.url(:box)
+            = ff.input :image, :label => t(:change_photo)
+          - else
+            = ff.input :image
+          - I18n.available_locales.each_with_index do |locale, i|
+            .content{:class => (i == 0 ? :active : false), :id => "#{locale}#{@place.id.to_s}"}
+              = ff.globalize_fields_for locale do |en|
+                %b= "Photo caption/title in #{t :locale_name, :locale => locale}"
+                = en.text_field :title
+        = f.link_to_add t(:add_a_photo), :photos
+  .row
+    .small-6.columns
+      - if f.object.background?
+        = image_tag f.object.background.url(:box)
+        = f.input :background, :hint => t(:should_be_1920px), :label => t(:change_background)
+      - else
+        = f.input :background, :hint => t(:should_be_1920px)
     .small-6.columns= f.input :published
   .row
     .small-6.columns= f.input :city, :as => :select, :collection => City.all, :include_blank => false, :input_html => {:required => "" }
