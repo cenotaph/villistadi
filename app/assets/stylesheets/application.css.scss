@@ -21,6 +21,14 @@
 @import 'variables';
 @import 'foundation_and_overrides';
 
+span.translation_missing {
+  background-color: red;
+  color: white;
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+
 header {
   background: url(/assets/cropped-panorama-okko.jpg)  no-repeat center center;
   background-size: cover;
@@ -243,6 +251,6 @@ form {
 }
 
 
-.project_container {
+.project_container, .posts_container, .page_container {
   padding: 35px 0px;
 }

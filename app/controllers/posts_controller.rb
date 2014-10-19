@@ -16,6 +16,7 @@ class PostsController < ApplicationController
   
   def index
     @posts = Post.published.order('published_at DESC')
+    set_meta_tags :title => t(:posts)
   end
   
   def new
@@ -28,6 +29,7 @@ class PostsController < ApplicationController
   
   def show
     @post = Post.find(params[:id])
+    set_meta_tags :title => @post.name
     if @post.project
       render :template => 'projects/post'
     end

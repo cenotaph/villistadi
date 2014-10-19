@@ -21,10 +21,12 @@
 
 en:
   project_admin: "Project Administrator"
+  belongs_to_projects: 'Belongs to projects:'
   add_a_comment_to_this_post: 'Add a comment to this discussion:'
   add_new_spot: 'Add new spot'
   add_other_auth: 'Add another authentication method'
   add_to: ' Add to '
+  announcements: 'Announcements'
   are_you_sure: 'Are you sure you want to delete this forever?'
   comment_posted_by: 'Comment by %{poster} on %{when}'
   connect_with_facebook: 'Sign in via Facebook'
@@ -45,10 +47,12 @@ en:
   edit_project_settings: 'Edit project settings'
   edit_spot: 'Edit spot'
   enable_forum: 'Enable the group forum?'
+  forum: 'Forum'
   happening: 'Happening'
   hello: "Hello world"
   hidden_content: 'Is content hidden from non-members?'
   join_in: 'Join in'
+  latest_announcement: 'Latest announcement: '
   latest_post: 'Latest post: '
   latest_posts: 'Latest posts'
   latlng_helper: 'You can use this tool to find the latitude and longitude of any point: '
@@ -97,6 +101,7 @@ en:
   upload_image: 'Upload an image'
   username_nickname: 'Username/nickname: '
   view: 'View'
+  view_forum: 'View forum'
   what_city: 'Which city?'
   what_is_villi_stadi: 'What is Villi Stadi?'
   what_is_villi_stadi_blurb: 'Avain kokoaa harrastukset, tilat ja tapahtumat useasta lähteestä samalle kartalle. Käytä mihin haluat.'

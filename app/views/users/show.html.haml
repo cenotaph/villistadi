@@ -1,0 +1,25 @@
+.project_container
+  .row
+    .small-12.columns
+      %h3= @user.name
+    
+  .row
+    .small-12.columns
+      = t :belongs_to_projects
+      
+  .row
+    .small-12.columns
+      - if @user.projects.empty?
+        = t :no_projects
+      - else
+        - @user.projects.each do |proj|
+          .row
+            .small-3.columns
+              - if proj.image?
+                = image_tag proj.image.url(:box)
+            .small-6.columns
+              = link_to proj.name, proj
+            .small-3.columns
+              - if @user.projects_users(:project_id => proj.id).first.is_admin == true
+                %b= t :project_admin
+              

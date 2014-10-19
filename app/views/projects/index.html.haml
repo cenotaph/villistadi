@@ -21,7 +21,7 @@
               - if project.has_forum
                 - unless project.posts.published.empty?
                   .latest_post
-                    = t(:latest_post)
+                    = t(:latest_announcement)
                     = link_to project.posts.order('published_at DESC').first.name, project
                     %span.metadata= t(:posted_by, :poster => project.posts.order('published_at DESC').first.creator.name, :when => l(project.posts.order('published_at DESC').first.published_at, :format => :short))
           .row
