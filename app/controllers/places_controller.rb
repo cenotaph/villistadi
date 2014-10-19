@@ -8,6 +8,8 @@ class PlacesController < ApplicationController
     end
     if @place.background?
       @background_css = "background: url(#{@place.background.url(:full)}) no-repeat top center fixed; background-size: cover"
+    else
+      @background_css = ''
     end
   end
   
