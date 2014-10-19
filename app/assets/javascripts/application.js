@@ -18,6 +18,7 @@
 //= require jquery_nested_form
 //= require punymce/puny_mce
 //= require jquery.slick
+//= require jquery.clearfield
 
 $(function(){ $(document).foundation(); });
 

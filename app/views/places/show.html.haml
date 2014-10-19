@@ -85,7 +85,7 @@
           
 
         
-  - unless @place.future_of.empty?
+  - unless @place.future_of.blank?
     .row
       .small-12.columns
         %h2= t :future_of, :place => @place.name

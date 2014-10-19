@@ -135,6 +135,7 @@ body.places {
     }
     input[type=submit] {
       background-color: $secondary-color;
+      background: url(/assets/spyglass.png) no-repeat center center;
       border: none;
       outline: none;
       float: left;
