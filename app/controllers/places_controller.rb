@@ -7,7 +7,7 @@ class PlacesController < ApplicationController
       redirect_to '/'
     end
     if @place.background?
-      @background_css = "background: url(#{@place.background.url(:full)}) no-repeat center center; background-size: cover"
+      @background_css = "background: url(#{@place.background.url(:full)}) no-repeat top center fixed; background-size: cover"
     end
   end
   

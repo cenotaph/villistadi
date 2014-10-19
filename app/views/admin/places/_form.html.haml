@@ -41,13 +41,14 @@
   .row
     .small-12.columns
       %fieldset
-        %legend= t :photos
+        %legend= t :photo_gallery
         = f.fields_for :photos do |ff|
           - if ff.object.image?
             = image_tag ff.object.image.url(:box)
             = ff.input :image, :label => t(:change_photo)
           - else
             = ff.input :image
+          = ff.input :credit
           - I18n.available_locales.each_with_index do |locale, i|
             .content{:class => (i == 0 ? :active : false), :id => "#{locale}#{@place.id.to_s}"}
               = ff.globalize_fields_for locale do |en|

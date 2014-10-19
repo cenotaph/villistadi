@@ -17,6 +17,7 @@
 //= require ckeditor/init
 //= require jquery_nested_form
 //= require punymce/puny_mce
+//= require jquery.slick
 
 $(function(){ $(document).foundation(); });
 

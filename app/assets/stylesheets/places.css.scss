@@ -10,8 +10,23 @@
     max-width: none; 
 }
 
+.false_header {
+  padding: 20px 0px;
+  margin-top: 50px;
+  #logo {
+    img {
+      max-height: 150px;
+    }
+  }
+  .tagline {
+    color: #FFF;
+    font-weight: bold;
+  }
+}
+
 .place_container {
   background-color: white;
+  padding: 15px 25px;
   
   h1 {
     font-family: 'Kankin';
@@ -26,13 +41,15 @@
   h2 {
     font-family: 'Georgia';
     color: #ff6600;
-    font-size: 2.8rem;
+    font-size: 2.0rem;
+    font-weight: bold;
   }
   
   h3 {
     font-family: 'Georgia';
     font-size: 1.7rem;
     color: #FFF;
+    font-weight: bold;
   }
   .facts_box {
     padding: 8px;
@@ -40,4 +57,8 @@
     background-color: #009999;
     color: white;
   }
+}
+
+.photo_container {
+  margin-bottom: 30px;
 }

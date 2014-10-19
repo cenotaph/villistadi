@@ -16,9 +16,10 @@
     = csrf_meta_tag
 
   %body{:class => controller.controller_name, :onload => (controller.controller_name == 'places' || controller.controller_name == 'home' ?  'initialize()' : false), :style => @background_css.nil? ? false : @background_css}
+    .sticky
+      %nav.top-bar{:"data-topbar" => '', :role => :navigation}= render :partial => 'layouts/top_bar'  
     %header{:class => controller.controller_name}
-      .sticky
-        %nav.top-bar{:"data-topbar" => '', :role => :navigation}= render :partial => 'layouts/top_bar'
+
       #logo
         %center= image_tag "logo_fi.png"
       .columns.tagline

@@ -20,6 +20,7 @@
 
 @import 'variables';
 @import 'foundation_and_overrides';
+@import 'slick';
 
 @font-face {
   font-family: "Kankin";
@@ -66,17 +67,16 @@ header {
 }
 
 body.places {
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  
   header {
-    background: none;
-    min-height: 300px;
-    #logo {
-      img {
-        max-height: 150px;
-      }
-    }
+    display: none;
   }
 }
-
 .language {
   padding-left: 3em;
   font-size: 0.75rem;
