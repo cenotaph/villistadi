@@ -48,6 +48,19 @@ header {
   float: left;
   margin-right: 10px;
 }
+.level_1 {
+  .number {
+    font-size: 1.2rem;
+    color: #666;
+  }
+  a.button {
+    font-size: 0.55rem;
+  }
+}
+
+.level_2 .number { 
+  font-size: 1.0rem;
+}
 .cms_grid {
 
   .menu_item {

@@ -11,6 +11,7 @@
   .small-12.columns
     %p Drag and drop to reorder - top to bottom = left to right.
     .cms_grid#top_menu
+      - counter = 1
       - Menu.roots.sort_by(&:sort_order).each_with_index do |menu, index|
         .row
           .menu_item.small-12.columns{:id => "menu_#{menu.id.to_s}"}
@@ -18,19 +19,20 @@
               .number= (index +1).to_s + ". "
               = link_to menu.item_name, edit_admin_menu_path(menu)
               = "(#{menu.item_type})"
-            - unless menu.children.empty?
-              submenu:
-              = render :partial => 'recursive_submenu', :locals => {:submenu => menu.children, :parent => menu}
-          
-
           
             %ul.button-group.radius
               %li= link_to (menu.children.empty? ? t(:start_a) : t(:add_to)) + 'submenu', new_admin_menu_path(:parent_id => menu.id), :class => [:button, :secondary, :tiny]
               - unless menu.children.empty?
                 %li= link_to t(:reorder_submenu), reorder_admin_menu_path(menu.id), :class => [:button, :secondary, :tiny]
               %li= link_to t(:delete_menu, :name => menu.item_name), [:admin, menu], :method => :delete, :data => {:confirm => (menu.children.empty? ? "Are you sure?????" : "Are you absolutely sure? This will also delete the submenus")}, :class => [:button, :secondary, :alert, :tiny]
+              
+            - unless menu.children.empty?
+              submenu:
+              = render :partial => 'recursive_submenu', :locals => {:submenu => menu.children, :counter => counter, :parent => menu}
+          
 
-    %div= link_to t(:create_new_menu_item), new_admin_menu_path
+
+    %div= link_to t(:create_new_menu_item), new_admin_menu_path, :class => [:button, :radius, :small]
 
 = content_for :jquery do
   :plain

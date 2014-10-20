@@ -1,6 +1,7 @@
-.row.submenu_cms{:id => "submenu_#{parent.id.to_s}"}
+.row.submenu_cms{:id => "submenu_#{parent.id.to_s}", :class => "level_#{counter}"}
+  - counter = counter + 1
   - submenu.sort_by{|x| x.sort_order.to_i}.each_with_index do |sm, i|
-    .submenu_item.column.small-6{:id => "submenu_#{sm.id.to_s}"}
+    .submenu_item.column.small-5.small-offset-1.end{:id => "submenu_#{sm.id.to_s}"}
       .title
         .number= (i+1).to_s + ". "
         = link_to sm.item.name, edit_admin_menu_path(sm)
@@ -9,7 +10,7 @@
         .row
           .small-6.columns
             submenu:
-            = render :partial => 'recursive_submenu', :locals => {:submenu => sm.children, :parent => sm}
+            = render :partial => 'recursive_submenu', :locals => {:submenu => sm.children, :counter => counter, :parent => sm}
       %ul.button-group.radius
         %li= link_to (sm.children.empty? ? t(:start_a)  : t(:add_to)) + 'submenu', new_admin_menu_path(:parent_id => sm.id), :class => [:button, :secondary, :tiny]
         %li= link_to t(:reorder_submenu), reorder_admin_menu_path(sm.id), :class => [:button, :secondary, :tiny]
