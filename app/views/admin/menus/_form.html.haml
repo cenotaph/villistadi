@@ -67,6 +67,7 @@
       }      
       else if ($("#menu_item_type").val() == 'nothing') {
         $('#translation_fields').fadeIn();
+        $("#menu_item_id_input").fadeOut();  
       }
       else if ($("#menu_item_type").val() == 'Internallink') {
         var city = $('#menu_city_id').val();
@@ -83,7 +84,5 @@
           $('select#menu_item_id').append(html);
         });      
       }
-      else {
-        $("#menu_item_id_input").fadeOut();  
-      }
+
     });
