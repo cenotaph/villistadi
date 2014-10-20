@@ -1,0 +1,38 @@
+.row
+  .small-12.columns
+    re-ordering submenu items for
+    %h3= @parent.item_name
+
+    (drag and drop to reorder, left-to-right)
+
+    .cms_grid#reorder
+      - @parent.children.sort_by{|x| x.sort_order.to_i }.each do |menu|
+        .menu_item.column{:id => "menu_#{menu.id.to_s}"}
+          .title= menu.item.name
+          - unless menu.children.empty?
+            (has it's own submenu with
+            = menu.children.published.size
+            item(s) on it!)
+    .clear      
+      %h3= link_to t(:back_to_all_menus), admin_menus_path, :class => [:button, :small, :radius]
+  
+    = content_for :jquery do
+      :plain
+        $('#reorder').sortable({axis: 'x',
+          dropOnEmpty: false,
+          cursor: 'crosshair',
+          items: '.menu_item',
+          opacity: 0.4,
+          scroll: true,
+          update: function(){
+            $.ajax({
+              url: '/admin/menus/sort',
+              type: 'post',
+              data: $('#reorder').sortable('serialize'),
+              dataType: 'script',
+              complete: function(request){
+                $('#reorder').append('<div class="highlight">sorted!</div>');
+                $(".highlight").fadeOut();
+              }
+            });
+          }});

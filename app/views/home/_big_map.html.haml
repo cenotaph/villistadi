@@ -1,3 +1,5 @@
+
+    
 %script{:type => "text/javascript"}
   function set_places() {
   var bounds = new google.maps.LatLngBounds();
@@ -36,8 +38,19 @@
        /** @type {HTMLInputElement} */(input));
     google.maps.event.addListener(searchBox, 'places_changed', function() {
       var places = searchBox.getPlaces();
-
+      if (places.length == 1) {
+        scrollTo('#map_section');
+        map.setCenter(places[0].geometry.location);
+        $('#map_sidebar .title').html("#{t(:places_nearby)} " +  places[0].name + ":" );
+        $('#map_sidebar').fadeIn();
+      }
     });
+    
+    google.maps.event.addListener(map, 'bounds_changed', function() {
+      var bounds = map.getBounds();
+      searchBox.setBounds(bounds);
+    });
+    
   }
 
   function initialize() {

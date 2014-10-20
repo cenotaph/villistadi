@@ -53,7 +53,12 @@
     .small-12.columns.text-center
       %h2= t :oasis_in_map
   .row
-    .small-12.columns#front_map= render :partial => 'big_map'
+    .small-12.columns
+      #front_map= render :partial => 'big_map'
+      #map_sidebar
+        .title
+        %ol.hits-list
+          %li This is a hit
       
 = content_for :jquery do
   :plain
