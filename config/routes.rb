@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   root 'home#index'
   get '/admin' => 'admin/pages#index'
-  
+  post '/home/map_search' => 'home#map_search'
   get '/auth/failure' => 'sessions#failure'
   match 'auth/:provider/callback' => 'authentications#create', :via => :get
   match '/oauth/authenticate' => 'authentications#create', :via => :get

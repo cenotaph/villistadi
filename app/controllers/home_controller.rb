@@ -5,4 +5,8 @@ class HomeController < ApplicationController
     @posts = Post.no_project.published.order('published_at DESC').limit(4)
   end
   
+  def map_search
+    logger.warn('params are '  + params.inspect)
+  end
+  
 end

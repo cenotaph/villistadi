@@ -1,7 +1,7 @@
 class Menu < ActiveRecord::Base
   acts_as_tree
   belongs_to :city
-  validates_presence_of :city_id
+  validates_presence_of :city_id, :item
   belongs_to :item, polymorphic: true
   before_save :check_sort_order
   translates :display_name, :fallbacks_for_empty_translations => true

@@ -8,7 +8,7 @@
           %p.text-center= t :tagline
     .row
       .small-3.small-centered.columns.search_box.text-center
-        = form_tag '/home/map_search', :remote => true do
+        = form_tag nil, :id => :place_search, :remote => true do
           = text_field_tag :location, t(:where_are_you_now)
           = submit_tag ''
 
@@ -58,3 +58,11 @@
 = content_for :jquery do
   :plain
     $('.search_box #location').clearField();
+    $('form#place_search').submit(function() {
+      var input = document.getElementById('location');
+      var searchBox = new google.maps.places.SearchBox(    /** @type {HTMLInputElement} */(input));
+      var places = searchBox.getPlaces();
+      if (places.length == 1) {
+        alert(places[0].geometry.location);
+      }
+    });

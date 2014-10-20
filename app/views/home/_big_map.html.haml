@@ -29,10 +29,21 @@
     }
     return new google.maps.Map(document.getElementById("front_map"), myOptions);
   }
+  
+  function getPlace() {
+    var input =  /** @type {HTMLInputElement} */( document.getElementById('location'));
+    var searchBox = new google.maps.places.SearchBox(
+       /** @type {HTMLInputElement} */(input));
+    google.maps.event.addListener(searchBox, 'places_changed', function() {
+      var places = searchBox.getPlaces();
+
+    });
+  }
 
   function initialize() {
 
     map = buildmap();
     set_places();
+    getPlace();       
     return map;
   }

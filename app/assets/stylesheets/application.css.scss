@@ -126,23 +126,23 @@ body.places {
      }
     margin: 20px 0px 0px 0px;
   }
-  form {
 
-    input[type=text] {
-      float: left;
-      width: 80%;
-      height: 40px;
-    }
-    input[type=submit] {
-      background-color: $secondary-color;
-      background: url(/assets/spyglass.png) no-repeat center center;
-      border: none;
-      outline: none;
-      float: left;
-      height: 40px;
-      width: 40px;
-    }
+
+  input[type=text] {
+    float: left;
+    width: 80%;
+    height: 40px;
   }
+  input[type=submit] {
+    background-color: $secondary-color;
+    background: url(/assets/spyglass.png) no-repeat center center;
+    border: none;
+    outline: none;
+    float: left;
+    height: 40px;
+    width: 40px;
+  }
+
 }
 
 #latest_posts {
