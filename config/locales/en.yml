@@ -103,6 +103,8 @@ en:
   save: 'Save'
   start_a: ' Start a '
   sign_in: 'Sign in '
+  menu_for_which_site?: 'Menu for which site?'
+  type_of_menu_link: 'Type of menu link?'
   sw_lat: 'Latitude of southwest map boundary'
   sw_lng: 'Longitude of southwest map boundary'
   tagline: "Helsinki's untamed heart"

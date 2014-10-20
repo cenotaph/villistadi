@@ -1,7 +1,7 @@
 class Menu < ActiveRecord::Base
   acts_as_tree
   belongs_to :city
-  validates_presence_of :city_id, :item
+  validates_presence_of :city_id, :item_type
   belongs_to :item, polymorphic: true
   before_save :check_sort_order
   translates :display_name, :fallbacks_for_empty_translations => true
@@ -23,6 +23,7 @@ class Menu < ActiveRecord::Base
       display_name
     end
   end
+  
   def link
     if item_type == 'Page'
       "/pages/" + item.slug
