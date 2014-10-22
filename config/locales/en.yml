@@ -23,7 +23,7 @@ en:
   date_range:
     long:
       same_day: "%{from_day} %{from_month} %{year} %{start_time} %{sep} %{end_time}"
-      different_months_same_year: "%{from_day} %{from_month} %{sep} %{until_day} %{until_month} %{year}"
+      different_months_same_year: "%{from_day} %{from_month} %{start_time} %{sep} %{until_day} %{until_month}  %{end_time} %{year}"
       different_years: "%{from_month} %{from_day}, %{from_year} %{sep} %{until_month} %{until_day}, %{until_year}"
       same_month: "%{from_day} %{month} %{start_time} %{sep} %{until_day} %{month} %{end_time} %{year}"
     short:
@@ -162,6 +162,8 @@ en:
   events: 'Events'
   approved: 'Approved'
   not_approved: 'Not approved'
+  contact: 'Contact'
+  return_to_calendar: 'Return to calendar'
   
   flash:
     actions:

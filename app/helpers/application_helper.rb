@@ -34,7 +34,7 @@ module ApplicationHelper
       else
         until_month = month_names[until_date.month]
         if from_date.year == until_date.year
-          I18n.t("date_range.#{format}.different_months_same_year", from_day: from_date.day, from_month: from_month, until_day: until_date.day, until_month: until_month, year: from_year, sep: separator)
+          I18n.t("date_range.#{format}.different_months_same_year", from_day: from_date.day, from_month: from_month, until_day: until_date.day, until_month: until_month, start_time: from_date.range_time, year: from_year, sep: separator, end_time: until_date.range_time)
         else
           until_year = until_date.year
           I18n.t("date_range.#{format}.different_years", from_day: from_date.day, from_month: from_month, from_year: from_year, until_day: until_date.day, until_month: until_month, until_year: until_year, sep: separator)

@@ -7,7 +7,7 @@
     %link{:href => "http://fonts.googleapis.com/css?family=Open+Sans:400,300,800", :rel => "stylesheet", :type => "text/css"}/
     %link{:href => "http://fonts.googleapis.com/css?family=Raleway:300,400,700", :rel => "stylesheet", :type => "text/css"}/
     -# only load Google Maps js if necessary
-    - if controller.controller_name == 'places' || controller.controller_name == 'home' 
+    - if ['places', 'home', 'events'].include?(controller.controller_name) 
       %script{:src => "https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places", :type => "text/javascript"}
 
 
@@ -15,7 +15,7 @@
     = javascript_include_tag "vendor/modernizr"
     = csrf_meta_tag
 
-  %body{:class => controller.controller_name, :onload => (controller.controller_name == 'places' || controller.controller_name == 'home' ?  'initialize()' : false), :style => @background_css.nil? ? false : @background_css}
+  %body{:class => controller.controller_name, :onload => (['places', 'home', 'events'].include?(controller.controller_name) ?  'initialize()' : false), :style => @background_css.nil? ? false : @background_css}
     .sticky
       %nav.top-bar{:"data-topbar" => '', :role => :navigation}= render :partial => 'layouts/top_bar'  
     %header{:class => controller.controller_name}
