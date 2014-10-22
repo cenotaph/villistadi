@@ -1,6 +1,7 @@
-.row
-  .small-7.columns.small-offset-2
-    %h2= @page.title
+.page_container
+  .row
+    .small-10.columns
+      %h2= @page.title
     
-.row
-  .small-7.columns.small-offset-2= raw @page.body
+  .row
+    .small-10.columns= raw @page.body

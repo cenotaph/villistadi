@@ -1,6 +1,6 @@
 = semantic_form_for([:admin, @randombackground], :html => {:"data-abide" => "", :multipart => true}) do |f|
   .row
-    .small-12.columns= f.input :background, :input_html => {:required => ''}, :hint => '1920px wide, at least'
+    .small-12.columns= f.input :background, :input_html => { :required => @randombackground.background? ? false : ''}, :hint => '1920px wide, at least'
   .row
     .small-12.columns= f.input :active, :hint => t(:untick_to_hide)
   .row

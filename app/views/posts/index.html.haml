@@ -1,17 +1,17 @@
-.posts_container
+.page_container
   .row
-    .small-7.columns.small-offset-2
+    .small-12.columns
       %h2= t :posts
 
   - @posts.each do |post|
     .post
       .row
-        .small-7.columns.small-offset-2
-          %h3= post.title
+        .small-7.columns
+          %h3= link_to  post.title, post
   
       .row
-        .small-7.columns.small-offset-2
+        .small-9.columns
           = t(:posted_by, :poster => post.creator.name, :when =>  l(post.published_at, :format => :long))
       .row.body
-        .small-7.columns.small-offset-2
+        .small-9.columns
           = raw post.body

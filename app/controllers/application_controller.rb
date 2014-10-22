@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   before_filter :get_background
   
   def get_background
-    @background_image = Randombackground.random
+    @background_image = Randombackground.active.random
     if @background_image.nil?
       @background_image = 'assets/cropped-panorama-okko.jpg'
     else

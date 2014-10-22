@@ -70,15 +70,14 @@ header {
 
 }
 
-body.places {
+body {
   background-size: cover;
   margin: 0;
   padding: 0;
   height: 100%;
   width: 100%;
-  
-
 }
+
 .language {
   padding-left: 3em;
   font-size: 0.75rem;
@@ -98,6 +97,11 @@ body.places {
   div {
     text-align: center !important;
   }
+}
+
+#yield {
+  background-color: white;
+  margin-bottom: 35px;
 }
 
 .title-card {
@@ -314,10 +318,13 @@ form {
 }
 
 
-.project_container, .posts_container, .page_container, .place_container, .event_container {
+.project_container, .posts_container,  .place_container, .event_container {
   padding: 35px 0px;
   
   .description, .contact {
     margin: 15px 0px;
   }
+}
+.page_container {
+  padding: 25px;
 }
