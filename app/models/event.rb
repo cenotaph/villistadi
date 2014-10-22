@@ -1,7 +1,7 @@
 class Event < ActiveRecord::Base
   belongs_to :project
   belongs_to :user
-  validates_presence_of :start_at, :venue, :contact_name, :contact_contact, :title
+  validates_presence_of :start_at, :venue, :contact_name, :contact_contact, :title, :user_id, :address1
   has_event_calendar
   
   scope :approved, -> () { where(approved: true)}

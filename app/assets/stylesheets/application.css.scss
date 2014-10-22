@@ -13,6 +13,7 @@
  *= require_self
  *= require places
  *= require projects
+ *= require foundation-datepicker
  *= require foundation_and_overrides
  *= require punymce/editor
  *= require event_calendar
@@ -291,6 +292,11 @@ form {
     margin-top: -15px;
     font-size: 0.8rem;
   }
+  p.inline-errors {
+    color: red;
+    font-weight: 800;
+    font-size: 1.2rem;
+  }
 }
 
 .post {
@@ -301,6 +307,6 @@ form {
 }
 
 
-.project_container, .posts_container, .page_container, .place_container {
+.project_container, .posts_container, .page_container, .place_container, .event_container {
   padding: 35px 0px;
 }

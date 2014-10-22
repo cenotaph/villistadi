@@ -138,7 +138,15 @@ en:
   you_cannot_edit_another_project: "You cannot edit someone else's project!"
 
   calendar: 'Calendar'
-
+  where_what_venue: "Where? (What venue?)"
+  where_address: "Address of venue"
+  submit_new_event: 'Submit new event'
+  submit: 'Submit'
+  event_will_be_reviewed: 'Thank you for submitting your event. It will be reviewed by one of our moderators and will appear on the calendar if approved.'
+  contact_name: 'Name of contact person'
+  contact_contact: 'Contact person email or phone number'
+  error_creating_event: 'There were one or more errors creating your event: %{errors}'
+    
   flash:
     actions:
       create:

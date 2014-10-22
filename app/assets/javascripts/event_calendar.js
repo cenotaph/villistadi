@@ -2,11 +2,11 @@
  * Smart event highlighting
  * Handles for when events span rows, or don't have a background color
  */
-Event.observe(window, "load", function() {
+$(window).load(function() {
   var highlight_color = "#2EAC6A";
   
   // highlight events that have a background color
-  $$(".ec-event-bg").each(function(ele) {
+  $(".ec-event-bg").each(function(ele) {
     ele.observe("mouseover", function(evt) {
       event_id = ele.readAttribute("data-event-id");
       event_class_name = ele.readAttribute("data-event-class");
@@ -25,7 +25,7 @@ Event.observe(window, "load", function() {
   });
   
   // highlight events that don't have a background color
-  $$(".ec-event-no-bg").each(function(ele) {
+  $(".ec-event-no-bg").each(function(ele) {
     ele.observe("mouseover", function(evt) {
       ele.setStyle({ color: "white" });
       ele.select("a").each(function(link) {

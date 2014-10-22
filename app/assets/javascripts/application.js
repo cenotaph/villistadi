@@ -20,8 +20,15 @@
 //= require jquery.slick
 //= require jquery.clearfield
 //= require event_calendar
+//= require foundation-datetimepicker
 
 $(function(){ $(document).foundation(); });
+
+$('.datetime_picker').fdatetimepicker({
+    format: 'yyyy-mm-dd hh:ii'
+});
+
+
 
 function resizeDiv() {
   vpw = $(window).width();

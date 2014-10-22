@@ -27,7 +27,7 @@ Rails.application.routes.draw do
     resources :posts
     resources :spots
   end
-  
+  resources :events
   resources :pages
   resources :places
   resources :posts
