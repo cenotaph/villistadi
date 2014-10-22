@@ -8,6 +8,7 @@ module CalendarHelper
     { 
       :year => @year,
       :month => @month,
+      :height => 800, 
       :event_strips => @event_strips,
       :first_day_of_week => @first_day_of_week,
       :month_name_text => I18n.localize(@shown_month, :format => "%B %Y"),

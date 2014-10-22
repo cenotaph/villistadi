@@ -20,6 +20,17 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  date_range:
+    long:
+      same_day: "%{from_day} %{from_month} %{year} %{start_time} %{sep} %{end_time}"
+      different_months_same_year: "%{from_day} %{from_month} %{sep} %{until_day} %{until_month} %{year}"
+      different_years: "%{from_month} %{from_day}, %{from_year} %{sep} %{until_month} %{until_day}, %{until_year}"
+      same_month: "%{from_day} %{month} %{start_time} %{sep} %{until_day} %{month} %{end_time} %{year}"
+    short:
+      same_day: "%{from_day} %{from_month} %{year} %{start_time} %{sep} %{end_time}"
+      different_months_same_year: "%{from_day} %{from_month} %{sep} %{until_day} %{until_month} %{year}"
+      different_years: "%{from_day} %{from_month} %{from_year} %{sep} %{until_day} %{until_month} %{until_year}"
+      same_month: "%{from_day} %{sep} %{until_day} %{month} %{year}"  
   add_a_comment_to_this_post: 'Add a comment to this discussion:'
   add_a_photo: 'Add a photo'
   add_new_spot: 'Add new spot'
@@ -138,15 +149,20 @@ en:
   you_cannot_edit_another_project: "You cannot edit someone else's project!"
 
   calendar: 'Calendar'
+  edit_event: 'Edit event'
   where_what_venue: "Where? (What venue?)"
   where_address: "Address of venue"
+  address2: 'Address line 2'
   submit_new_event: 'Submit new event'
   submit: 'Submit'
   event_will_be_reviewed: 'Thank you for submitting your event. It will be reviewed by one of our moderators and will appear on the calendar if approved.'
   contact_name: 'Name of contact person'
   contact_contact: 'Contact person email or phone number'
   error_creating_event: 'There were one or more errors creating your event: %{errors}'
-    
+  events: 'Events'
+  approved: 'Approved'
+  not_approved: 'Not approved'
+  
   flash:
     actions:
       create:

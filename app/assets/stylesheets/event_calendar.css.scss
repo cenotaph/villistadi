@@ -27,22 +27,26 @@
 .ec-calendar-header {
   padding: 5px 0;
   width: 100%;
+  margin-bottom: 0px;
   table-layout: fixed;
 }
 
 .ec-month-name {
   font-size: 16px;
   font-weight: bold;
+  text-align: center;
 }
 
-.ec-month-nav {
-
+.ec-next-month {
+  text-align: right;
 }
+
+
 
 /* Containers */
 .ec-body {
   position: relative;
-  border-right: 1px solid #303030;
+
   white-space: nowrap;
 }
 
@@ -88,6 +92,9 @@
   height: 100%;
   width: 100%;
   table-layout: fixed;
+  td {
+    padding: 0px;
+  }
 }
 
 .ec-day-bg {
@@ -166,6 +173,7 @@ a.ec-day-link {
   -khtml-border-radius: 3px;
   -moz-border-radius: 3px;
   overflow: hidden;
+  height: 24px !important;
   white-space: nowrap;
 }
 
@@ -221,7 +229,27 @@ a.ec-day-link {
   margin-right: 3px;
   border-left: 4px solid white;
 }
-
+.event_info {
+ position: absolute;
+ font: 13px/15px Lucida Granda, Arial, sans-serif;
+ color: #FFF;
+ top: 15px;
+ .event_title {
+   margin-top: 2px;
+   color: #333;
+ }
+ a {
+   color: #333;
+ }
+/* left: 0;*/
+ margin: 5px;
+ z-index: 4;
+ color: black;
+ letter-spacing: -1px;
+ background: rgb(185, 189, 160);
+ background: rgba(189, 185, 160, 0.85);
+ padding: 3px 2px;
+}
 /* remove this to not have a bullet */
 /* don't look as good in ie */
 .ec-bullet {

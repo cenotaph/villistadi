@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :authentications
   
   namespace :admin do
+    resources :events
     resources :internallinks
     resources :menus do
       collection do 

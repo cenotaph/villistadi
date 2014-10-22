@@ -6,8 +6,9 @@ class CalendarController < ApplicationController
 
     @shown_month = Date.civil(@year, @month)
     @first_day_of_week = 1
-    @event_strips = Event.event_strips_for_month(@shown_month, @first_day_of_week)
+    @event_strips = Event.approved.event_strips_for_month(@shown_month, @first_day_of_week)
     set_meta_tags :title => t(:calendar)
+
   end
   
 end

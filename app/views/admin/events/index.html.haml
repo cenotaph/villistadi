@@ -1,0 +1,30 @@
+.row
+  .small-12.columns
+    %h2= t :events
+
+.row
+  .small-12.columns.cms_grid
+    %table
+      %thead
+        %th ID
+        %th When
+        %th Info
+        %th Actions
+      %tbody
+        - @events.each do |il|
+          %tr
+            %td= il.id
+            %td= date_range(il.start_at, il.end_at)
+            %td
+              = il.name
+              %br/
+              %em= il.approved == true ? t(:approved) : t(:not_approved)
+              %br/
+              %small= il.user.name
+            %td
+              - if can? :edit, il
+                = link_to t(:edit), edit_admin_event_path(il), :class => [:button, :tiny, :radius]
+              - if can? :destroy, il
+                = link_to t(:delete), [:admin, il], :method => :delete, :class => [:button, :tiny, :alert, :radius]
+.ten.columns
+  %p= link_to 'Create new event', new_event_path, :target => :_blank, :class => [:button, :radius, :small]
