@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  active: false
+  background: MyString
+  background_size: 1
+  background_width: 1
+  background_height: 1
+  background_content_type: MyString
+
+two:
+  active: false
+  background: MyString
+  background_size: 1
+  background_width: 1
+  background_height: 1
+  background_content_type: MyString

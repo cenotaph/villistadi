@@ -4,6 +4,16 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_filter :configure_permitted_parameters, if: :devise_controller?
   before_filter :get_locale
+  before_filter :get_background
+  
+  def get_background
+    @background_image = Randombackground.random
+    if @background_image.nil?
+      @background_image = 'assets/cropped-panorama-okko.jpg'
+    else
+      @background_image = @background_image.background.url(:full)
+    end
+  end
   
   def get_locale 
     if params[:locale]

@@ -164,6 +164,12 @@ en:
   not_approved: 'Not approved'
   contact: 'Contact'
   return_to_calendar: 'Return to calendar'
+  backgrounds: 'Backgrounds'
+  backgrounds_blurb: 'Here you can upload images which will be chosen randomly for the backgrounds on the site and front page. They should be 1920pixels wide by whatever high.'
+  add_new_background: 'Add new background'
+  new_background: 'New background'
+  edit_background: 'Edit/replace background'
+  untick_to_hide: 'If unticked, this will never chosen randomly'
   
   flash:
     actions:

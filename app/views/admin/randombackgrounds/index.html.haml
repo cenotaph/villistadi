@@ -1,0 +1,29 @@
+.row
+  .small-12.columns
+    %h2= t :backgrounds
+  .small-12.columns
+    %p= t :backgrounds_blurb
+    
+.row
+  .small-12.columns= link_to t(:add_new_background), new_admin_randombackground_path, :class => [:button, :small, :radius]
+  
+.row
+  .small-12.columns
+    %table
+      %thead
+        %th ID
+        %th Background
+        %th Active?
+        %th.actions
+      %tbody
+        - @randombackgrounds.each do |rb|
+          %tr
+            %td= rb.id
+            %td= image_tag rb.background.url(:box)
+            %td= rb.active.to_s
+            %td
+              - if can? :edit, rb
+                = link_to t(:edit), edit_admin_randombackground_path(rb), class: [:button, :radius, :tiny]
+              - if can? :destroy, rb
+                = link_to t(:delete), [:admin, rb], :method => :delete, class: [:button, :alert, :radius, :tiny], :data => {:confirm => t(:are_you_sure)}
+        

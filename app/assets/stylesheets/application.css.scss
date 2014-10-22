@@ -38,10 +38,28 @@ span.translation_missing {
 
 
 header {
-  background: url(/assets/cropped-panorama-okko.jpg)  no-repeat center center;
-  background-size: cover;
-  min-height: 360px;
+
+  padding: 20px 0px;
+  min-height: 230px;
+  #logo {
+
+    margin-left: auto;
+    margin-right: auto;
+    vertical-align: middle;
+    img {
+      max-height: 150px;
+    }
+  }
+  .tagline {
+    color: #FFF;
+    font-weight: bold;
+    font-size: 1.3rem;
+    margin:15px 0px;
+  }
+
+
   &.home {
+    
     background: none;
     min-height: 0px;
     #logo, .tagline { 
@@ -49,22 +67,7 @@ header {
     }
   }
   
-  #logo {
-    padding-top: 30px;
-    margin-left: auto;
-    margin-right: auto;
-    vertical-align: middle;
-  }
-  
-  .tagline {
-    text-transform: uppercase;
-    color: white;
-    p { font-size: 1.3rem;
-       font-weight: 400;
-       font-family: $raleway;
-     }
-    margin: 20px 0px 0px 0px;
-  }
+
 }
 
 body.places {
@@ -74,9 +77,7 @@ body.places {
   height: 100%;
   width: 100%;
   
-  header {
-    display: none;
-  }
+
 }
 .language {
   padding-left: 3em;
@@ -105,7 +106,7 @@ body.places {
   height: 100%;  
   text-align: center;
   z-index: 1;
-  background: url(/assets/cropped-panorama-okko.jpg)  no-repeat center 0px;
+  
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -147,8 +148,9 @@ body.places {
 }
 
 #latest_posts {
-    padding: 35px 0px;
-    border-bottom: 3px solid #eee;
+  display: none;
+  padding: 35px 0px;
+  border-bottom: 3px solid #eee;
 
   h4 {
     font-size: 1.2rem;

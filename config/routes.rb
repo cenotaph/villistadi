@@ -26,6 +26,7 @@ Rails.application.routes.draw do
     resources :pages
     resources :places
     resources :posts
+    resources :randombackgrounds
     resources :spots
   end
   resources :events

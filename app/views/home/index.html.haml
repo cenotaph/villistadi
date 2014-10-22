@@ -1,9 +1,9 @@
 %section
-  .title-card
+  .title-card(style="background: url(#{@background_image}) no-repeat center 0px; background-size: cover")
     .row
       .small-12.columns.small-centered.text-center
         #logo
-          %center= image_tag "logo_fi.png"
+          %centerr= link_to image_tag("logo_fi.png"), '/'
         .columns.tagline
           %p.text-center= t :tagline
     .row

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141022124151) do
+ActiveRecord::Schema.define(version: 20141022160519) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -337,6 +337,17 @@ ActiveRecord::Schema.define(version: 20141022124151) do
   add_index "projects_users", ["project_id", "user_id"], name: "by_project_and_user", unique: true, using: :btree
   add_index "projects_users", ["project_id"], name: "index_projects_users_on_project_id", using: :btree
   add_index "projects_users", ["user_id"], name: "index_projects_users_on_user_id", using: :btree
+
+  create_table "randombackgrounds", force: true do |t|
+    t.boolean  "active"
+    t.string   "background"
+    t.integer  "background_size"
+    t.integer  "background_width"
+    t.integer  "background_height"
+    t.string   "background_content_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "roles", force: true do |t|
     t.string   "name"

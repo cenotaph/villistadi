@@ -11,6 +11,7 @@ class PlacesController < ApplicationController
     else
       @background_css = 'background-color: pink;'
     end
+    set_meta_tags :title => @place.name
   end
   
   
