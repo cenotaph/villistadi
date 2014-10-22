@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
   devise_for :users , :controllers => {:registrations => "registrations"}
-
+  match '/calendar(/:year(/:month))' => 'calendar#index', :as => :calendar, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}, via: :get
+  
   root 'home#index'
   get '/admin' => 'admin/pages#index'
   post '/home/map_search' => 'home#map_search'

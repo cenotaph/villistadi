@@ -19,6 +19,7 @@
 //= require punymce/puny_mce
 //= require jquery.slick
 //= require jquery.clearfield
+//= require event_calendar
 
 $(function(){ $(document).foundation(); });
 
