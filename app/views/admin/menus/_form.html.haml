@@ -4,7 +4,7 @@
       = f.input :city, :label => t(:menu_for_which_site?), :include_blank => false
     .small-6.columns
       = f.input :item_type, :as => :select, :label => t(:type_of_menu_link), :collection => [["Page", "Page"], ["Internal Link", "Internallink"], ["Place", "Place"], ["External URL", "external_link"], ["nothing, just a dropdown", 'nothing']]
-  .row#translation_fields{:style => "display: none"}
+  .row#translation_fields{:style => (@menu.item_type == 'nothing' ? false : "display: none")}
     .columns.small-12
       %dl.tabs{"data-tab" => ""}
         - I18n.available_locales.each_with_index do |locale, i|
@@ -30,6 +30,7 @@
   :plain
     $("#menu_item_type").change(function(e) {
       if ($("#menu_item_type").val() == 'Page') {
+        $('#translation_fields').fadeOut();
         var city = $('#menu_city_id').val();
         $("#menu_item_id_input").fadeIn();
         $("#menu_item_id").find("option:gt(0)").remove();
@@ -48,6 +49,7 @@
         });
       }
       if ($("#menu_item_type").val() == 'Place') {
+        $('#translation_fields').fadeOut();
         var city = $('#menu_city_id').val();
         $("#menu_item_id_input").fadeIn();
         $("#menu_item_id").find("option:gt(0)").remove();
@@ -70,6 +72,7 @@
         $("#menu_item_id_input").fadeOut();  
       }
       else if ($("#menu_item_type").val() == 'Internallink') {
+        $('#translation_fields').fadeOut();
         var city = $('#menu_city_id').val();
         $("#menu_item_id_input").fadeIn();
         $("#menu_item_id").find("option:gt(0)").remove();

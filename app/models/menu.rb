@@ -8,6 +8,8 @@ class Menu < ActiveRecord::Base
   scope :published, -> { where(published: true)}
   scope :by_city, ->(x) { where(city_id: x)}
   accepts_nested_attributes_for :translations, :reject_if => proc {|x| x['display_name'].blank? }
+  before_save :no_id_if_nothing
+  
   def check_sort_order
     self.sort_order = (sort_order.nil? ? 1 : sort_order)
   end
@@ -21,6 +23,12 @@ class Menu < ActiveRecord::Base
       end
     else
       display_name
+    end
+  end
+  
+  def no_id_if_nothing
+    if item_type == 'nothing'
+      self.item_id = nil
     end
   end
   

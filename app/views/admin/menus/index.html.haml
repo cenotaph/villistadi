@@ -13,6 +13,7 @@
     .cms_grid#top_menu
       - counter = 1
       - Menu.roots.sort_by(&:sort_order).each_with_index do |menu, index|
+
         .row
           .menu_item.small-12.columns{:id => "menu_#{menu.id.to_s}"}
             .title

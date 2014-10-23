@@ -4,7 +4,7 @@
     .submenu_item.column.small-5.small-offset-1.end{:id => "submenu_#{sm.id.to_s}"}
       .title
         .number= (i+1).to_s + ". "
-        = link_to sm.item.name, edit_admin_menu_path(sm)
+        = link_to sm.item_name, edit_admin_menu_path(sm)
         = "(#{sm.item_type})"
       - unless sm.children.empty?
         .row
@@ -14,4 +14,4 @@
       %ul.button-group.radius
         %li= link_to (sm.children.empty? ? t(:start_a)  : t(:add_to)) + 'submenu', new_admin_menu_path(:parent_id => sm.id), :class => [:button, :secondary, :tiny]
         %li= link_to t(:reorder_submenu), reorder_admin_menu_path(sm.id), :class => [:button, :secondary, :tiny]
-        %li= link_to t(:delete_menu, :name => sm.item.name), [:admin, sm], :method => :delete, :data => {:confirm => "Are you sure?????"} , :class => [:button, :secondary, :alert, :tiny]
+        %li= link_to t(:delete_menu, :name => sm.item_name), [:admin, sm], :method => :delete, :data => {:confirm => "Are you sure?????"} , :class => [:button, :secondary, :alert, :tiny]
