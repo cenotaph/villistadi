@@ -116,6 +116,29 @@ fi:
   you_can_other_auth: 'You can add other accounts (Google, Facebook and Twitter are supported) to allow sign-in with those services too.'
   you_cannot_edit_another_project: "You cannot edit someone else's project!"
 
+  calendar: 'Calendar'
+  edit_event: 'Edit event'
+  where_what_venue: "Where? (What venue?)"
+  where_address: "Address of venue"
+  address2: 'Address line 2'
+  submit_new_event: 'Submit new event'
+  submit: 'Submit'
+  event_will_be_reviewed: 'Thank you for submitting your event. It will be reviewed by one of our moderators and will appear on the calendar if approved.'
+  contact_name: 'Name of contact person'
+  contact_contact: 'Contact person email or phone number'
+  error_creating_event: 'There were one or more errors creating your event: %{errors}'
+  events: 'Events'
+  approved: 'Approved'
+  not_approved: 'Not approved'
+  contact: 'Contact'
+  return_to_calendar: 'Return to calendar'
+  backgrounds: 'Backgrounds'
+  backgrounds_blurb: 'Here you can upload images which will be chosen randomly for the backgrounds on the site and front page. They should be 1920pixels wide by whatever high.'
+  add_new_background: 'Add new background'
+  new_background: 'New background'
+  edit_background: 'Edit/replace background'
+  untick_to_hide: 'If unticked, this will never chosen randomly'
+  
   flash:
     actions:
       create:
