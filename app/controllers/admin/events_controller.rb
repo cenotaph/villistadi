@@ -12,6 +12,12 @@ class Admin::EventsController < ApplicationController
   has_scope :approved, type: :boolean
   has_scope :unapproved, type: :boolean
   
+  def destroy
+    @event = Event.find(params[:id])
+    @event.destroy!
+    redirect_to admin_events_path
+  end
+  
   def index
     @events = apply_scopes(Event).page(params[:page]).per(50)
   end
@@ -26,7 +32,7 @@ class Admin::EventsController < ApplicationController
   protected
   
   def event_params
-    params.require(:event).permit([:user_id, :project_id, :title,  :contact_name, :contact_contact, :description, :start_at, :end_at, :address1, :address2, :city, :approved, :postcode, :venue])
+    params.require(:event).permit([:user_id, :project_id, :title,  :weblink, :contact_name, :contact_contact, :description, :start_at, :end_at, :address1, :address2, :city, :approved, :postcode, :venue])
   end
   
   

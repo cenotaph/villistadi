@@ -26,6 +26,8 @@
       .small-8.columns= f.input :description
   
     .row
+      .small-.8.columns= f.input :weblink
+    .row
       .small-5.columns= f.input :contact_name, :label => t(:contact_name), :input_html => { :required => ''}
       .small-5.columns.end= f.input :contact_contact, :label => t(:contact_contact), :input_html => { :required => ''}
     - if current_user.has_role? :goddess

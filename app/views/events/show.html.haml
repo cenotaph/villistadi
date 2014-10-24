@@ -12,7 +12,8 @@
       %p= @event.full_address
       .description
         = raw @event.description
-      
+      - unless @event.weblink.blank?
+        = link_to @event.weblink, @event.weblink, :target => :_blank
       .contact
         %strong= t :contact
         = [@event.contact_name, @event.contact_contact].join(' / ')

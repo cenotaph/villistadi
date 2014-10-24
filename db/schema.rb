@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141022160519) do
+ActiveRecord::Schema.define(version: 20141024080421) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -83,6 +83,7 @@ ActiveRecord::Schema.define(version: 20141022160519) do
     t.decimal  "latitude",        precision: 10, scale: 6
     t.decimal  "longitude",       precision: 10, scale: 6
     t.string   "address2"
+    t.string   "weblink"
   end
 
   add_index "events", ["project_id"], name: "index_events_on_project_id", using: :btree
