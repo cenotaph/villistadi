@@ -11,6 +11,10 @@ class Event < ActiveRecord::Base
   
   scope :in_future, where(["start_at >= ?", Time.zone.now])
   
+  def color 
+    eventtype.nil? ?  "#82879B" : "#" + eventtype.try(:colour_code)
+  end
+  
   def full_address
     [address1 , address2, city, postcode, 'Finland'].delete_if {|x| x.blank? }.compact.join(', ')
   end

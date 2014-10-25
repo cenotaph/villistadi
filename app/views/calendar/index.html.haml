@@ -1,10 +1,15 @@
 .calendar_container
   .row
-    .small-12.columns
+    .small-6.columns
       %h1= t(:calendar)
+      %br/
+      = link_to t(:submit_new_event), new_event_path, :class => [:button, :radius, :small]
+    .small-3.columns
+      %table#calendar_legend
+        - Eventtype.all.each do |et|
+          %tr
+            %td.color{:style => "background-color: ##{et.colour_code}"} &nbsp;
+            %td= et.name
 
   .row
-    .small-12.columns
-      = link_to t(:submit_new_event), new_event_path, :class => [:button, :radius, :small]
-  .row
-    .small-12.columns= raw(event_calendar)
+    .small-12.columns#event_calendar= raw(event_calendar)

@@ -13,6 +13,10 @@
   #2eac6a - hover (green)
 */
 
+#event_calendar tr:nth-of-type(even) {
+  background: #FFF;
+}
+
 /* Outer most container */
 .ec-calendar {
   font-family: verdana, arial, helvetica, sans-serif;
@@ -91,6 +95,7 @@
   left: 0;
   height: 100%;
   width: 100%;
+  border-spacing: 1px;
   table-layout: fixed;
   td {
     padding: 0px;
@@ -109,6 +114,10 @@
   position: relative;
   width: 100%;
   table-layout: fixed;
+  border-left: solid 2px #dddddd;
+  border-right: solid 1px #dddddd;
+  border-top: none;
+  border-bottom: none;
 }
 
 /* Day header */
@@ -152,6 +161,8 @@ a.ec-day-link {
   vertical-align: top;
   padding-right: 1px;
   padding-left: 2px;
+  border-left: solid 1px #dddddd;
+
 }
 
 .ec-event-cell a {
@@ -262,4 +273,21 @@ a.ec-day-link {
   -webkit-border-radius: 2px;
   -khtml-border-radius: 2px;
   -moz-border-radius: 2px;
+}
+
+#calendar_legend {
+  margin-top: 3rem;
+  border: 1px solid #ddd;
+  tr {
+    height: 16px;
+    td {
+      height: 16px;
+      line-height: 16px;
+      font-size: 0.8rem;
+      &.color {
+        width: 16px;
+
+      }
+    }
+  }
 }
