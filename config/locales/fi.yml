@@ -11,7 +11,7 @@ fi:
   back_to_all_menus: 'Back to all menus'
   belongs_to_projects: 'Belongs to projects:'
   call_of_the_wild: 'Call of the wild'
-  call_of_the_wild_blurb: 'Blah I hate nature and I hate the fucking woods and I want to bulldoze them all and build more basketball courts'
+  call_of_the_wild_blurb: 'Lorem ipsum blah blah whatever that latin text is that you put in places like this'
   change_background: 'Change background'
   change_photo: 'Change photo'
   comment_posted_by: 'Comment by %{poster} on %{when}'
