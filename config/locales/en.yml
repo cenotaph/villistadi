@@ -171,6 +171,11 @@ en:
   edit_background: 'Edit/replace background'
   untick_to_hide: 'If unticked, this will never chosen randomly'
   
+  event_type: 'Event type'
+  event_types: 'Event types'
+  new_event_type: 'New event type'
+  edit_event_type: 'Edit event type'
+  
   flash:
     actions:
       create:

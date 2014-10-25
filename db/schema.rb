@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141024080421) do
+ActiveRecord::Schema.define(version: 20141025122059) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -84,10 +84,28 @@ ActiveRecord::Schema.define(version: 20141024080421) do
     t.decimal  "longitude",       precision: 10, scale: 6
     t.string   "address2"
     t.string   "weblink"
+    t.integer  "eventtype_id"
   end
 
   add_index "events", ["project_id"], name: "index_events_on_project_id", using: :btree
   add_index "events", ["user_id"], name: "index_events_on_user_id", using: :btree
+
+  create_table "eventtype_translations", force: true do |t|
+    t.integer  "eventtype_id", null: false
+    t.string   "locale",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
+  end
+
+  add_index "eventtype_translations", ["eventtype_id"], name: "index_eventtype_translations_on_eventtype_id", using: :btree
+  add_index "eventtype_translations", ["locale"], name: "index_eventtype_translations_on_locale", using: :btree
+
+  create_table "eventtypes", force: true do |t|
+    t.string   "colour_code"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "forumposts", force: true do |t|
     t.integer  "project_id"

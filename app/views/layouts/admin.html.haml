@@ -14,23 +14,24 @@
     = javascript_include_tag "vendor/modernizr"
     = csrf_meta_tag
 
-  %body
+  %body.admin
     %header
       %nav.top-bar{:"data-topbar" => '', :role => :navigation}= render :partial => 'layouts/top_bar'
     .row
-      .small-4.columns#logo
+      .small-2.columns#logo
         = link_to image_tag('vs_black_small.png'), '/'
         .tagline
           %p.text-center Admin Side
-      .small-8.columns
+      .small-10.columns
         %ul.button-group.round
-          %li= link_to t(:pages), admin_pages_path, :class => [:button, :radius, :small]
-          %li= link_to t(:posts), admin_posts_path, :class => [:button, :radius, :small]
-          %li= link_to t(:menus), admin_menus_path, :class => [:button, :radius, :small]
-          %li= link_to t(:places), admin_places_path, :class => [:button, :radius, :small]
-          %li= link_to t(:spots), admin_spots_path,  :class => [:button, :radius, :small]
-          %li= link_to t(:events), admin_events_path, :class => [:button, :radius, :small]
-          %li= link_to t(:backgrounds), admin_randombackgrounds_path, :class => [:button, :radius, :small]
+          %li= link_to t(:pages), admin_pages_path, :class => [:button, :radius, :tiny]
+          %li= link_to t(:posts), admin_posts_path, :class => [:button, :radius, :tiny]
+          %li= link_to t(:menus), admin_menus_path, :class => [:button, :radius, :tiny]
+          %li= link_to t(:places), admin_places_path, :class => [:button, :radius, :tiny]
+          %li= link_to t(:spots), admin_spots_path,  :class => [:button, :radius, :tiny]
+          %li= link_to t(:events), admin_events_path, :class => [:button, :radius, :tiny]
+          %li= link_to t(:event_types), admin_eventtypes_path, :class => [:button, :radius, :tiny]
+          %li= link_to t(:backgrounds), admin_randombackgrounds_path, :class => [:button, :radius, :tiny]
     %section
     
     = yield

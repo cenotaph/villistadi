@@ -9,6 +9,7 @@
         %th ID
         %th When
         %th Info
+        %th Type
         %th Actions
       %tbody
         - @events.each do |il|
@@ -21,6 +22,7 @@
               %em= il.approved == true ? t(:approved) : t(:not_approved)
               %br/
               %small= il.user.name
+            %td= il.eventtype.try(:name)
             %td
               - if can? :edit, il
                 = link_to t(:edit), edit_admin_event_path(il), :class => [:button, :tiny, :radius]

@@ -1,0 +1,24 @@
+.row
+  .small-12.columns
+    %h2= t :event_types
+.row
+  .small-6.columns= link_to t(:new_event_type), new_admin_eventtype_path,  :class => [:radius, :tiny, :button]
+.row
+  .small-12.columns
+    %table
+      %thead
+        %th ID
+        %th Name
+        %th Actions
+      %tbody  
+        - @eventtypes.each do |et|
+          %tr{:style => "background-color: ##{et.try(:colour_code)}"}
+            %td= et.id.to_s
+            %td= et.name
+            %td
+              - if can? :edit, et
+                = link_to t(:edit), edit_admin_eventtype_path(et), :class => [:radius, :tiny, :button]
+              - if can? :destroy, et
+                = link_to t(:delete), [:admin, et], :method => :delete, :class => [:radus, :alert, :tiny, :button], :data => {:confirm => t(:are_you_sure) }
+                
+          

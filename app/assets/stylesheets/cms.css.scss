@@ -13,7 +13,7 @@
  *= require_self
  *= require foundation_and_overrides
  *= require jquery-ui/sortable
-
+ *= require jPicker-1.1.6.min
  */
 @import 'foundation_and_overrides';
 @import 'variables';
@@ -85,5 +85,18 @@ header {
       margin: 2px 0px;
     }
   }
-}  
+} 
+
+form {
+  li {
+    &#eventtype_colour_code_input input[type=text]{
+      float: left;
+      margin-right: 10px;
+    }
+    list-style-type: none;
+    input.colourpicker {
+      width: 100px;
+    }
+  }
+}
 

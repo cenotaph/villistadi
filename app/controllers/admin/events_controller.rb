@@ -20,6 +20,7 @@ class Admin::EventsController < ApplicationController
   
   def index
     @events = apply_scopes(Event).page(params[:page]).per(50)
+    set_meta_tags :title => t(:events)
   end
   
   def update
@@ -32,7 +33,7 @@ class Admin::EventsController < ApplicationController
   protected
   
   def event_params
-    params.require(:event).permit([:user_id, :project_id, :title,  :weblink, :contact_name, :contact_contact, :description, :start_at, :end_at, :address1, :address2, :city, :approved, :postcode, :venue])
+    params.require(:event).permit([:user_id, :project_id, :title, :eventtype_id, :weblink, :contact_name, :contact_contact, :description, :start_at, :end_at, :address1, :address2, :city, :approved, :postcode, :venue])
   end
   
   

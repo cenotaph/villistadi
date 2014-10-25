@@ -21,6 +21,7 @@
 //= require jquery.clearfield
 //= require event_calendar
 //= require foundation-datetimepicker
+//= require jpicker-1.1.6.min
 
 $(function(){ $(document).foundation(); });
 

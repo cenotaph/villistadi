@@ -1,6 +1,7 @@
 class Event < ActiveRecord::Base
   belongs_to :project
   belongs_to :user
+  belongs_to :eventtype
   validates_presence_of :start_at, :venue, :contact_name, :contact_contact, :title, :user_id, :address1
   has_event_calendar
   geocoded_by :full_address

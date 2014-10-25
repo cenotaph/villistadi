@@ -30,6 +30,9 @@
     .row
       .small-5.columns= f.input :contact_name, :label => t(:contact_name), :input_html => { :required => ''}
       .small-5.columns.end= f.input :contact_contact, :label => t(:contact_contact), :input_html => { :required => ''}
+      
+    .row
+      .small-6.columns= f.input :eventtype, :label => t(:event_type)
     - if current_user.has_role? :goddess
       .row
         .small-6.columns= f.input :approved, :as => :select
