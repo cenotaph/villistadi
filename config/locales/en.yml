@@ -42,7 +42,7 @@ en:
   back_to_all_menus: 'Back to all menus'
   belongs_to_projects: 'Belongs to projects:'
   call_of_the_wild: 'Call of the wild'
-  call_of_the_wild_blurb: 'Becky should really edit en.yml on GitHub and make this say something better'
+  call_of_the_wild_blurb: 'Lorem ipsum blah blah whatever that latin text is that you put in places like this'
   change_background: 'Change background'
   change_photo: 'Change photo'
   comment_posted_by: 'Comment by %{poster} on %{when}'
@@ -138,12 +138,12 @@ en:
   view_forum: 'View forum'
   what_city: 'Which city?'
   what_is_villi_stadi: 'What is Villi Stadi?'
-  what_is_villi_stadi_blurb: 'Avain kokoaa harrastukset, tilat ja tapahtumat useasta lähteestä samalle kartalle. Käytä mihin haluat.'
+  what_is_villi_stadi_blurb: 'Lorem ipsum blah blah whatever that latin text is that you put in places like this.'
   what_to_do: 'What to do'
   where_are_you_now: 'Where are you now?'
   where_to_go: 'Where to go'
   wild_ideas: 'Wild Ideas'
-  wild_ideas_blurb: 'Kiinnostaako musiikki tai tanssi? blah blah blah blah blah'
+  wild_ideas_blurb: 'Lorem ipsum blah blah whatever that latin text is that you put in places like this'
   wildside_blurb: "Somewhere, a few hundred metres from your doorstep, is a wild place with wild woods where you can retreat, relax and recharge before returning to the buzz of the urban world. And the best thing is that it's completely free."
   you_can_other_auth: 'You can add other accounts (Google, Facebook and Twitter are supported) to allow sign-in with those services too.'
   you_cannot_edit_another_project: "You cannot edit someone else's project!"
