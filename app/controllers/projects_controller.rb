@@ -25,13 +25,39 @@ class ProjectsController < ApplicationController
     @projects = Project.all
   end
   
-  
+  def join
+    @project = Project.find(params[:id])
+    if @project.users.include?(current_user)
+      flash[:notice] = t(:you_are_already_a_member)
+    else
+      @project.users << current_user
+      flash[:notice] = t(:welcome_to_project, :project_name => @project.name)
+      redirect_to @project
+    end
+  end
+
+  def leave
+    @project = Project.find(params[:id])
+    if @project.users.include?(current_user)
+      if current_user.projects_users(:project_id => @project.id).first.is_admin == true
+        flash[:error] = t(:you_cannot_leave_when_admin)
+      else
+        @project.users.delete(current_user)
+      end
+    else
+      flash[:error] = t(:you_are_not_a_member_of_this_project)
+    end
+    redirect_to @project
+  end    
+
+    
   def new
     @project = Project.new
   end
   
   def show
     @project = Project.find(params[:id])
+    set_meta_tags :title => t(:project) + " - " + @project.name
   end
   
   def update

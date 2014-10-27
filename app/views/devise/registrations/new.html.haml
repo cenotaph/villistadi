@@ -1,24 +1,39 @@
-= semantic_nested_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => "custom"} ) do |f|
-  = devise_error_messages!
-  .row
-    .large-6.columns= f.input :email
-  .row
-    .large-6.columns= f.input :name, :label => t(:real_name)
-  .row
-    .large-6.columns= f.input :username, :label => t(:username_nickname)
+.project_container
   .row
     .small-12.columns
-      %p= t(:you_can_other_auth)
-      = f.fields_for :authentications do |ff|
-        .fieldset
+      %h2= t :new_user_account
+
+  = semantic_nested_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => "custom", :"data-abide" => ''} ) do |f|
+    = @user.errors.full_messages.join('; ')
+    .row
+      .large-6.columns= f.input :email, :input_html => {required: ''}
+    .row
+      .large-6.columns= f.input :name, :label => t(:real_name), :input_html => {required: ''}
+    .row
+      .large-6.columns= f.input :username, :label => t(:username_nickname), :input_html => {required: ''}
+    .row
+      .large-6.columns
+        %label.label(for='user_password')= t :password
+        = f.password_field :password, autocomplete: "off", required: ''
+    .row
+      .large-6.columns
+        %label.label(for='user_password_confirmation')= t :password_confirmation
+        = f.password_field :password_confirmation, autocomplete: "off", required: ''
+    .row
+      .small-12.columns
+        %p= t(:you_can_other_auth)
+        = f.fields_for :authentications do |ff|
+          .fieldset
       
-          .row
-            .small-4.columns
-              = ff.input :provider, :as => :select, :collection => [ ['Facebook', 'facebook'], ['Google', 'google_oauth2'], ['Twitter', 'twitter']]
-              = ff.input :username
-        :javascript
-          $(document).foundation();
-  .row
-    .small-6.columns= f.link_to_add t(:add_other_auth), :authentications, :class => [:button, :radius, :secondary, :tiny]
-  .row
-    .small-6.columns= f.submit t(:create_account), :class => [:button, :radius, :small]
+            .row
+              .small-4.columns
+                = ff.input :provider, :as => :select, :collection => [ ['Facebook', 'facebook'], ['Google', 'google_oauth2'], ['Twitter', 'twitter']]
+                = ff.input :username
+          :javascript
+            $(document).foundation();
+    .row
+      .small-6.columns= f.link_to_add t(:add_other_auth), :authentications, :class => [:button, :radius, :secondary, :tiny]
+    .row
+      .small-6.columns= recaptcha_tags 
+    .row
+      .small-6.columns= f.submit t(:create_account), :class => [:button, :radius, :small]

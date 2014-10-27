@@ -1,6 +1,7 @@
 class Project < ActiveRecord::Base
   belongs_to :owner, :class_name => 'User'
   belongs_to :city
+  has_many :forumposts
   validates_presence_of :city_id, :owner_id
   translates :name, :description, :tagline, :fallbacks_for_empty_translations => true
   extend FriendlyId

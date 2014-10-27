@@ -42,6 +42,16 @@ body.admin {
   header { padding: 0px 0px 20px 0px;}
 }
 
+// don't clobber reCAPTCHA
+#recaptcha_area input[type="text"] {
+  display: inline-block;
+  height: auto;
+}
+
+#recaptcha_area { 
+  margin: 20px 0px;
+}
+
 header {
 
   padding: 20px 0px;
@@ -323,13 +333,13 @@ form {
 }
 
 
-.project_container, .posts_container,  .place_container, .event_container {
+.posts_container,  .place_container, .event_container {
   padding: 35px 0px;
   
   .description, .contact {
     margin: 15px 0px;
   }
 }
-.page_container {
+.page_container, .project_container {
   padding: 25px;
 }

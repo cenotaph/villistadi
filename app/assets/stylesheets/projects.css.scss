@@ -89,3 +89,22 @@
     }
   }
 }
+
+#forum {
+  .forum_post {
+    padding: 15px;
+    margin: 0px 10px;
+    &.odd {
+      background-color: #eee;
+    }
+    .metadata {
+      font-size: 0.8rem;
+      font-color: #666;
+    }
+  }
+}
+.project_container {
+  .actions {
+    padding: 20px 0px;
+  }
+}

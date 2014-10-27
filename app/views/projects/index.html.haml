@@ -15,9 +15,10 @@
               .title= link_to project.name, project
               .tagline= project.tagline
               .member_count= t(:members) + ": " + project.users.size.to_s
-              .admin= "Admin: " + project.owner.name
+              .admin= t(:administrator) + project.owner.name
           .row
             .small-12.columns
+              &nbsp;
               - if project.has_forum
                 - unless project.posts.published.empty?
                   .latest_post

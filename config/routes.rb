@@ -30,13 +30,21 @@ Rails.application.routes.draw do
     resources :randombackgrounds
     resources :spots
   end
+  
   resources :events
+  resources :forumposts
   resources :pages
   resources :places
   resources :posts
   resources :projects do
     resources :posts do
       resources :comments
+    end
+    resources :forumposts
+    member do
+      get :join
+      get :leave
+      
     end
   end
   resources :users

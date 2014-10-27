@@ -24,7 +24,7 @@
           %li= link_to t(:connect_with_facebook), '/auth/facebook'
           %li= link_to t(:connect_with_twitter), '/auth/twitter'
           %li= link_to t(:connect_with_google), '/auth/google_oauth2'
-          %li= link_to t(:none_of_the_above), new_user_registration_path
+          %li= link_to t(:none_of_the_above), new_session_path(:user)
   .language
     = link_to_unless(session[:locale].to_s == 'fi', 'FIN', { :controller => controller.controller_name, :action => controller.action_name, :id => params[:id], :locale => 'fi'} )
     |

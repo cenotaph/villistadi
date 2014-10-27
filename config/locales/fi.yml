@@ -143,7 +143,22 @@ fi:
   event_types: 'Event types'
   new_event_type: 'New event type'
   edit_event_type: 'Edit event type'
+  join_project: 'Join this project'
+  administrator: 'Administrator: '
+  no_announcements: 'There are no announcements yet.'
+  new_user_account: 'New user account'
+  password: 'Password'
+  password_confirmation: 'Password confirmation'
+  incorrect_captcha: 'You have not entered the correct CAPTCHA code.'
+  dont_make_account: 'We encourage you to use your Facebook, Twitter or Google account to instantly create an account on Villi Stadi.'
+  none_of_above_blurb: "If you don't use Facebook, Twitter or Google then you can still create a Villi Stadi login and password."
+  sign_in: 'Sign in'
+  for_vs_login: 'Or, sign in with your email and Villi Stadi password:'
+  forgot_your_password: 'Forgot your password?'
+
+
   
+        
   flash:
     actions:
       create:

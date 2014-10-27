@@ -13,6 +13,9 @@ class ApplicationController < ActionController::Base
     else
       @background_image = @background_image.background.url(:full)
     end
+    if Rails.env.development?
+      @background_css = 'background-color: pink;'
+    end
   end
   
   def get_locale 

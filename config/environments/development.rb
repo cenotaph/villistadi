@@ -47,3 +47,15 @@ Rails.application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 end
+
+
+module ActionView
+  module Helpers
+    module AssetTagHelper
+      def image_tag(source, options = {})
+        options[:src] = "#{source}".gsub(/development/, 'production')
+        tag("img", options)
+      end
+    end
+  end
+end
