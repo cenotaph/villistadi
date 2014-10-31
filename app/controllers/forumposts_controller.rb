@@ -17,8 +17,11 @@ class ForumpostsController < ApplicationController
   end
   
   def show
-    
+    @forumpost = Forumpost.find(params[:id])
+    @project = @forumpost.project if @project.nil?
+    set_meta_tags :title => @forumpost.project.name + " " + t(:forum) + ": " + @forumpost.title
   end
+  
   protected
   
   def forumpost_params
@@ -26,8 +29,9 @@ class ForumpostsController < ApplicationController
   end
   
   def get_project
-    
-    @project = Project.find(params[:project_id])
+    if params[:project_id]
+      @project = Project.find(params[:project_id])
+    end
   end
   
 end

@@ -9,6 +9,8 @@ class Ability
       cannot :manage, Page
       can :manage, Post, :project => { :projects_users => { :user_id => user.id, is_admin: true } }
       can :manage, Project, :projects_users => { :user_id => user.id, is_admin: true}
+      can :create, Forumpost, :project => { :projects_users => { :user_id => user.id } }
+      can :create, Comment, :commentable_type => 'Forumpost', :commentable => {:project => { :projects_users => { :user_id => user.id } } }
     end
 
   end

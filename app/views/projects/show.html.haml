@@ -20,7 +20,8 @@
           = link_to t(:leave_project), leave_project_path(@project), class: [:button, :radius, :tiny], :data => {:confirm => t(:confirm_leaving_project)}
       - else
         = link_to t(:join_project), new_session_path(:user), class: [:button, :radius, :tiny]
-        
+      - if can? :destroy, @project
+        = link_to t(:delete_project), @project, :method => :delete, class: [:button, :radius, :alert, :tiny], data: {confirm: t(:delete_project_confirmation)}
   .row
     %dl.tabs{:"data-tab" => ""}
       %dd.active= link_to t(:announcements), '#announcements'
@@ -48,14 +49,15 @@
               .small-6.columns.title= link_to fp.title, project_forumpost_path(:project_id => @project.id, :id => fp.id)
               .small-3.columns.metadata.end
                 .posted_at= t(:created_by, :poster => fp.user.name, :when => l(fp.created_at, :format => :short))
-          .row
-            .small-12.columns= link_to t(:create_post), new_project_forumpost_path(:project_id => @project.id), class: [:button, :small, :radius, :secondary]
+          - if can? :create, @project.forumposts.build
+            .row
+              .small-12.columns= link_to t(:create_post), new_project_forumpost_path(:project_id => @project.id), class: [:button, :small, :radius, :secondary]
       #members.content
         .row
           - @project.users.each do |user|
             .small-3.columns.end
               = link_to user.name, user
-              - if user.projects_users(:project_id => @project.id).first.is_admin == true
+              - if user.projects_users.where(:project_id => @project.id).first.is_admin == true
                 %p
                   %b= t(:project_admin)
             

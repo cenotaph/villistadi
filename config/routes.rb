@@ -40,11 +40,12 @@ Rails.application.routes.draw do
     resources :posts do
       resources :comments
     end
-    resources :forumposts
+    resources :forumposts do
+      resources :comments
+    end
     member do
       get :join
       get :leave
-      
     end
   end
   resources :users

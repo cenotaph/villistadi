@@ -6,9 +6,19 @@ class ProjectsController < ApplicationController
   
   def create
     @project = Project.new(project_params)
+    @project.project_users.where(:user_id => @project.owner_id).is_admin
     if @project.save
       respond_with @project
     end
+  end
+  
+  def destroy
+    @project = Project.find(params[:id])
+    if can? :destroy, @project
+      @project.destroy!
+      flash[:notice] = t(:your_project_has_been_deleted)
+    end
+    redirect_to projects_path
   end
   
   def edit

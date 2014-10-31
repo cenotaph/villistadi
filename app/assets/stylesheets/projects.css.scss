@@ -60,6 +60,11 @@
     .latest_post {
       margin: 10px 0px;
       font-size: 0.9rem;
+      span.metadata {
+        font-size: 0.8rem;
+        color: #666;
+        padding-left: 2rem;
+      }
     }
   }
 }
@@ -107,4 +112,26 @@
   .actions {
     padding: 20px 0px;
   }
+  .post_body {
+    margin: 1.5rem 0rem 2rem 0rem;
+    
+  }
+  .post_metadata {
+    font-size: 0.9rem;
+    color: #666;
+  }
+  .comment_row {
+    margin-top: 1.5em !important;
+  }
+  .comment {
+    margin-bottom: 2rem;
+    border-bottom: 1px dotted #777;
+    padding-bottom: 2rem;
+    .metadata {
+      font-size: 0.8rem;
+      color: #666;
+    }
+  }
 }
+
+

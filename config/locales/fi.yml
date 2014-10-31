@@ -86,7 +86,7 @@ fi:
   replace_image: 'Replace image? '
   return_to_forum: 'Return to forum'
   save: 'Save'
-  save: 'Save'
+  save_comment: 'Save comment'
   see_and_experience: 'Näe ja koe'
   see_more: 'See more'
   should_be_1920px: 'Should be at least 1920px wide'
@@ -155,9 +155,22 @@ fi:
   sign_in: 'Sign in'
   for_vs_login: 'Or, sign in with your email and Villi Stadi password:'
   forgot_your_password: 'Forgot your password?'
-
-
-  
+  you_are_already_a_member: 'You are already a member of this project.'
+  welcome_to_project: 'Welcome to %{project_name}!'
+  leave_project: 'Leave this project'
+  confirm_leaving_project: 'Are you sure you want to leave this project?'
+  you_cannot_leave_when_admin: 'You cannot leave this project because you are the project administrator.'
+  you_are_not_a_member_of_this_project: 'You are not a member of this project.'
+  created_by: 'Created by %{poster} on %{when}'
+  project: "Project"
+  new_forum_post: 'New forum post'
+  post_saved: 'Post saved'
+  your_project_has_been_deleted: 'Your project has been deleted.'
+  delete_project_confirmation: 'Are you sure? Deleting this project will delete all related announcements and forum posts, and you cannot recover them.'
+  delete_project: 'Delete this project'
+  comments: 'Comments'
+  latest_forum_activity: 'Latest forum activity'
+  comment_on: 'Comment on '
         
   flash:
     actions:

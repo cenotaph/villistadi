@@ -1,0 +1,37 @@
+.project_container
+  .row  
+    .small-12.columns
+      %h2= @project.name + ": " + t(:forum)
+  .row
+    .small-12.columns
+      %h3= @forumpost.title
+  .row
+    .small.12.columns.post_metadata
+      = t(:posted_by, :poster => @forumpost.user.name, :when => l(@forumpost.created_at, :format => :long))
+  .row
+    .small.8.columns.post_body
+      = raw @forumpost.body
+  - unless @forumpost.comments.empty?
+    .row
+      .small-6.columns
+        %h4= t :comments
+    - @forumpost.comments.order(:created_at).each do |comment|
+      .row
+        .small-8.columns.comment
+          .row
+            .small-3.columns.metadata
+              .date= t(:posted_by, :poster => comment.user.name, :when => l(comment.created_at, :format => :long))
+            .small-9.columns.comment_content= raw comment.content
+              
+  
+  .row.comment_row
+    .small-8.columns
+      - if can? :create, @comment = @forumpost.comments.build
+        = semantic_form_for [@project, @forumpost, @comment] do |f|
+          = f.input :content, :label => t(:add_a_comment_to_this_post), input_html: {rows: 5, cols: 40}
+          = f.input :user_id, as: :hidden, value: current_user.id
+          = f.submit t(:save_comment), class: [:button, :tiny, :radius]
+        = content_for :jquery do
+          :plain
+            var puny_mce = new punymce.Editor({id : 'comment_content'});  
+    

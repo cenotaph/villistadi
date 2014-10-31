@@ -121,7 +121,7 @@ en:
   replace_image: 'Replace image? '
   return_to_forum: 'Return to forum'
   save: 'Save'
-  save: 'Save'
+  save_comment: 'Save comment'
   see_and_experience: 'See and experience'
   see_more: 'See more'
   should_be_1920px: 'Should be at least 1920px wide'
@@ -200,7 +200,12 @@ en:
   project: "Project"
   new_forum_post: 'New forum post'
   post_saved: 'Post saved'
-  
+  your_project_has_been_deleted: 'Your project has been deleted.'
+  delete_project_confirmation: 'Are you sure? Deleting this project will delete all related announcements and forum posts, and you cannot recover them.'
+  delete_project: 'Delete this project'
+  comments: 'Comments'
+  latest_forum_activity: 'Latest forum activity'
+  comment_on: 'Comment on '
   flash:
     actions:
       create:

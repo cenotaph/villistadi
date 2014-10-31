@@ -11,6 +11,11 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :authentications, :reject_if => proc { |attr| attr['username'].blank? }
   extend FriendlyId
   friendly_id :name, :use => [ :slugged, :finders]
+  before_create :add_user_role
+  
+  def add_user_role
+    add_role :user
+  end
   
   def apply_omniauth(omniauth)
     if omniauth['provider'] == 'twitter'

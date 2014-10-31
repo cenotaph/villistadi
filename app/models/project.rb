@@ -1,7 +1,7 @@
 class Project < ActiveRecord::Base
   belongs_to :owner, :class_name => 'User'
   belongs_to :city
-  has_many :forumposts
+  has_many :forumposts, :dependent => :destroy
   validates_presence_of :city_id, :owner_id
   translates :name, :description, :tagline, :fallbacks_for_empty_translations => true
   extend FriendlyId
@@ -12,12 +12,21 @@ class Project < ActiveRecord::Base
   has_many :projects_users
   has_many :users, through: :projects_users
   before_save :check_that_owner_is_member
-  has_many :posts
+  has_many :posts, dependent: :destroy
   
+  def administrators
+    [owner, projects_users.where(:is_admin => true).map(&:user)].flatten.uniq.compact
+  end
+      
+      
   def check_that_owner_is_member
     owner = User.find(owner_id)
     users << owner unless users.include?(owner)
-
+  
+  end
+  
+  def latest_forum_activity
+    [forumposts, forumposts.map(&:comments).flatten].flatten.sort_by{|x| x.created_at}.last
   end
   
   def name_fi

@@ -4,9 +4,16 @@ class CommentsController < ApplicationController
   respond_to :html
   
   def create
-    comment = Comment.new(comment_params)
-    if comment.save
-      respond_with comment.post
+    @comment = Comment.new(comment_params)
+    if params[:project_id]
+      @project = Project.find(params[:project_id])
+    end
+    if params[:forumpost_id]
+      @forumpost = Forumpost.find(params[:forumpost_id])
+      @comment.commentable = @forumpost
+    end
+    if @comment.save
+      respond_with @comment.commentable
     end    
   end
     

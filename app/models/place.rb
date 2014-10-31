@@ -15,6 +15,13 @@ class Place < ActiveRecord::Base
   before_save :update_background_attributes
   scope :published, -> () { where(published: true) }
   scope :by_city, -> (x) { where(["city_id is null or city_id = ?", x])}
+  validate :name_present_in_at_least_one_locale
+  
+  def name_present_in_at_least_one_locale
+    if I18n.available_locales.map { |locale| translation_for(locale).name }.compact.empty?
+      errors.add(:base, "You must specify a name in at least one language.")
+    end
+  end  
   
   def name_fi
     self.name(:fi)
