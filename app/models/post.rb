@@ -29,7 +29,7 @@ class Post < ActiveRecord::Base
   end
   
   def title_fi
-    self.title(:fi)
+    self.title(:fi).blank? ? self.title(:en) : self.title(:fi)
   end
 
   def image_unless_project

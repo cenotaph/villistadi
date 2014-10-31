@@ -1,4 +1,11 @@
-class Admin::PostsController < Admin::BaseController
+class Admin::PostsController < ApplicationController
+  layout 'admin'
+
+  before_filter :authenticate_user!
+  #load_and_authorize_resource
+  # check_authorization
+  load_and_authorize_resource 
+  skip_before_filter :require_no_authentication
   responders :location, :flash
   respond_to :html, :json
   has_scope :by_city
@@ -28,7 +35,8 @@ class Admin::PostsController < Admin::BaseController
   end
   
   def new
-    @post = Post.new
+    @post = Post.new(:creator_id => current_user.id)
+    set_meta_tags :title => 'Admin: new post'
   end
   
   def update
