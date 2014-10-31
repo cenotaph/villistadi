@@ -50,3 +50,40 @@
 .photo_container {
   margin-bottom: 30px;
 }
+#wide_map {
+  width: 100%;
+  height: 100%;
+}
+#map_logo {
+  top: 115px;
+  z-index: 999;
+  width: 700px;
+  margin-left: -350px;
+  left:50%;
+  position: fixed;
+}
+
+#places_list {
+  position:fixed;
+  left: 10px;
+  top: 60px;
+  z-index: 999;
+
+  ul.hits-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    
+    li {
+      border-top: 0;
+      margin-bottom: 3px;
+      font-size: 0.75rem;
+      background-color: #333;
+      border: 1px solid black;
+      padding: 4px;
+      a {
+        color: white;
+      }
+    }
+  }
+}

@@ -1,0 +1,79 @@
+#map_logo= link_to image_tag("/assets/logo_fi.png"), '/'
+#places_list  
+  %ul.hits-list
+    - @places.sort_by(&:name).each do |place|
+      %li
+        = link_to place.name, place
+
+#wide_map
+
+    
+%script{:type => "text/javascript"}
+  function set_places() {
+  var bounds = new google.maps.LatLngBounds();
+  var infoWindow = new google.maps.InfoWindow();
+  var markers = [];
+  - @places.each do |place|
+    var myLatLng = new google.maps.LatLng(#{place.center.first}, #{place.center.last});
+    var marker_#{place.id.to_s} = new google.maps.Marker({
+    position: myLatLng,
+    map: map,
+    title: "#{place.name}"
+    });
+    markers.push(marker_#{place.id.to_s});
+    bounds.extend(myLatLng);
+    google.maps.event.addListener(marker_#{place.id.to_s}, 'click', function() {
+    var html='<div style="clear: float;"><p><strong>#{place.name}</strong></p><p><a href="/places/#{place.slug}">#{t(:read_more)}</a></p></div>';
+    infoWindow.setContent(html);
+    infoWindow.open(map, marker_#{place.id.to_s})
+    });
+    map.fitBounds(bounds);
+  }
+  
+:javascript
+  function buildmap() {
+    var myOptions = {
+     zoom: 14,
+     center: new google.maps.LatLng(60.23498738824333,  24.9980536718749260),
+     mapTypeId: google.maps.MapTypeId.SATELLITE,
+     disableDefaultUI: true
+    }
+    return new google.maps.Map(document.getElementById("wide_map"), myOptions);
+  }
+  
+  function submit_search(place) {
+    $('#map_sidebar').html('');
+    $('#map_sidebar').load('/home/map_search', { location: place.name, lat: place.geometry.location.lat(), lng: place.geometry.location.lng() });
+  }
+  
+
+  function getPlace() {
+    var input =  /** @type {HTMLInputElement} */( document.getElementById('location'));
+    var searchBox = new google.maps.places.SearchBox(
+       /** @type {HTMLInputElement} */(input));
+    google.maps.event.addListener(searchBox, 'places_changed', function() {
+      var places = searchBox.getPlaces();
+      if (places.length == 1) {
+        submit_search(places[0]);
+      }
+    });
+    
+    
+    google.maps.event.addListener(map, 'bounds_changed', function() {
+      var bounds = map.getBounds();
+      searchBox.setBounds(bounds);
+    });
+    
+  }
+
+  function initialize() {
+
+    map = buildmap();
+    set_places();
+    map.setZoom(13);
+    return map;
+
+  }
+= content_for :jquery do
+  :plain
+    $('#places_list ul.hits-list li').css('height', "#{(100 / @places.size) - 1 }vH");

@@ -1,5 +1,11 @@
 class PlacesController < ApplicationController
   
+  def index
+    @places = Place.published
+    set_meta_tags :title => t(:places)
+    render :layout => 'bigmap'
+  end
+  
   def show
     @place = Place.find(params[:id])
     if !@place.published
