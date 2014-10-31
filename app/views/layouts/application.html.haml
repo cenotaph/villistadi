@@ -34,7 +34,9 @@
     %section
     
     .row
-      .small-12.columns#yield= yield
+      .small-12.columns#yield
+        = yield
+    %footer= render :partial => 'home/footer'
 
     = javascript_include_tag "application"
     :javascript

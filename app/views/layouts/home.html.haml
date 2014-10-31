@@ -28,7 +28,7 @@
     %section
     
     = yield
-
+    %footer= render :partial => 'footer'
     = javascript_include_tag "application"
     :javascript
       $(document).ready(function(){

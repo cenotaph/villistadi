@@ -171,6 +171,13 @@ fi:
   comments: 'Comments'
   latest_forum_activity: 'Latest forum activity'
   comment_on: 'Comment on '
+  new_members_accepted: 'New members accepted?'
+  project_criteria: 'Here is where we explain what criteria a project has.'
+  places_close_to: 'Places close to %{location}:'
+  not_searching_in_helsinki: 'Please enter a Helsinki-based location.'
+  get_involved: 'Get involved!'
+  get_involved_blurb: 'If you want to develop Villi Stadi for your city, get in touch!'
+  terms_of_use: 'Terms of use'
         
   flash:
     actions:

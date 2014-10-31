@@ -210,6 +210,9 @@ en:
   project_criteria: 'Here is where we explain what criteria a project has.'
   places_close_to: 'Places close to %{location}:'
   not_searching_in_helsinki: 'Please enter a Helsinki-based location.'
+  get_involved: 'Get involved!'
+  get_involved_blurb: 'If you want to develop Villi Stadi for your city, get in touch!'
+  terms_of_use: 'Terms of use'
   flash:
     actions:
       create:
