@@ -3,15 +3,24 @@
     .small-12.columns
       %h2= t :posts
 
-  - @posts.each do |post|
+  - @posts.published.each do |post|
     .post
       .row
         .small-7.columns
           %h3= link_to  post.title, post
-  
       .row
         .small-9.columns
           = t(:posted_by, :poster => post.creator.name, :when =>  l(post.published_at, :format => :long))
+      - if post.icon?
+        .row
+          .small-12.columns
+            - if post.icon_width.nil?
+              = image_tag post.icon.url
+            - else
+              - if post.icon_width < 1200
+                = image_tag post.icon.url
+              - else
+                = image_tag post.icon.url(:twelvehundred)
       .row.body
         .small-9.columns
           = raw post.body
