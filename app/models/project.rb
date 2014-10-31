@@ -32,7 +32,7 @@ class Project < ActiveRecord::Base
   end
   
   def name_fi
-    self.name(:fi)
+    self.name(:fi).blank? ? self.name(:en) : self.name(:fi)
   end
 
   def title_present_in_at_least_one_locale
