@@ -67,22 +67,27 @@
   position:fixed;
   left: 10px;
   top: 60px;
-  z-index: 999;
+  z-index: 23;
 
   ul.hits-list {
     list-style: none;
     margin: 0;
     padding: 0;
     
-    li {
-      border-top: 0;
-      margin-bottom: 3px;
-      font-size: 0.75rem;
-      background-color: #333;
-      border: 1px solid black;
-      padding: 4px;
-      a {
+    a {
+      li {
+        border-top: 0;
+        margin-bottom: 3px;
+        font-size: 0.75rem;
+        background-color: #333;
+        border: 1px solid black;
+        padding: 4px;
         color: white;
+      }
+      &:hover {
+        li {
+          background-color: #666;
+        }
       }
     }
   }

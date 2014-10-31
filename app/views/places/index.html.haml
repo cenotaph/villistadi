@@ -2,8 +2,10 @@
 #places_list  
   %ul.hits-list
     - @places.sort_by(&:name).each do |place|
-      %li
-        = link_to place.name, place
+      = link_to place do
+        %li[place]
+          = place.name
+
 
 #wide_map
 
@@ -13,12 +15,20 @@
   var bounds = new google.maps.LatLngBounds();
   var infoWindow = new google.maps.InfoWindow();
   var markers = [];
+  var pinColor = "009999";
+
   - @places.each do |place|
     var myLatLng = new google.maps.LatLng(#{place.center.first}, #{place.center.last});
     var marker_#{place.id.to_s} = new google.maps.Marker({
     position: myLatLng,
     map: map,
+    icon: "/assets/ltblue-dot.png",
     title: "#{place.name}"
+    });
+    $('ul.hits-list li#place_#{place.id.to_s}').hover(function() {
+    marker_#{place.id.to_s}.setIcon("/assets/orange-dot.png");
+    }, function() {
+    marker_#{place.id.to_s}.setIcon("/assets/ltblue-dot.png");
     });
     markers.push(marker_#{place.id.to_s});
     bounds.extend(myLatLng);
@@ -26,6 +36,12 @@
     var html='<div style="clear: float;"><p><strong>#{place.name}</strong></p><p><a href="/places/#{place.slug}">#{t(:read_more)}</a></p></div>';
     infoWindow.setContent(html);
     infoWindow.open(map, marker_#{place.id.to_s})
+    });
+    google.maps.event.addListener(marker_#{place.id.to_s}, 'mouseover', function() {
+    marker_#{place.id.to_s}.setIcon('/assets/orange-dot.png');   
+    });
+    google.maps.event.addListener(marker_#{place.id.to_s}, 'mouseout', function() {
+    marker_#{place.id.to_s}.setIcon('/assets/ltblue-dot.png');   
     });
     map.fitBounds(bounds);
   }
@@ -39,6 +55,9 @@
      disableDefaultUI: true
     }
     return new google.maps.Map(document.getElementById("wide_map"), myOptions);
+  }
+  function changeMarker(marker) {
+    marker.setIcon("/assets/orange-dot.png");
   }
   
   function submit_search(place) {
