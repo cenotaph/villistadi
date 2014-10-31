@@ -20,5 +20,6 @@ module Villistadi
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
     config.autoload_paths += %W(#{config.root}/app/models/ckeditor)
+    config.i18n.fallbacks = true
   end
 end

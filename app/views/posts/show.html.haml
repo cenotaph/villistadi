@@ -12,10 +12,10 @@
         - if @post.icon_width.nil?
           = image_tag @post.icon.url
         - else
-          - if @post.icon_width < 1200
+          - if @post.icon_width < 800
             = image_tag @post.icon.url
           - else
-            = image_tag @post.icon.url(:twelvehundred)
+            = image_tag @post.icon.url(:box)
   .row.body
     .small-9.columns
       = raw @post.body

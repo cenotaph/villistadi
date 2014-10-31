@@ -10,6 +10,7 @@
     var marker_#{place.id.to_s} = new google.maps.Marker({
     position: myLatLng,
     map: map,
+    icon: '/assets/ltblue-dot.png',
     title: "#{place.name}"
     });
     markers.push(marker_#{place.id.to_s});

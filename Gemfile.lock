@@ -1,3 +1,12 @@
+GIT
+  remote: git://github.com/hube/globalize.git
+  revision: 5741f2a7bad705bb2824b0a691eb6f7f545a7709
+  branch: fix-fallbacks
+  specs:
+    globalize (4.0.2)
+      activemodel (>= 4.0.0, < 5)
+      activerecord (>= 4.0.0, < 5)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -141,9 +150,6 @@ GEM
       friendly_id (>= 5.0.0.beta4, < 6.0)
     fssm (0.2.10)
     geocoder (1.2.5)
-    globalize (4.0.2)
-      activemodel (>= 4.0.0, < 5)
-      activerecord (>= 4.0.0, < 5)
     guard (2.6.1)
       formatador (>= 0.2.4)
       listen (~> 2.7)
@@ -385,7 +391,7 @@ DEPENDENCIES
   friendly_id
   friendly_id-globalize
   geocoder
-  globalize (~> 4.0.2)
+  globalize (~> 4.0.2)!
   guard-bundler
   guard-rails
   guard-rspec
