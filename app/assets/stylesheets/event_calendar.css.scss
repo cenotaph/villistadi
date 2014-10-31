@@ -184,7 +184,7 @@ a.ec-day-link {
   -khtml-border-radius: 3px;
   -moz-border-radius: 3px;
   overflow: hidden;
-//  height: 24px !important;
+  height: 100% !important;
   white-space: normal;
 }
 
@@ -289,5 +289,11 @@ a.ec-day-link {
 
       }
     }
+  }
+}
+
+label {
+  abbr[title] {
+    display: none;
   }
 }
