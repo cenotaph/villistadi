@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141025122059) do
+ActiveRecord::Schema.define(version: 20141031131054) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -280,6 +280,8 @@ ActiveRecord::Schema.define(version: 20141025122059) do
     t.integer  "background_size",         limit: 8
     t.string   "background_content_type"
     t.string   "pdf"
+    t.decimal  "centre_lat",                        precision: 10, scale: 8
+    t.decimal  "centre_lng",                        precision: 10, scale: 8
   end
 
   add_index "places", ["city_id"], name: "index_places_on_city_id", using: :btree

@@ -15,7 +15,7 @@
               .title= link_to project.name, project
               .tagline= project.tagline
               .member_count= t(:members) + ": " + project.users.size.to_s
-              .admin= t(:administrator) + project.administrators.map(&:name).join(', ')
+              .admin= t(:administrator).pluralize( project.administrators.count) + ": " + project.administrators.map(&:name).join(', ')
           .row
             .small-12.columns
               &nbsp;

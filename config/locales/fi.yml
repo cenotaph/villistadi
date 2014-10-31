@@ -144,7 +144,7 @@ fi:
   new_event_type: 'New event type'
   edit_event_type: 'Edit event type'
   join_project: 'Join this project'
-  administrator: 'Administrator: '
+  administrator: 'Administrator'
   no_announcements: 'There are no announcements yet.'
   new_user_account: 'New user account'
   password: 'Password'
@@ -159,7 +159,7 @@ fi:
   welcome_to_project: 'Welcome to %{project_name}!'
   leave_project: 'Leave this project'
   confirm_leaving_project: 'Are you sure you want to leave this project?'
-  you_cannot_leave_when_admin: 'You cannot leave this project because you are the project administrator.'
+  you_cannot_leave_when_admin: 'You cannot leave this project because you are the only project administrator.'
   you_are_not_a_member_of_this_project: 'You are not a member of this project.'
   created_by: 'Created by %{poster} on %{when}'
   project: "Project"

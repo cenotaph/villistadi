@@ -1,4 +1,8 @@
-.row
-  .small-12.columns
-    %h2= t(:create_new_project)
-= render :partial => 'form'
+.project_container
+  .row
+    .small-12.columns
+      %h2= t(:create_new_project)
+  .row
+    .small-10.columns
+      %p= t :project_criteria
+  = render :partial => 'form'

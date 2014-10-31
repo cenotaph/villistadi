@@ -37,6 +37,7 @@ Rails.application.routes.draw do
   resources :places
   resources :posts
   resources :projects do
+    resources :events
     resources :posts do
       resources :comments
     end

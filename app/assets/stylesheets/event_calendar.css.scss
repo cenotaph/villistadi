@@ -276,14 +276,23 @@ a.ec-day-link {
 }
 
 #calendar_legend {
-  margin-top: 3rem;
-  border: 1px solid #ddd;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  p {
+    color: #FFF;
+    margin: 0px;
+    font-size:0.8rem;
+    padding: 2px;
+    display: inline-block;
+    clear: both;
+  }
   tr {
     height: 16px;
     td {
       height: 16px;
       line-height: 16px;
       font-size: 0.8rem;
+      color: white;
       &.color {
         width: 16px;
 

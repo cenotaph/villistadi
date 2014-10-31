@@ -14,6 +14,12 @@ class EventsController < ApplicationController
   
   def new
     @event = Event.new
+    if params[:project_id]
+      @project = Project.find(params[:project_id])
+      if @project.members.include?(current_user)
+        @event.project = @project
+      end
+    end
   end
   
   def show

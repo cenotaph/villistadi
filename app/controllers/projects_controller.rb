@@ -6,7 +6,7 @@ class ProjectsController < ApplicationController
   
   def create
     @project = Project.new(project_params)
-    @project.project_users.where(:user_id => @project.owner_id).is_admin
+    @project.projects_users << ProjectsUser.new(:user => current_user, :is_admin => true)
     if @project.save
       respond_with @project
     end
@@ -23,7 +23,7 @@ class ProjectsController < ApplicationController
   
   def edit
     @project = Project.find(params[:id])
-    if current_user == @project.owner || current_user.has_role?(:goddess)
+    if @project.projects_users.map(&:user).include?(current_user) || current_user.has_role?(:goddess)
       render 
     else
       flash[:error] = t(:you_cannot_edit_another_project)
@@ -49,9 +49,14 @@ class ProjectsController < ApplicationController
   def leave
     @project = Project.find(params[:id])
     if @project.users.include?(current_user)
-      if current_user.projects_users(:project_id => @project.id).first.is_admin == true
+      if @project.administrators.include?(current_user) && @project.administrators.size == 1
         flash[:error] = t(:you_cannot_leave_when_admin)
       else
+        if @project.administrators.include?(current_user) && @project.owner == current_user
+          # change the owner to the next admin in the list
+          @project.owner = @project.administrators.to_a.delete_if{|x| x == current_user}.first
+          @project.save!
+        end
         @project.users.delete(current_user)
       end
     else

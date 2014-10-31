@@ -11,18 +11,20 @@ class Project < ActiveRecord::Base
   validate :title_present_in_at_least_one_locale
   has_many :projects_users
   has_many :users, through: :projects_users
-  before_save :check_that_owner_is_member
+  #before_save :check_that_owner_is_member
   has_many :posts, dependent: :destroy
   
   def administrators
     [owner, projects_users.where(:is_admin => true).map(&:user)].flatten.uniq.compact
   end
       
+  def members
+    [owner, projects_users.map(&:user)].flatten.uniq.compact
+  end
       
   def check_that_owner_is_member
     owner = User.find(owner_id)
     users << owner unless users.include?(owner)
-  
   end
   
   def latest_forum_activity

@@ -4,13 +4,19 @@
       %h2= @project.name
 
   .row
-    .small-6.columns
+    .small-4.columns
       - if @project.image?
-        = image_tag @project.image.url(:standard)
+        = image_tag @project.image.url(:box)
+    .small-8.columns.end
+      %h5administrators= raw @project.tagline
+      = raw @project.description
   .row.actions
     .small-12.columns
       - if can? :create, @project.posts.build
         = link_to t(:create_new_post), new_project_post_path(@project), :class =>  [:button, :tiny, :radius]
+      - if can? :create, Event
+        = link_to t(:submit_new_event), new_project_event_path(:project_id => @project.id), class: [:button, :radius, :tiny]
+        
       - if can? :edit, @project
         = link_to t(:edit_project_settings), edit_project_path(@project), :class => [:button, :tiny, :radius]
       - if user_signed_in?
@@ -57,7 +63,7 @@
           - @project.users.each do |user|
             .small-3.columns.end
               = link_to user.name, user
-              - if user.projects_users.where(:project_id => @project.id).first.is_admin == true
+              - if @project.administrators.include?(user)
                 %p
                   %b= t(:project_admin)
             

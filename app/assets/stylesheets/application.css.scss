@@ -220,7 +220,8 @@ body {
     .title {
       background-color: white;
       border: 1px solid black;
-      padding: 4px;
+      padding: 5px;
+      font-size: 0.8rem;
     }
     ol.hits-list {
       list-style: none;
@@ -229,10 +230,14 @@ body {
       
       li {
         border-top: 0;
-        margin-bottom: 60px;
+        margin-bottom: 3px;
+        font-size: 0.75rem;
         background-color: white;
         border: 1px solid black;
         padding: 4px;
+        a {
+          color: #009999;
+        }
       }
       
     }

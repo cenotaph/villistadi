@@ -16,6 +16,7 @@ class Place < ActiveRecord::Base
   scope :published, -> () { where(published: true) }
   scope :by_city, -> (x) { where(["city_id is null or city_id = ?", x])}
   validate :name_present_in_at_least_one_locale
+  before_save :set_centre
   
   def name_present_in_at_least_one_locale
     if I18n.available_locales.map { |locale| translation_for(locale).name }.compact.empty?
@@ -29,6 +30,11 @@ class Place < ActiveRecord::Base
 
   def center
     [ (ne_lat.to_f + sw_lat.to_f) / 2, (ne_lng.to_f + sw_lng.to_f) / 2]
+  end
+  
+  def set_centre
+    self.centre_lat = center.first
+    self.centre_lng = center.last
   end
   
   def update_background_attributes
