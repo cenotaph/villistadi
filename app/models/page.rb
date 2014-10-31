@@ -10,7 +10,7 @@ class Page < ActiveRecord::Base
   scope :by_city, -> (x) { where(["city_id is null or city_id = ?", x])}
   
   def name_fi
-    self.name(:fi).blank? ? self.name(:en) ? self.name(:fi)
+    self.name(:fi).blank? ? self.name(:en) : self.name(:fi)
   end
   
   def title
