@@ -172,7 +172,7 @@ en:
   add_new_background: 'Add new background'
   new_background: 'New background'
   edit_background: 'Edit/replace background'
-  untick_to_hide: 'If unticked, this will never chosen randomly'
+  untick_to_hide: 'If unticked, this will never be chosen randomly'
   
   event_type: 'Event type'
   event_types: 'Event types'
@@ -207,7 +207,7 @@ en:
   latest_forum_activity: 'Latest forum activity'
   comment_on: 'Comment on '
   new_members_accepted: 'New members accepted?'
-  project_criteria: 'Here is where we explain what criteria a project has.'
+  project_criteria: 'A project can be an event, an expedition, an art exhibition, a concert, a research group, a guerrilla marketing activity or anything that you can think of that encourages people to engage with and look after their city’s urban wilderness. Use this function to create a project group and start collaborating and creating!.'
   places_close_to: 'Places close to %{location}:'
   not_searching_in_helsinki: 'Please enter a Helsinki-based location.'
   get_involved: 'Get involved!'
