@@ -133,7 +133,7 @@ en:
   sw_lng: 'Longitude of southwest map boundary'
   tagline: "Helsinki's untamed heart"
   tagline_in: 'Tagline in %{lang}'
-  take_a_walk_on_the_wild_side: 'Take a walk on the wild side'
+  take_a_walk_on_the_wild_side: "Go outside, it's good for you!"
   type_of_menu_link: 'Type of menu link?'
   upload_image: 'Upload an image'
   username_nickname: 'Username/nickname: '
@@ -214,7 +214,7 @@ en:
   manifesto: 'Manifesto'
   get_involved_blurb: 'If you want to develop Villi Stadi for your city, get in touch!'
   terms_of_use: 'Terms of use'
-  projects_blurb: 'A quick description of what these projects are and that people can request to join them if they want to be involved.'
+  projects_blurb: 'If you find a project that you want to be involved in putting together, request to join!'
   flash:
     actions:
       create:
