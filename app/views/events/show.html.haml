@@ -1,47 +1,49 @@
 .event_container
-  .row
-    .small-12.columns
-      %h2= @event.name
-  .row
-    .small-12.columns
-      %h5= date_range(@event.start_at, @event.end_at, :format => :long)
+  .large-6.small-12.columns
+    .row
+      .small-12.columns
+        %h2= @event.name
+    .row
+      .small-12.columns
+        %h5= date_range(@event.start_at, @event.end_at, :format => :long)
       
-  .row
-    .small-6.columns
-      %h4= @event.venue
-      %p= @event.full_address
-      .description
-        = raw @event.description
-      - unless @event.weblink.blank?
-        = link_to @event.weblink, @event.weblink, :target => :_blank
-      .contact
-        %strong= t :contact
-        = [@event.contact_name, @event.contact_contact].join(' / ')
-        
-      .contact= link_to t(:return_to_calendar), '/calendar', :class => [:button, :radius, :small]
-      
-    - unless @event.latitude.blank? || @event.longitude.blank?
+    .row
       .small-6.columns
-        #event_map
-        :javascript
-          function buildmap() {
-            
-            var myOptions = {
-              zoom: 15,
-              center: new google.maps.LatLng(#{@event.latitude}, #{@event.longitude}),
-              mapTypeId: google.maps.MapTypeId.MAP
-            }
+        %h4= @event.venue
+        %p= @event.full_address
+        .description
+          = raw @event.description
+        - unless @event.weblink.blank?
+          = link_to @event.weblink, @event.weblink, :target => :_blank
+        .contact
+          %strong= t :contact
+          = [@event.contact_name, @event.contact_contact].join(' / ')
+        
+        .contact= link_to t(:return_to_calendar), '/calendar', :class => [:button, :radius, :small]
+  
+  - unless @event.latitude.blank? || @event.longitude.blank?
+    .large-6.small-12.columns
+      #event_map
+      :javascript
+        function buildmap() {
+          
+          var myOptions = {
+            zoom: 15,
+            center: new google.maps.LatLng(#{@event.latitude}, #{@event.longitude}),
+            mapTypeId: google.maps.MapTypeId.MAP
+          }
 
-            return new google.maps.Map(document.getElementById("event_map"), myOptions);
-          }
-          function initialize() {
-            map = buildmap();
-            var infoWindow = new google.maps.InfoWindow();
-            var place_latlng = new google.maps.LatLng(#{@event.latitude}, #{@event.longitude});
-            var marker = new google.maps.Marker({
-              position: place_latlng,
-              map: map,
-              title: "#{@event.venue}"
-            });
-            return map;
-          }
+          return new google.maps.Map(document.getElementById("event_map"), myOptions);
+        }
+        function initialize() {
+          map = buildmap();
+          var infoWindow = new google.maps.InfoWindow();
+          var place_latlng = new google.maps.LatLng(#{@event.latitude}, #{@event.longitude});
+          var marker = new google.maps.Marker({
+            position: place_latlng,
+            map: map,
+            title: "#{@event.venue}"
+          });
+          return map;
+        }
+      

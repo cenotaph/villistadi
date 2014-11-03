@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   match 'auth/:provider/callback' => 'authentications#create', :via => :get
   match '/oauth/authenticate' => 'authentications#create', :via => :get
   resources :authentications
+  match '/feed' => 'feed#index', via: :get
   
   namespace :admin do
     resources :events

@@ -211,8 +211,10 @@ en:
   places_close_to: 'Places close to %{location}:'
   not_searching_in_helsinki: 'Please enter a Helsinki-based location.'
   get_involved: 'Get involved!'
+  manifesto: 'Manifesto'
   get_involved_blurb: 'If you want to develop Villi Stadi for your city, get in touch!'
   terms_of_use: 'Terms of use'
+  projects_blurb: 'A quick description of what these projects are and that people can request to join them if they want to be involved.'
   flash:
     actions:
       create:

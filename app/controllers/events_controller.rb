@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, except: :show
   
   def create
     @event = Event.new(event_params)
@@ -20,11 +20,13 @@ class EventsController < ApplicationController
         @event.project = @project
       end
     end
+    set_meta_tags  :title => t(:submit_an_event)
   end
   
   def show
     @event = Event.find(params[:id])
     if @event.approved
+      set_meta_tags :title => @event.name
       render
     else
       if user_signed_in?
@@ -38,6 +40,7 @@ class EventsController < ApplicationController
         redirect_to '/calendar'
       end
     end
+    
   end
   
   protected

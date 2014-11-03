@@ -27,6 +27,18 @@ class Project < ActiveRecord::Base
     users << owner unless users.include?(owner)
   end
   
+  def last_activity_sort
+    out = []
+    unless forumposts.empty?
+      out << [forumposts, forumposts.map(&:comments).flatten].flatten.sort_by{|x| x.created_at}.last.created_at
+    end
+    unless posts.empty?
+      out << posts.sort_by{|x| x.published_at}.last.published_at
+    end
+    out << updated_at
+    out
+  end
+  
   def latest_forum_activity
     [forumposts, forumposts.map(&:comments).flatten].flatten.sort_by{|x| x.created_at}.last
   end

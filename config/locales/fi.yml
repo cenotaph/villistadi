@@ -27,7 +27,7 @@ fi:
   delete: 'Delete'
   delete_menu: "Delete this menu entry"
   description_in: 'Short description of this project, in %{lang}'
-  download_PDF: 'Download PDF'
+  download_PDF: 'Lataa PDF'
   edit: 'Edit'
   edit_menu_entry: 'Edit menu entry'
   edit_place: 'Edit place'
@@ -178,7 +178,8 @@ fi:
   get_involved: 'Get involved!'
   get_involved_blurb: 'If you want to develop Villi Stadi for your city, get in touch!'
   terms_of_use: 'Terms of use'
-        
+  projects_blurb: 'A quick description of what these projects are and that people can request to join them if they want to be involved.'
+          
   flash:
     actions:
       create:
@@ -386,3 +387,14 @@ fi:
   activerecord:
     errors:
       <<: *errors
+  date_range:
+    long:
+      same_day: "%{from_day} %{from_month} %{year} %{start_time} %{sep} %{end_time}"
+      different_months_same_year: "%{from_day} %{from_month} %{start_time} %{sep} %{until_day} %{until_month}  %{end_time} %{year}"
+      different_years: "%{from_month} %{from_day}, %{from_year} %{sep} %{until_month} %{until_day}, %{until_year}"
+      same_month: "%{from_day} %{month} %{start_time} %{sep} %{until_day} %{month} %{end_time} %{year}"
+    short:
+      same_day: "%{from_day} %{from_month} %{year} %{start_time} %{sep} %{end_time}"
+      different_months_same_year: "%{from_day} %{from_month} %{sep} %{until_day} %{until_month} %{year}"
+      different_years: "%{from_day} %{from_month} %{from_year} %{sep} %{until_day} %{until_month} %{until_year}"
+      same_month: "%{from_day} %{sep} %{until_day} %{month} %{year}"  

@@ -1,9 +1,10 @@
     
 .row.place_container
   .small-12.columns
+    %h1= @place.name
+    
     .row
       .small-6.columns
-        %h1= @place.name
         .description= raw @place.description
         
         %h2= t(:getting_there)

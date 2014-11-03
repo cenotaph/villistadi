@@ -33,6 +33,7 @@ class ProjectsController < ApplicationController
   
   def index
     @projects = Project.all
+    set_meta_tags :title => t(:projects)
   end
   
   def join
@@ -68,6 +69,7 @@ class ProjectsController < ApplicationController
     
   def new
     @project = Project.new
+    set_meta_tags :title => t(:create_new_project)
   end
   
   def show

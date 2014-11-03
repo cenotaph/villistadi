@@ -8,6 +8,8 @@ class Event < ActiveRecord::Base
   after_validation :geocode, :on => :create
   scope :approved, -> () { where(approved: true)}
   scope :unapproved, -> () {where(approved: false)}
+  extend FriendlyId
+  friendly_id :title, :use => [:slugged, :finders]
   
   scope :in_future, where(["start_at >= ?", Time.zone.now])
   
@@ -29,6 +31,14 @@ class Event < ActiveRecord::Base
   
   def name
     title
+  end
+  
+  def feed_date
+    created_at
+  end
+  
+  def body
+    description
   end
 
   def sort_date

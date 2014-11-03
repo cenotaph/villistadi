@@ -1,14 +1,13 @@
 .page_container
   .row
-    .small-9.columns
-      %h3= @post.title
-      
+    .small-12.columns
+      %h3= link_to  @post.title, @post
   .row
-    .small-9.columns
+    .small-12.columns
       = t(:posted_by, :poster => @post.creator.name, :when =>  l(@post.published_at, :format => :long))
   - if @post.icon?
     .row
-      .small-12.columns
+      .small-12.large-6.columns
         - if @post.icon_width.nil?
           = image_tag @post.icon.url
         - else
@@ -16,6 +15,12 @@
             = image_tag @post.icon.url
           - else
             = image_tag @post.icon.url(:box)
-  .row.body
-    .small-9.columns
-      = raw @post.body
+      .small-12.large-6.columns
+        .row.body
+          .small-9.columns
+            = raw @post.body
+  - else
+    .small-12.columns
+      .row.body
+        .small-9.columns
+          = raw @post.body

@@ -29,7 +29,9 @@
   src: url(/assets/Kankin.otf) format("truetype");
 }
 
-
+p {
+  color: #555;
+}
 span.translation_missing {
   background-color: red;
   color: white;
@@ -173,10 +175,13 @@ body {
 
   padding: 35px 0px;
   border-bottom: 3px solid #eee;
-
+  h3 {
+    margin-bottom:35px;
+  }
   h4 {
     font-size: 1.2rem;
     margin-bottom: 3px;
+    margin-top: 25px;
   }
   .metadata {
     font-size: 0.7rem;
@@ -360,7 +365,9 @@ footer {
   color: #FFF;
   padding: 40px 0px;
   p {
-    margin: 0px 0px 3px 0px;
+    margin: 0px 0px 5px 0px;
+    font-size: 0.8rem;
+    line-height: 1rem;
     a {
       color: #ABABAB;
     }

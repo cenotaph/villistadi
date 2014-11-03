@@ -28,6 +28,9 @@ class Post < ActiveRecord::Base
     body
   end
   
+  def feed_date
+    published_at
+  end
   def title_fi
     self.title(:fi).blank? ? self.title(:en) : self.title(:fi)
   end

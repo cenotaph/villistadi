@@ -2,10 +2,12 @@
   .row
     .small-12.column  
       %h2= t :projects
-    
+  .row
+    .small-12.columns
+      %p= t :projects_blurb
   .row.project_index
     .small-10.columns
-      - @projects.each do |project|
+      - @projects.sort_by{|x| x.last_activity_sort}.reverse.each do |project|
         .project
           .row
             .small-2.columns
