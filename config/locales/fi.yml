@@ -35,9 +35,9 @@ fi:
   edit_project_settings: 'Edit project settings'
   edit_spot: 'Edit spot'
   enable_forum: 'Enable the group forum?'
-  facts: 'Facts'
+  facts: 'Faktat'
   forum: 'Forum'
-  future_of: 'The future of %{place}'
+  future_of: 'Tulevaisuuden %{place}'
   getting_there: 'Perille'
   happening: 'Happening'
   hello: "Hello world"
@@ -178,7 +178,7 @@ fi:
   get_involved: 'Get involved!'
   get_involved_blurb: 'If you want to develop Villi Stadi for your city, get in touch!'
   terms_of_use: 'Terms of use'
-  projects_blurb: 'A quick description of what these projects are and that people can request to join them if they want to be involved.'
+  projects_blurb: 'If you find a project that you want to be involved in putting together, request to join!'
           
   flash:
     actions:
