@@ -9,7 +9,7 @@ xml.rss :version => "2.0" do
     @feed.each do |item|
       xml.item do
         xml.title         item.name
-        xml.description raw(item.body.html_safe), :type => 'html'
+        xml.description raw(item.body.html_safe)
         xml.link          url_for(:controller => item.class.to_s.tableize, :action => :show, :id => item.slug, :host => 'villistadi.fi')
         xml.pubDate       item.feed_date.to_s(:rfc822)
         xml.guid          url_for(:controller => item.class.to_s.tableize, :action => :show, :id => item.slug, :host => 'villistadi.fi')
