@@ -179,7 +179,9 @@ fi:
   get_involved_blurb: 'If you want to develop Villi Stadi for your city, get in touch!'
   terms_of_use: 'Terms of use'
   projects_blurb: 'If you find a project that you want to be involved in putting together, request to join!'
-          
+  manifesto: "Manifesto"
+  
+  
   flash:
     actions:
       create:
