@@ -133,7 +133,7 @@ en:
   sw_lng: 'Longitude of southwest map boundary'
   tagline: "Helsinki's untamed heart"
   tagline_in: 'Tagline in %{lang}'
-  take_a_walk_on_the_wild_side: "Go outside, it's good for you!"
+  take_a_walk_on_the_wild_side: "Take a walk on the wild side"
   type_of_menu_link: 'Type of menu link?'
   upload_image: 'Upload an image'
   username_nickname: 'Username/nickname: '
