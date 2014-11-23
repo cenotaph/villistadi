@@ -77,7 +77,7 @@ fi:
   places_nearby: 'Places nearby '
   post_in_either_language: 'You may write your post in Finnish or English, or both. Users will see it in their preferred language, if it exists.'
   posted_by: 'Posted by %{poster} on %{when}'
-  posts: 'Posts'
+  posts: 'Uutisia'
   project_admin: "Project Administrator"
   projects: 'Projects'
   read_more: 'Read more...'
