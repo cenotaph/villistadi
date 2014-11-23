@@ -1,4 +1,4 @@
-.event_container
+.indented
   .row
     .small-12.column
       %h2= t :submit_new_event
@@ -10,24 +10,24 @@
           %label= t :project
           %em= @event.project.name
     .row  
-      .small-4.columns= f.input :start_at, :as => :string, :input_html => {:class => :datetime_picker, :required => ''}
-      .small-4.end.columns
+      .large-4.small-10.columns= f.input :start_at, :as => :string, :input_html => {:class => :datetime_picker, :required => ''}
+      .large-4.small-10.end.columns
         = f.input :end_at, :as => :string, :input_html => {:class => :datetime_picker}
         = f.input :user_id, :as => :hidden, :value => current_user.id.to_s
     
 
     .row
-      .small-8.columns= f.input :title, :input_html => { :required => ''}
+      .large-8.small-10.columns= f.input :title, :input_html => { :required => ''}
   
     .row
-      .small-8.columns= f.input :venue, :label => t(:where_what_venue), :input_html => { :required => ''}
+      .large-8.small-10.columns= f.input :venue, :label => t(:where_what_venue), :input_html => { :required => ''}
     .row
-      .small-8.columns= f.input :address1, :label => t(:where_address), :input_html => { :required => ''}
+      .large-8.small-10.columns= f.input :address1, :label => t(:where_address), :input_html => { :required => ''}
     .row
-      .small-8.columns= f.input :address2, :label => t(:address2)     
+      .large-8.small-10.columns= f.input :address2, :label => t(:address2)     
     .row
-      .small-4.columns= f.input :city, :input_html => { :required => ''}
-      .small-2.columns.end= f.input :postcode
+      .large-4.small-10.columns= f.input :city, :input_html => { :required => ''}
+      .large-2.small-10.columns.end= f.input :postcode
   
     .row
       .small-8.columns= f.input :description

@@ -83,6 +83,7 @@ en:
   latlng_helper: 'You can use this tool to find the latitude and longitude of any point: '
   leave_blank_for_all: 'Leave blank to be site-wide (for all cities)'
   leave_blank_for_top_level_menu: 'Leave blank for top level menu'
+  you_must_be_a_member_of_this_project: 'You must be a member of this project to see this content.'
   locale_name: 'English'
   maximum_members: 'Maximum number of members (leave blank for unlimited)'
   members: 'Members'
@@ -112,7 +113,7 @@ en:
   places_nearby: 'Places nearby '
   post_in_either_language: 'You may write your post in Finnish or English, or both. Users will see it in their preferred language, if it exists.'
   posted_by: 'Posted by %{poster} on %{when}'
-  posts: 'Posts'
+  posts: 'Latest news'
   project_admin: "Project Administrator"
   projects: 'Projects'
   read_more: 'Read more...'
@@ -215,6 +216,7 @@ en:
   get_involved_blurb: 'If you want to develop Villi Stadi for your city, get in touch!'
   terms_of_use: 'Terms of use'
   projects_blurb: 'If you find a project that you want to be involved in putting together, request to join!'
+  back_to_index: 'Back to index'
   flash:
     actions:
       create:

@@ -41,7 +41,9 @@
   .project {
     padding: 20px 0px;
     border-bottom: 1px solid $secondary-color;
-    
+    .shimmery {
+      opacity: 0.6;
+    }
     .title {
       font-weight: 500;
       font-size: 1.2rem;
@@ -66,6 +68,12 @@
         padding-left: 2rem;
       }
     }
+  }
+}
+
+.project_form {
+  textarea {
+    height: 150px;
   }
 }
 

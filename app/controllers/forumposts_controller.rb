@@ -1,5 +1,5 @@
 class ForumpostsController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, :except => [:show]
   before_filter :get_project, :except => [:create, :update]
     
   def create
@@ -19,6 +19,17 @@ class ForumpostsController < ApplicationController
   def show
     @forumpost = Forumpost.find(params[:id])
     @project = @forumpost.project if @project.nil?
+    if @project['private'] == true
+      if !user_signed_in?
+        flash[:error] = t(:you_must_be_a_member_of_this_project)
+        redirect_to @project
+      else
+        if !@project.members.include?(current_user) && !current_user.has_role?(:goddess)
+          flash[:error] = t(:you_must_be_a_member_of_this_project)
+          redirect_to @project
+        end
+      end
+    end
     set_meta_tags :title => @forumpost.project.name + " " + t(:forum) + ": " + @forumpost.title
   end
   

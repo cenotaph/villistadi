@@ -95,6 +95,7 @@ fi:
   spots: 'Spots'
   start_a: ' Start a '
   sw_lat: 'Latitude of southwest map boundary'
+  you_must_be_a_member_of_this_project: 'You must be a member of this project to see this content.'
   sw_lng: 'Longitude of southwest map boundary'
   tagline: "Helsingin henkireiät"
   tagline_in: 'Tagline in %{lang}'
@@ -115,7 +116,7 @@ fi:
   wildside_blurb: "Nämä verkkosivut ovat vielä työn alla!"
   you_can_other_auth: 'You can add other accounts (Google, Facebook and Twitter are supported) to allow sign-in with those services too.'
   you_cannot_edit_another_project: "You cannot edit someone else's project!"
-
+  back_to_index: 'Back to index'
   calendar: 'Kalenteri'
   edit_event: 'Edit event'
   where_what_venue: "Where? (What venue?)"

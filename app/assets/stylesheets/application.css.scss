@@ -72,7 +72,7 @@ header {
   }
   .tagline {
     color: #FFF !important;
-    font-weight: bold;
+    font-weight: normal;
     font-size: 1.3rem;
     margin:15px 0px;
   }
@@ -124,6 +124,12 @@ body {
   margin-bottom: 35px;
 }
 
+.indented {
+  margin: 1.1rem;
+  ul {
+    margin-left: 0px;
+  }
+}
 .title-card {
   z-index: 1;
   width: 100%;
@@ -144,7 +150,7 @@ body {
     animation: dropHeader 1 0.75s ease-in;
   }
   .tagline {
-    text-transform: uppercase;
+
     color: white !important;
     p { font-size: 1.3rem;
        font-weight: 400;
@@ -207,6 +213,7 @@ body {
 #event_map {
   height: 300px;
   width: 100%;
+  margin-top: 15px;
 }
 
 #map_section {
@@ -340,9 +347,25 @@ form {
 }
 
 .post {
-  padding-top: 35px;
+  padding: 35px 0px;
   .body {
     margin-top: 25px;
+  }
+  .metadata {
+    font-size: 0.8rem;
+    color: #666;
+    margin-bottom: 1rem;
+    font-style: italic;
+  }
+  border-bottom: 1px dotted #333;
+}
+.post_standalone {
+  padding: 35px 0px;
+  .metadata {
+    font-size: 0.8rem;
+    color: #666;
+    margin-bottom: 1rem;
+    font-style: italic;
   }
 }
 
@@ -353,7 +376,11 @@ form {
   .description, .contact {
     margin: 15px 0px;
   }
+  .contact_button {
+    margin-top: 1.1rem;
+  }
 }
+
 .project_container {
   padding: 25px;
 }
@@ -366,6 +393,7 @@ footer {
   color: #FFF;
   padding: 40px 0px;
   p {
+    color: #ABABAB !important;
     margin: 0px 0px 5px 0px;
     font-size: 0.8rem;
     line-height: 1rem;
@@ -373,4 +401,8 @@ footer {
       color: #ABABAB;
     }
   }
+}
+
+.calendar_container {
+  padding: 35px 0px;
 }

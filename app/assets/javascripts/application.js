@@ -23,6 +23,7 @@
 //= require foundation-datetimepicker
 //= require jpicker-1.1.6.min
 
+
 $(function(){ $(document).foundation(); });
 
 $('.datetime_picker').fdatetimepicker({

@@ -13,6 +13,8 @@
             .small-2.columns
               - if project.image?
                 = link_to image_tag(project.image.url(:box)), project
+              - else
+                .shimmery= link_to image_tag(image_path("vs_project_placeholder.jpg")), project
             .small-10.columns
               .title= link_to project.name, project
               .tagline= project.tagline

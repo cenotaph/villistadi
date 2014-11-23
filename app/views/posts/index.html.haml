@@ -6,14 +6,8 @@
   - @posts.published.each do |post|
     .post
       .row
-        .small-12.columns
-          %h3= link_to  post.title, post
-      .row
-        .small-12.columns
-          = t(:posted_by, :poster => post.creator.name, :when =>  l(post.published_at, :format => :long))
-      - if post.icon?
-        .row
-          .small-12.large-6.columns
+        .small-3.columns
+          - if post.icon?
             - if post.icon_width.nil?
               = image_tag post.icon.url
             - else
@@ -21,12 +15,16 @@
                 = image_tag post.icon.url
               - else
                 = image_tag post.icon.url(:box)
-          .small-12.large-6.columns
-            .row.body
-              .small-9.columns
-                = raw post.body
-      - else
-        .small-12.columns
+          - else
+            = image_tag image_path('vs_project_placeholder.jpg')
+        .small-9.columns
+          %h3= link_to  post.title, post
+          .metadata= t(:posted_by, :poster => post.creator.name, :when =>  l(post.published_at, :format => :long))
           .row.body
             .small-9.columns
-              = raw post.body
+              = raw truncate_html(post.body, :length => 350)
+              - if post.body.size > 350
+                = link_to t(:read_more), post
+              
+              
+
