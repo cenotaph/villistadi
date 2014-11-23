@@ -22,15 +22,15 @@
 %section#latest_posts
   .row
     .small-12.columns.text-center
-      %h3= t :latest_posts
+      %h3= t :posts
       
   .row
     - @posts.each do |post|
       .small-4.columns
         - if post.icon?
-          = image_tag post.icon.url(:box)
+          .dim= image_tag post.icon.url(:box)
         %h4= link_to post.title, post, :target => :_blank
-        .metadata= t(:posted_by, :poster => post.creator.name, :when => l(post.published_at, :format => :short))
+        -#.metadata= t(:posted_by, :poster => post.creator.name, :when => l(post.published_at, :format => :short))
         .body= raw truncate_html(post.body, :length => 400)
         .read_more.text-center= link_to t(:read_more), post, :target => :blank
 
