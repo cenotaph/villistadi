@@ -24,8 +24,9 @@
 
 $('#map_sidebar').css('display', 'block');
 map.setCenter(new google.maps.LatLng(<%= @lat %>, <%= @lng %>));
-setTimeout( function() { map.fitBounds( newbounds ); }, 1 ); 
-map.setZoom(16);
+setTimeout( function() { map.fitBounds( newbounds );  map.setZoom(map.getZoom() + 1); }, 1 ); 
+map.setZoom(15);
+
 scrollTo('#map_section');
 
 

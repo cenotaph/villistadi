@@ -21,7 +21,7 @@
     .columns.small-12
       - if f.object.icon?
         = image_tag f.object.icon.url(:thumb)
-      = f.input :icon, :label => (f.object.icon? ? t(:replace_image) : t(:upload_image)), :input_html => {:required => ''}
+      = f.input :icon, :label => (f.object.icon? ? t(:replace_image) : t(:upload_image)), :input_html =>  { :required => (f.object.icon? ? false : '') }
   .row
     .columns.small-12= f.input :published
   .row
