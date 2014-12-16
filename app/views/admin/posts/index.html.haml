@@ -26,5 +26,5 @@
               - if can? :edit, post
                 = link_to t(:edit), edit_admin_post_path(post), :class => [:button, :radius, :tiny]
               - if can? :destroy, post
-                = link_to t(:delete), [:admin, post], :method => :delete, :class => [:button, :radius, :tiny], :data => {:confirm => t(:are_you_sure)}
+                = link_to t(:delete), [:admin, post], :method => :delete, :class => [:button, :radius, :alert, :tiny], :data => {:confirm => t(:are_you_sure)}
       

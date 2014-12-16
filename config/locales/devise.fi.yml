@@ -17,6 +17,7 @@ fi:
       invalid_token: 'Epäkelpo autentikaatiopoletti.'
       timeout: 'Istuntosi on vanhentunut, ole hyvä ja kirjaudu sisään jatkaaksesi.'
       inactive: 'Tunnustasi ei ole vielä aktivoitu.'
+      already_authenticated: 'You are already logged in.'
     sessions:
       signed_in: 'Sisäänkirjautuminen onnistui.'
       signed_out: 'Uloskirjautuminen onnistui.'

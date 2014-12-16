@@ -24,6 +24,7 @@ class ProjectsController < ApplicationController
   def edit
     @project = Project.find(params[:id])
     if @project.projects_users.map(&:user).include?(current_user) || current_user.has_role?(:goddess)
+      set_meta_tags :title => t(:project) + " - " + @project.name
       render 
     else
       flash[:error] = t(:you_cannot_edit_another_project)
@@ -32,7 +33,8 @@ class ProjectsController < ApplicationController
   end
   
   def index
-    @projects = Project.all
+    @active = Project.active
+    @archived = Project.archived
     set_meta_tags :title => t(:projects)
   end
   
@@ -95,7 +97,7 @@ class ProjectsController < ApplicationController
   private
   
   def project_params
-    params.require(:project).permit(:slug, :city_id, :owner_id, :restricted_membership, :private, :maximum_members, :has_forum, :members_can_create_forum_topics, :notify_admin_of_new_member, :image, translations_attributes: [:id, :locale, :name, :tagline, :description])
+    params.require(:project).permit(:slug, :archived, :city_id, :owner_id, :restricted_membership, :private, :maximum_members, :has_forum, :members_can_create_forum_topics, :notify_admin_of_new_member, :image, translations_attributes: [:id, :locale, :name, :tagline, :description])
   end
   
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141103185721) do
+ActiveRecord::Schema.define(version: 20141216170711) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -347,7 +347,10 @@ ActiveRecord::Schema.define(version: 20141103185721) do
     t.string   "image_content_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "archived",                                  default: false, null: false
   end
+
+  add_index "projects", ["archived"], name: "index_projects_on_archived", using: :btree
 
   create_table "projects_users", id: false, force: true do |t|
     t.integer "project_id",     null: false

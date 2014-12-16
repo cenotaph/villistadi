@@ -26,6 +26,8 @@
   .row
     .small-6.columns= f.input :members_can_create_forum_topics
     .small-6.columns= f.input :image
-    
+  .row
+    .small-12.columns
+      = f.input :archived, :label => t(:archive_this_project)
   .row
     .small-6.columns= f.submit t(:save), :class => [:button, :radius, :small]

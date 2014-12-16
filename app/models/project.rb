@@ -14,6 +14,9 @@ class Project < ActiveRecord::Base
   #before_save :check_that_owner_is_member
   has_many :posts, dependent: :destroy
   
+  scope :archived, -> () { where(archived: true) }
+  scope :active, -> () { where(archived: false)}
+  
   def administrators
     [owner, projects_users.where(:is_admin => true).map(&:user)].flatten.uniq.compact
   end

@@ -1,0 +1,37 @@
+
+.row
+  .small-2.columns
+    - if project.image?
+      = link_to image_tag(project.image.url(:box)), project
+    - else
+      .shimmery= link_to image_tag(image_path("vs_project_placeholder.jpg")), project
+  .small-10.columns
+    .title= link_to project.name, project
+    .tagline= project.tagline
+    .member_count= t(:members) + ": " + project.users.size.to_s
+    .admin= t(:administrator).pluralize( project.administrators.count) + ": " + project.administrators.map(&:name).join(', ')
+.row
+  .small-12.columns
+    &nbsp;
+    - unless project.posts.published.empty?
+      .latest_post
+        = t(:latest_announcement)
+        = link_to project.posts.order('published_at DESC').first.name, project
+        %span.metadata= t(:posted_by, :poster => project.posts.order('published_at DESC').first.creator.name, :when => l(project.posts.order('published_at DESC').first.published_at, :format => :short))
+    - if project.has_forum
+      - unless project.forumposts.empty?
+        .latest_post
+          = t(:latest_forum_activity) + ": "
+          = project.latest_forum_activity.class == Comment ? t(:comment_on) : false
+          = link_to project.latest_forum_activity.name, project.latest_forum_activity.path
+          %span.metadata= t(:posted_by, :poster => project.latest_forum_activity.user.name, :when => l(project.latest_forum_activity.created_at, :format => :short))
+
+      
+.row
+  .small-12.columns.controls
+    - if user_signed_in?
+      - if current_user == project.owner
+        = link_to t(:edit_project_settings), edit_project_path(project), :class => [:button, :radius, :tiny]
+      - if project.users.include?(current_user)
+        - if project.has_forum
+          = link_to t(:view_forum), project, :class => [:button, :radius, :tiny]
