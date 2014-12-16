@@ -1,14 +1,16 @@
 .project_container
   .row  
     .small-12.columns
-      %h2= @project.name + ": " + t(:forum)
+      %h2
+        = link_to @project.name + ": "+ t(:forum), @project
   .row
     .small-12.columns
       %h3= @forumpost.title
   .row
     .small.12.columns.post_metadata
       = t(:posted_by, :poster => @forumpost.user.name, :when => l(@forumpost.created_at, :format => :long))
-  .row
+      - if can? :delete, @forumpost
+        = link_to t(:delete_this_post), @forumpost, :method => :delete, class: [:button, :tiny, :radius, :alert], :data => {:confirm => t(:are_you_sure) }
     .small.8.columns.post_body
       = raw @forumpost.body
   - unless @forumpost.comments.empty?

@@ -10,6 +10,13 @@ class ForumpostsController < ApplicationController
     end
   end
   
+  def destroy
+    @forumpost = Forumpost.find(params[:id])
+    project = @forumpost.project
+    @forumpost.destroy!
+    redirect_to project
+  end
+  
   
   def new
     @forumpost = Forumpost.new(:project => @project)

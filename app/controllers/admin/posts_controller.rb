@@ -25,7 +25,7 @@ class Admin::PostsController < ApplicationController
   end
   
   def index
-    @posts = apply_scopes(Post).all
+    @posts = apply_scopes(Post).all.order('published_at DESC')
     respond_to do |format|
       format.json { 
         render :json => @posts.to_json(:only => [:id, :name]), :callback => params[:callback]

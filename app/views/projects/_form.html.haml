@@ -25,7 +25,7 @@
     .small-6.columns= f.input :has_forum, :label => t(:enable_forum)
   .row
     .small-6.columns= f.input :members_can_create_forum_topics
-    .small-6.columns= f.input :image
+    .small-6.columns= f.input :image, :hint => t(:project_image_size_guide)
   .row
     .small-12.columns
       = f.input :archived, :label => t(:archive_this_project)

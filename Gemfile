@@ -18,7 +18,7 @@ gem 'capistrano-bundler'
 
 
 
-
+gem 'auto_html'
 gem 'cancancan', '~> 1.9'
 gem 'carrierwave'
 gem 'chosen-rails'

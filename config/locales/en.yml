@@ -101,6 +101,9 @@ en:
   new_page: 'New page'
   new_place: 'Define new place'
   new_post: 'New post'
+  places_image_gallery_size_guide: 'Add image size rules here'
+  post_image_size_guide: 'Add image size guidelines for posts here'
+  project_image_size_guide: 'Add image size guidelines for project image here'
   new_spot: 'New spot'
   no: 'No'
   none_of_the_above: 'None of the above - sign up!'
@@ -218,6 +221,9 @@ en:
   terms_of_use: 'Terms of use'
   projects_blurb: 'If you find a project that you want to be involved in putting together, request to join!'
   back_to_index: 'Back to index'
+  delete_this_post: 'Delete this post'
+  
+  
   flash:
     actions:
       create:

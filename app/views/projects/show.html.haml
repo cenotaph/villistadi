@@ -41,7 +41,7 @@
           - if @project.posts.to_a.delete_if{|p| p.new_record? }.empty?
             %p= t :no_announcements
           - else
-            - @project.posts.to_a.delete_if{|p| p.new_record? }.sort_by{|x| x.published_at }.each do |p|
+            - @project.posts.to_a.delete_if{|p| p.new_record? }.sort_by{|x| x.published_at }.reverse.each do |p|
               - next if p.new_record?
               .row.post
                 .small-8.columns

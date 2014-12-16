@@ -45,7 +45,7 @@
         = f.fields_for :photos do |ff|
           - if ff.object.image?
             = image_tag ff.object.image.url(:box)
-            = ff.input :image, :label => t(:change_photo)
+            = ff.input :image, :label => t(:change_photo), :hint => t(:image_size_guide)
           - else
             = ff.input :image
           = ff.input :credit

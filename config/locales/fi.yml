@@ -5,7 +5,7 @@ fi:
   add_new_spot: 'Add new spot'
   add_other_auth: 'Add another authentication method'
   add_to: ' Add to '
-  affirmative: 'Yes'
+  affirmative: 'joo'
   announcements: 'Announcements'
   archive_this_project: 'Archive this project?'
   are_you_sure: 'Are you sure you want to delete this forever?'
@@ -66,7 +66,7 @@ fi:
   new_place: 'Define new place'
   new_post: 'New post'
   new_spot: 'New spot'
-  no: 'No'
+  negative: 'ei'
   none_of_the_above: 'None of the above - create account'
   not_yet_public: 'This resource is not yet public'
   notify_admin_of_new_member: 'Notify admin when a new member joins by email?'
@@ -91,6 +91,9 @@ fi:
   see_and_experience: 'Näe ja koe'
   see_more: 'See more'
   should_be_1920px: 'Should be at least 1920px wide'
+  places_image_gallery_size_guide: 'Add image size rules here'
+  post_image_size_guide: 'Add image size guidelines for posts here'
+  project_image_size_guide: 'Add image size guidelines for project image here'
   sign_in: 'Kirjaudu '
   sign_out: 'Kirjaudu ulos'
   spots: 'Spots'
@@ -182,6 +185,7 @@ fi:
   terms_of_use: 'Terms of use'
   projects_blurb: 'If you find a project that you want to be involved in putting together, request to join!'
   manifesto: "Manifesto"
+  delete_this_post: 'Delete this post'
   
   
   flash:
