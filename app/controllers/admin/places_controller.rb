@@ -2,6 +2,7 @@ class Admin::PlacesController < Admin::BaseController
   responders :location, :flash
   respond_to :html, :json
   has_scope :by_city
+  handles_sortable_columns
   
   def create
     @place = Place.new(place_params)
@@ -18,7 +19,17 @@ class Admin::PlacesController < Admin::BaseController
   end
   
   def index
-    @places = apply_scopes(Place).all
+    order = sortable_column_order do |column, direction|
+      case column
+      when "id"
+        "id #{direction}"
+      when "name"
+        "place_translations.name #{direction}"
+      else
+        "updated_at DESC"
+      end
+    end
+    @places = apply_scopes(Place).includes(:translations).order(order)
     respond_to do |format|
       format.json { 
         render :json => @places.to_json(:only => [:id, :name]), :callback => params[:callback]

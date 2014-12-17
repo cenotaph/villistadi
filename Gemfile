@@ -36,7 +36,7 @@ gem 'friendly_id-globalize'
 gem 'geocoder'
 gem 'globalize', '~> 4.0.2', github: 'hube/globalize', branch: 'fix-fallbacks'
 gem 'haml-rails'
-#gem 'handles_sortable_columns'
+gem 'handles_sortable_columns'
 gem 'has_scope'
 gem 'http_accept_language'
 gem "jquery-slick-rails"
