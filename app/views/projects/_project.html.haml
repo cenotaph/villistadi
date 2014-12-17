@@ -24,7 +24,7 @@
           = t(:latest_forum_activity) + ": "
           = project.latest_forum_activity.class == Comment ? t(:comment_on) : false
           = link_to project.latest_forum_activity.name, project.latest_forum_activity.path
-          %span.metadata= t(:posted_by, :poster => project.latest_forum_activity.user.name, :when => l(project.latest_forum_activity.created_at, :format => :short))
+          .metadata= t(:posted_by, :poster => project.latest_forum_activity.user.name, :when => l(project.latest_forum_activity.created_at, :format => :short))
 
       
 .row

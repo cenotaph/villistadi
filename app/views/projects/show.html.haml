@@ -10,7 +10,7 @@
     .small-8.columns.end
       %h5.administrators
         %strong= raw @project.tagline
-      %p= raw @project.description
+      %p= auto_html(@project.description) { simple_format; link(:target => 'blank') }
   .row.actions
     .small-12.columns
       - if can? :create, @project.posts.build
@@ -61,10 +61,12 @@
               .small-12.columns= link_to t(:create_post), new_project_forumpost_path(:project_id => @project.id), class: [:button, :small, :radius, :secondary]
       #members.content
         .row
-          - @project.users.each do |user|
-            .small-3.columns.end
+          - @project.administrators.sort_by{|x| x.name}.each do |user|
+            .small-12.columns.end
               = link_to user.name, user
-              - if @project.administrators.include?(user)
-                %p
-                  %b= t(:project_admin)
-            
+              %p
+                %b= t(:project_admin)
+        .row
+          - @project.users.sort_by{|x| x.name}.each do |user|
+            - next if @project.administrators.include?(user)
+            .small-12.columns= link_to user.name, user

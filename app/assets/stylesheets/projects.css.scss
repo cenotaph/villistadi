@@ -71,6 +71,12 @@
   }
 }
 
+.user_profile {
+  .latest_post {
+    display: none;
+  }
+}
+
 .project_form {
   textarea {
     height: 150px;

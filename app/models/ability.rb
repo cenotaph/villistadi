@@ -5,6 +5,7 @@ class Ability
     user ||= User.new # guest user (not logged in)
     if user.has_role? :goddess
       can :manage, :all
+      can :view, Place, :published => false
     elsif user.has_role? :user
       cannot :manage, Page
       can :create, Event
@@ -12,6 +13,7 @@ class Ability
       can :manage, Project, :projects_users => { :user_id => user.id, is_admin: true}
       can :create, Forumpost, :project => { :projects_users => { :user_id => user.id } }
       can :create, Comment, :commentable_type => 'Forumpost', :commentable => {:project => { :projects_users => { :user_id => user.id } } }
+      cannot :view, Place, :published => false
     end
 
   end

@@ -17,7 +17,7 @@
       - @post.comments.each do |c|
         .comment.row
           .small-2.columns.metadata= t(:comment_posted_by, :poster => c.user.name, :when => l(c.created_at, :format => :long))
-          .small-8.columns.end= raw c.content
+          .small-8.columns.end= auto_html(c.content) { simple_format; link(:target => 'blank') }
       
       
       - if user_signed_in?

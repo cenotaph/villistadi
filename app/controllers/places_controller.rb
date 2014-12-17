@@ -8,9 +8,11 @@ class PlacesController < ApplicationController
   
   def show
     @place = Place.find(params[:id])
-    if !@place.published
-      flash[:error] = t(:not_yet_public)
-      redirect_to '/'
+    if !@place.published 
+      if !can? :view, @place
+        flash[:error] = t(:not_yet_public)
+        redirect_to '/'
+      end
     end
     if @place.background?
       @background_css = "background: url(#{@place.background.url(:full)}) no-repeat top center fixed; background-size: cover"

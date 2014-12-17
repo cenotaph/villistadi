@@ -18,16 +18,24 @@
               %b= t(:description_in, :lang => t(:locale_name, :locale => locale))
               = en.text_area :description
   .row
-    .small-6.columns= f.input :restricted_membership, :label => t(:new_members_accepted)
-    .small-6.columns= f.input :private, :label => t(:hidden_content)
-  .row
-    .small-2.columns= f.input :maximum_members, :label => t(:maximum_members)
-    .small-6.columns= f.input :has_forum, :label => t(:enable_forum)
-  .row
-    .small-6.columns= f.input :members_can_create_forum_topics
-    .small-6.columns= f.input :image, :hint => t(:project_image_size_guide)
-  .row
-    .small-12.columns
-      = f.input :archived, :label => t(:archive_this_project)
+    .small-6.columns
+      .row
+        .small-12.columns
+          = f.input :restricted_membership, :label => t(:new_members_accepted)
+      .row  
+        .small-12.columns= f.input :members_can_create_forum_topics
+      .row
+        .small-12.columns= f.input :private, :label => t(:hidden_content)
+      .row
+        .small-12.columns= f.input :has_forum, :label => t(:enable_forum)
+      .row
+        .small-12.columns
+          = f.input :archived, :label => t(:archive_this_project)        
+    .small-6.columns
+      .row
+        .small-2.columns= f.input :maximum_members, :label => t(:maximum_members)
+      .row
+        .small-6.columns= f.input :image, :hint => t(:project_image_size_guide)
+
   .row
     .small-6.columns= f.submit t(:save), :class => [:button, :radius, :small]

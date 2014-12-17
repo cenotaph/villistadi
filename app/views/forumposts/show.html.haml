@@ -12,7 +12,7 @@
       - if can? :delete, @forumpost
         = link_to t(:delete_this_post), @forumpost, :method => :delete, class: [:button, :tiny, :radius, :alert], :data => {:confirm => t(:are_you_sure) }
     .small.8.columns.post_body
-      = raw @forumpost.body
+      = auto_html(@forumpost.body) { simple_format; link(:target => 'blank') }
   - unless @forumpost.comments.empty?
     .row
       .small-6.columns
