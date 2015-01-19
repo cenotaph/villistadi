@@ -15,7 +15,7 @@
             = image_tag @post.icon.url
           - else
             = image_tag @post.icon.url(:box)
-      .small-8.columns
+      .small-12.medium-8.columns
         .body_show= auto_html(@post.body) { simple_format; link(:target => 'blank') }
   - else
     .small-12.columns

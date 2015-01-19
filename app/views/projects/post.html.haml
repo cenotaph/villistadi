@@ -9,15 +9,15 @@
       .metadata= t(:posted_by, :poster => @post.creator.name, :when => l(@post.created_at, :format => :long))
       
   .row
-    .small-8.columns.body
+    .small-12.medium-8.columns.body
       = auto_html(@post.body) { simple_format; link(:target => 'blank') }
       
   - unless @post.comments.empty?
     .comments
       - @post.comments.each do |c|
         .comment.row
-          .small-2.columns.metadata= t(:comment_posted_by, :poster => c.user.name, :when => l(c.created_at, :format => :long))
-          .small-8.columns.end= auto_html(c.content) { simple_format; link(:target => 'blank') }
+          .small-12.medium-2.columns.metadata= t(:comment_posted_by, :poster => c.user.name, :when => l(c.created_at, :format => :long))
+          .small-12.medium-8.columns.end= auto_html(c.content) { simple_format; link(:target => 'blank') }
       
       
       - if user_signed_in?
@@ -31,4 +31,4 @@
           = content_for :jquery do
             var puny_mce = new punymce.Editor({id : 'comment_content'});
   .row
-    .small-5.columns= link_to t(:return_to_forum), @post.project, class: [:button, :small, :radius]
+    .small-12.medium-5.columns= link_to t(:return_to_forum), @post.project, class: [:button, :small, :radius]

@@ -11,7 +11,7 @@
       = t(:posted_by, :poster => @forumpost.user.name, :when => l(@forumpost.created_at, :format => :long))
       - if can? :delete, @forumpost
         = link_to t(:delete_this_post), @forumpost, :method => :delete, class: [:button, :tiny, :radius, :alert], :data => {:confirm => t(:are_you_sure) }
-    .small.8.columns.post_body
+    .small-12.medium-8.columns.post_body
       = auto_html(@forumpost.body) { simple_format; link(:target => 'blank') }
   - unless @forumpost.comments.empty?
     .row
@@ -19,13 +19,13 @@
         %h4= t :comments
     - @forumpost.comments.order(:created_at).each do |comment|
       .row
-        .small-8.columns.comment
+        .small-12.medium-8.columns.comment
           .row
-            .small-3.columns.metadata
+            .small-12.medium-8.columns.metadata
               .date= t(:posted_by, :poster => comment.user.name, :when => l(comment.created_at, :format => :long))
               - if can? :destroy, comment
                 = link_to t(:delete), comment, :method => :delete, class: [:button, :radius, :alert, :tiny], data: {confirm: t(:delete_comment_confirmation)}
-            .small-9.columns.comment_content= auto_html(comment.content) { simple_format; link(:target => 'blank') }
+            .small-12.medium-8.columns.comment_content= auto_html(comment.content) { simple_format; link(:target => 'blank') }
               
   
   .row.comment_row
