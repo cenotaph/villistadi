@@ -10,12 +10,12 @@ iframe.punymce, ul.punymce, ul.punymce li, .punymce a {border:0; padding:0; marg
 .punymce iframe {clear:both; display:block}
 .punymce table .mceToolbar a {border:1px solid #F0F0EE; display:block; width:16px; height:16px; margin-right:1px; float:left; overflow:hidden}
 .punymce .mcePlaceholder {border:1px dotted #000; display:none}
-
+.punymce table .mceToolbar a.right { float: left !important;}
 /* Style menu */
 div.punymce_style {position:absolute; display:none; background:#FFF; border:1px solid #808080; font-family:Verdana, Arial; font-size:11px}
 .punymce_style a:hover {border:0; background:#CCC}
 .punymce_style a {display:block; text-decoration:none; color:#000; padding:2px}
-
+li#comment_content_right { float: left !important; }
 /* Style previews */
 .punymce .h1 {font-size:xx-large}
 .punymce .h2 {font-size:x-large}
@@ -43,7 +43,7 @@ div.punymce_style {position:absolute; display:none; background:#FFF; border:1px 
 .punymce a.outdent {background:url('/assets/punymce/icons.gif') -112px 0}
 .punymce a.left {background:url('/assets/punymce/icons.gif') -128px 0}
 .punymce a.center {background:url('/assets/punymce/icons.gif') -144px 0}
-.punymce a.right {background:url('/assets/punymce/icons.gif') -160px 0}
+.punymce a.right {background:url('/assets/punymce/icons.gif') -160px 0; }
 .punymce a.style {background:url('/assets/punymce/icons.gif') -176px 0}
 .punymce a.removeformat {background:url('/assets/punymce/icons.gif') -192px 0}
 .punymce a.increasefontsize {background:url('/assets/punymce/icons.gif') -224px 0}

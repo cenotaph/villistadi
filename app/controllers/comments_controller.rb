@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_filter :authenticate_user!
-  responders :location, :flash
+  # responders :location, :flash
   respond_to :html
   
   def create
@@ -17,6 +17,15 @@ class CommentsController < ApplicationController
     end    
   end
     
+  def destroy
+    @comment = Comment.find(params[:id])
+    rt = @comment.commentable
+    if can? :destroy, @comment
+      @comment.destroy!
+      redirect_to rt
+    end
+  end
+  
   protected
   
   def comment_params

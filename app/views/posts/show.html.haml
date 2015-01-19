@@ -16,14 +16,16 @@
           - else
             = image_tag @post.icon.url(:box)
       .small-8.columns
-        .body_show= raw @post.body
+        .body_show= auto_html(@post.body) { simple_format; link(:target => 'blank') }
   - else
     .small-12.columns
       .row.body
         .small-9.columns
-          = raw @post.body
+          = auto_html(@post.body) { simple_format; link(:target => 'blank') }
           
   .row
     .small-12.columns
       %br/
       = link_to t(:back_to_index), posts_path, class: [:button, :tiny, :radius]
+      - if can? :edit, @post
+        = link_to t(:edit_post), edit_admin_post_path(@post), class: [:button, :tiny, :radius]

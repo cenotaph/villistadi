@@ -1,4 +1,11 @@
+%ul.title-area.show-for-small-only
+  %li.name
+    %h1= link_to 'Villi Stadi', '/'
+  %li.toggle-topbar.menu-icon
+    = link_to '#' do
+      %span Menu
 %section.top-bar-section
+
   %ul.left
     - Menu.roots.by_city(1).published.sort_by(&:sort_order).each do |menu|
       %li{:class => menu.children.empty? ? false : 'has-dropdown'}

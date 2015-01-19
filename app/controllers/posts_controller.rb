@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_filter :authenticate_user! , :only => [:new, :edit, :update, :create]
-  responders :location, :flash
+  # responders :location, :flash
   respond_to :html
   
   def create
@@ -29,7 +29,7 @@ class PostsController < ApplicationController
   
   def show
     @post = Post.find(params[:id])
-    set_meta_tags :title => @post.name
+    set_meta_tags :title => @post.name.html_safe
     if @post.project
       render :template => 'projects/post'
     end

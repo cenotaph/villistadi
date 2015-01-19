@@ -10,7 +10,7 @@
       
   .row
     .small-8.columns.body
-      = raw @post.body
+      = auto_html(@post.body) { simple_format; link(:target => 'blank') }
       
   - unless @post.comments.empty?
     .comments
@@ -30,5 +30,5 @@
               = c.submit t(:save), :class => [:button, :radius, :small]
           = content_for :jquery do
             var puny_mce = new punymce.Editor({id : 'comment_content'});
-.row
-  .small-5.columns= link_to t(:return_to_forum), @post.project
+  .row
+    .small-5.columns= link_to t(:return_to_forum), @post.project, class: [:button, :small, :radius]

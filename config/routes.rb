@@ -32,6 +32,8 @@ Rails.application.routes.draw do
     resources :spots
   end
   
+  resources :comments
+  
   resources :events
   resources :forumposts
   resources :pages

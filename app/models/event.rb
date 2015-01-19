@@ -11,7 +11,7 @@ class Event < ActiveRecord::Base
   extend FriendlyId
   friendly_id :title, :use => [:slugged, :finders]
   
-  scope :in_future, where(["start_at >= ?", Time.zone.now])
+  scope :in_future, ->() { where(["start_at >= ?", Time.zone.now]) }
   
   def color 
     eventtype.nil? ?  "#82879B" : "#" + eventtype.try(:colour_code)

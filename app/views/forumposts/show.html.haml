@@ -23,7 +23,9 @@
           .row
             .small-3.columns.metadata
               .date= t(:posted_by, :poster => comment.user.name, :when => l(comment.created_at, :format => :long))
-            .small-9.columns.comment_content= raw comment.content
+              - if can? :destroy, comment
+                = link_to t(:delete), comment, :method => :delete, class: [:button, :radius, :alert, :tiny], data: {confirm: t(:delete_comment_confirmation)}
+            .small-9.columns.comment_content= auto_html(comment.content) { simple_format; link(:target => 'blank') }
               
   
   .row.comment_row

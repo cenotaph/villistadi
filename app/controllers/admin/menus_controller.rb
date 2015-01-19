@@ -8,7 +8,7 @@ class Admin::MenusController < ApplicationController
   skip_before_filter :require_no_authentication
  
 
-  responders :location, :flash
+  # responders :location, :flash
   respond_to :html
  
   def check_permissions

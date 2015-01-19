@@ -24,3 +24,4 @@ module Villistadi
     config.time_zone = 'Helsinki'
   end
 end
+I18n.config.enforce_available_locales = false 

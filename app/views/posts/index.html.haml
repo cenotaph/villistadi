@@ -22,7 +22,7 @@
           .metadata= t(:posted_by, :poster => post.creator.name, :when =>  l(post.published_at.localtime, :format => :long))
           .row.body
             .small-9.columns
-              = raw truncate_html(post.body, :length => 350)
+              = auto_html (truncate_html(post.body, :length => 350))  { simple_format; link(:target => 'blank') }
               - if post.body.size > 350
                 = link_to t(:read_more), post
               
