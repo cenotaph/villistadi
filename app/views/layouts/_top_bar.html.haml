@@ -22,18 +22,27 @@
         %ul.dropdown
           - if current_user.has_role?(:staff) || current_user.has_role?(:goddess)
             %li= link_to 'Admin', '/admin'
+          - if session[:locale].to_s == 'fi'
+            %li.hide-for-large-only= link_to t(:change_to_english), { :controller => controller.controller_name, :action => controller.action_name, :id => params[:id], :locale => 'en'} 
+          - else
+            %li.hide-for-large-only= link_to t(:change_to_finnish), { :controller => controller.controller_name, :action => controller.action_name, :id => params[:id], :locale => 'fi'}             
           %li= link_to t(:sign_out), destroy_user_session_path, :method => :delete
   - else
     %ul.right
       %li.has-dropdown
         = link_to t(:sign_in), '#'
+        
         %ul.dropdown
+        
           %li= link_to t(:connect_with_facebook), '/auth/facebook'
           %li= link_to t(:connect_with_twitter), '/auth/twitter'
           %li= link_to t(:connect_with_google), '/auth/google_oauth2'
           %li= link_to t(:none_of_the_above), new_session_path(:user)
-  .language
-    = link_to_unless(session[:locale].to_s == 'fi', 'FIN', { :controller => controller.controller_name, :action => controller.action_name, :id => params[:id], :locale => 'fi'} )
-    |
+          - if session[:locale].to_s == 'fi'
+            %li.hide-for-large-only= link_to t(:change_to_english), { :controller => controller.controller_name, :action => controller.action_name, :id => params[:id], :locale => 'en'} 
+          - else
+            %li.hide-for-large-only= link_to t(:change_to_finnish), { :controller => controller.controller_name, :action => controller.action_name, :id => params[:id], :locale => 'fi'} 
 
-    = link_to_unless(session[:locale].to_s  == 'en', 'ENG', {:controller => controller.controller_name, :action => controller.action_name, :id => params[:id], :locale => 'en'}) 
+  %ul.left.language.show-for-large-only
+    %li= link_to_unless(session[:locale].to_s == 'fi', 'FIN', { :controller => controller.controller_name, :action => controller.action_name, :id => params[:id], :locale => 'fi'} )
+    %li.last= link_to_unless(session[:locale].to_s  == 'en', 'ENG', {:controller => controller.controller_name, :action => controller.action_name, :id => params[:id], :locale => 'en'}) 

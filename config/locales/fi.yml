@@ -187,7 +187,8 @@ fi:
   manifesto: "Manifesto"
   delete_this_post: 'Delete this post'
   delete_comment_confirmation: 'Are you sure you want to delete this comment?'
-  
+  change_to_english: 'Change to English'
+  change_to_finnish: 'Change to Finnish'
   flash:
     actions:
       create:

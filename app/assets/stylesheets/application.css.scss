@@ -18,6 +18,7 @@
  *= require punymce/editor
  *= require event_calendar
  *= require font-awesome
+ *= require mobile
  */
 p, h1, h2, h3, h4, h5, h6, body {
   color: #555 !important;
@@ -39,8 +40,27 @@ span.translation_missing {
   font-weight: bold;
 }
 
+.top-bar-section {
+  z-index: 98;
+}
+
 .top-bar-section .dropdown li {
   height: 2.7rem !important;
+}
+
+.top-bar-section ul.language {
+  padding-left: 1.5rem;
+  li  {
+    float: left;
+    a {
+      color: #999;
+      font-weight: bold;
+    }
+    padding: 0 6.33333px;
+    line-height: 55px;
+    background: #333333;
+
+  }
 }
 
 body.admin {
