@@ -12,7 +12,7 @@
         %h4= @event.venue
         %p= @event.full_address
         .description
-          = raw @event.description
+          = auto_html(@event.description) { simple_format; link(:target => 'blank') }
         - unless @event.weblink.blank?
           = link_to @event.weblink, @event.weblink, :target => :_blank
         .contact
