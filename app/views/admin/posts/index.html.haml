@@ -20,7 +20,7 @@
             %td= post.id.to_s
             %td= post.title
             %td= post.city.try(:name)
-            %td= post.published == true ? l(post.published_at, :format => :short) : t(:no)
+            %td= post.published == true ? l(post.published_at, :format => :short) : t(:not_published)
             %td
               = link_to t(:view), post, :target => :_blank, :class => [:button, :radius, :tiny]
               - if can? :edit, post

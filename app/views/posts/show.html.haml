@@ -4,7 +4,10 @@
       %h3= link_to  @post.title, @post
   .row
     .small-12.columns
-      .metadata= t(:posted_by, :poster => @post.creator.name, :when =>  l(@post.published_at.localtime, :format => :long))
+      - if @post.published?
+        .metadata= t(:posted_by, :poster => @post.creator.name, :when =>  l(@post.published_at.localtime, :format => :long))
+      - else
+        .metadata= t :not_published
   - if @post.icon?
     .row
       .small-4.columns

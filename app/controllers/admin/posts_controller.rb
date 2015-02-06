@@ -26,12 +26,14 @@ class Admin::PostsController < ApplicationController
   
   def index
     @posts = apply_scopes(Post).all.order('published_at DESC')
+    set_meta_tags title: t(:posts)
     respond_to do |format|
       format.json { 
         render :json => @posts.to_json(:only => [:id, :name]), :callback => params[:callback]
       }
       format.html
     end
+    
   end
   
   def new

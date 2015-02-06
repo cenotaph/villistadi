@@ -7,7 +7,7 @@ class Post < ActiveRecord::Base
   before_save :update_icon_attributes
   before_save :check_published
   validates_presence_of :creator_id
-  validate :title_present_in_at_least_one_locale, :image_unless_project
+  validate :title_present_in_at_least_one_locale #, :image_unless_project
   belongs_to :project
   accepts_nested_attributes_for :translations, :reject_if => proc {|x| x['title'].blank? && x['body'].blank? }
   mount_uploader :icon, ImageUploader
