@@ -7,7 +7,8 @@ iframe.punymce, ul.punymce, ul.punymce li, .punymce a {border:0; padding:0; marg
 .punymce tr.mceBody td {height:auto}
 .punymce ul {display:block; height:16px; position:relative}
 .punymce tr.mceBody td div.mceBody {border:1px solid #CCC; position:relative}
-.punymce iframe {clear:both; display:block}
+.punymce iframe {clear:both; display:block;}
+
 .punymce table .mceToolbar a {border:1px solid #F0F0EE; display:block; width:16px; height:16px; margin-right:1px; float:left; overflow:hidden}
 .punymce .mcePlaceholder {border:1px dotted #000; display:none}
 .punymce table .mceToolbar a.right { float: left !important;}
@@ -30,6 +31,7 @@ li#comment_content_right { float: left !important; }
 
 /* Buttons */
 .punymce li.disabled a {filter:progid:DXImageTransform.Microsoft.Alpha(opacity=30); -moz-opacity:0.3; opacity:0.3; cursor:default}
+.punymce li.right { float: left !important; }
 .punymce li.disabled a:hover {border:1px solid #F0F0EE}
 .punymce .mceToolbar a:hover, .punymce .mceToolbar li.active a:hover {border:1px solid gray}
 .punymce .mceToolbar li.active a {border:1px solid #BBB}

@@ -29,5 +29,6 @@
         = f.submit t(:create_post), :class => [:button, :radius, :small]
     
   = content_for :jquery do
-    var puny_mce = new punymce.Editor({id : 'post_translations_attributes_1_body'});
-    var puny_mce2 = new punymce.Editor({id : 'post_translations_attributes_2_body'});
+    :plain
+      var puny_mce = new punymce.Editor({id : 'post_translations_attributes_1_body', min_width : 650, min_height: 350, max_width: 800});
+      var puny_mce2 = new punymce.Editor({id : 'post_translations_attributes_2_body', min_width : 650, min_height: 350, max_width: 800}); 

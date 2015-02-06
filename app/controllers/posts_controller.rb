@@ -25,6 +25,7 @@ class PostsController < ApplicationController
     if can? :create, @project.posts.build
       @post = @project.posts.build
     end
+    set_meta_tags title: t(:new_post)
   end
   
   def show
