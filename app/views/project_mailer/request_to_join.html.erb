@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Private project request from <%= @user.name %></h1>
+    <p>
+      You are an administrator on the Villi Stadi project <%= @project.name %>.
+    </p>
+    <p>
+      <%= @user.name %> <<%= @user.email %>> has requested to become a member of this project.
+    </p>
+    <p>
+      Please approve (or deny) their request via <%= @url %>
+    </p>
+    
+    <p>
+      Thank you!
+    </P>
+
+  </body>
+</html>

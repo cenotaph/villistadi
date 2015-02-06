@@ -40,12 +40,24 @@ class ProjectsController < ApplicationController
   
   def join
     @project = Project.find(params[:id])
-    if @project.users.include?(current_user)
+    if @project.members.include?(current_user)
       flash[:notice] = t(:you_are_already_a_member)
     else
-      @project.users << current_user
-      flash[:notice] = t(:welcome_to_project, :project_name => @project.name)
-      redirect_to @project
+      if @project.private == true
+        flash[:notice] = t(:your_request_must_be_approved)
+        begin
+          if ProjectsUser.create(project: @project, user: current_user, pending: true)
+            ProjectMailer.request_to_join(current_user, @project).deliver_now
+          end
+        rescue
+          ProjectMailer.request_to_join(current_user, @project).deliver_now
+        end
+        redirect_to projects_path
+      else
+        @project.users << current_user
+        flash[:notice] = t(:welcome_to_project, :project_name => @project.name)
+        redirect_to @project
+      end
     end
   end
 
@@ -76,6 +88,12 @@ class ProjectsController < ApplicationController
   
   def show
     @project = Project.find(params[:id])
+    if @project.private == true
+      if !can? :read, @project
+        flash[:error] = t(:private_project)
+        redirect_to projects_path
+      end
+    end
     set_meta_tags :title => t(:project) + " - " + @project.name
   end
   

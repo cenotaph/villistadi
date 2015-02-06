@@ -47,7 +47,14 @@ Rails.application.routes.draw do
     resources :forumposts do
       resources :comments
     end
+    resources :users do
+      member do
+        get :approve
+        get :deny
+      end
+    end
     member do
+      get :request
       get :join
       get :leave
     end

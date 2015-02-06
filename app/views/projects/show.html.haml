@@ -67,6 +67,30 @@
               %p
                 %b= t(:project_admin)
         .row
-          - @project.users.sort_by{|x| x.name}.each do |user|
+          - @project.members.sort_by{|x| x.name}.each do |user|
             - next if @project.administrators.include?(user)
-            .small-12.columns= link_to user.name, user
+            .small-12.columns
+              = link_to user.name, user
+              - if user_signed_in? && @project.restricted_membership
+                - if @project.administrators.include?(current_user) || current_user.has_role?(:goddess)
+                  = link_to t(:remove_from_project), deny_project_user_path(@project, user), class: [:button, :tiny, :radius, :alert]
+        - if user_signed_in?
+          - if @project.administrators.include?(current_user) || current_user.has_role?(:goddess)
+            - unless @project.unapproved_members.empty?
+              .row
+                .small-12.columns
+                  %strong= t :pending_members
+                  - @project.unapproved_members.each do |member|
+                    %p
+                      = link_to member.name, member, target: :_blank
+                      = link_to t(:approve), approve_project_user_path(@project, member), class: [:button, :tiny, :radius]
+                      = link_to t(:deny), deny_project_user_path(@project, member), class: [:button, :tiny, :radius, :alert]
+            - unless @project.denied_members.empty?
+              .row
+                .small-12.columns
+                  %strong= t :denied_members
+                  - @project.denied_members.each do |member|
+                    %p
+                      = link_to member.name, member, target: :_blank
+                      = link_to t(:approve), approve_project_user_path(@project, member), class: [:button, :tiny, :radius]
+                      = link_to t(:deny), deny_project_user_path(@project, member), class: [:button, :tiny, :radius, :alert]                    

@@ -10,6 +10,22 @@
     .tagline= project.tagline
     .member_count= t(:members) + ": " + project.users.size.to_s
     .admin= t(:administrator).pluralize( project.administrators.count) + ": " + project.administrators.map(&:name).join(', ')
+    - if project.private
+      .private
+        %strong= t :private_project
+      .private_actions
+        - if user_signed_in?
+          - if project.members.include?(current_user)
+            = t(:you_are_already_a_member)
+          - else
+            - if project.unapproved_members.include?(current_user)
+              = t(:you_requested_to_join)
+              %br/
+              = link_to t(:request_again), join_project_path(project), class: [:button, :radius, :tiny]
+            - else
+              = link_to t(:request_to_join), join_project_path(project), class: [:button, :radius, :tiny]
+        - else
+          = link_to t(:sign_in), new_session_path(:user), class: [:button, :radius, :tiny]
 .row
   .small-12.columns
     &nbsp;

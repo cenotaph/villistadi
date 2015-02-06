@@ -21,8 +21,20 @@ class Project < ActiveRecord::Base
     [owner, projects_users.where(:is_admin => true).map(&:user)].flatten.uniq.compact
   end
       
+  def approved_members
+    projects_users.where("pending is not true").where(denied: false).map(&:user)
+  end
+  
+  def denied_members
+    projects_users.where("pending is not true").where(denied: true).map(&:user)
+  end
+
   def members
-    [owner, projects_users.map(&:user)].flatten.uniq.compact
+    [owner, projects_users.where("pending is not true").where(denied: false).map(&:user)].flatten.uniq.compact
+  end
+  
+  def unapproved_members
+    projects_users.where(pending: true).map(&:user)
   end
       
   def check_that_owner_is_member
