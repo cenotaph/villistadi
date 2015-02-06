@@ -1,6 +1,7 @@
 Name,Email,Date Joined,Username
 <%= CSV.generate do |csv|
-  @users.each do |user| %>
+  @users.each do |user| 
     csv << [user.name, user.email, user.created_at.strftime('%Y-%m-%d'), user.username]
-  <% end 
-end %>
+   end 
+end .html_safe
+%>
