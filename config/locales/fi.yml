@@ -175,6 +175,7 @@ fi:
   delete_project_confirmation: 'Are you sure? Deleting this project will delete all related announcements and forum posts, and you cannot recover them.'
   delete_project: 'Delete this project'
   comments: 'Comments'
+  users: 'Users'
   latest_forum_activity: 'Latest forum activity'
   comment_on: 'Comment on '
   denied_members: 'Rejected members:'

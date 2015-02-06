@@ -54,6 +54,7 @@ gem 'omniauth-twitter'
 gem 'rails4-autocomplete' 
 gem 'randumb'
 gem 'recaptcha'
+# gem 'render_csv'
 gem 'responders', github: 'plataformatec/responders', branch: :master
 gem 'rolify'
 gem 'shog'

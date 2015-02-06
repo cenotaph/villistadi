@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   match '/feed' => 'feed#index', via: :get
   
   namespace :admin do
+    resources :authentications
     resources :events
     resources :eventtypes
     resources :internallinks
@@ -30,6 +31,7 @@ Rails.application.routes.draw do
     resources :posts
     resources :randombackgrounds
     resources :spots
+    resources :users
   end
   
   resources :comments

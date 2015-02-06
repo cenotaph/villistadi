@@ -1,0 +1,30 @@
+.row
+  .small-12.columns
+    %h2
+      Editing info for
+      = @user.name
+      
+.row
+  .small-12.columns
+    Authentication methods:
+    
+    - @user.authentications.each do |auth|
+      .row.panel
+        .small-2.columns= auth.provider
+        .small-3.columns= auth.uid
+        .small-3.columns= auth.username
+        .small-3.columns= auth.created_at.strftime('%Y %B %d')
+        .small-1.columns= link_to t(:delete), [:admin, auth], method: :delete, class: [:button, :tiny, :alert, :radius], data: {confirm: 'Are you sure?'}
+        
+= semantic_form_for [:admin, @user], html: {multipart: true} do |f|
+  .row
+    .small-12.large-4.columns
+      = f.input :name
+  .row
+    .small-12.large-4.columns= f.input :username
+  .row
+    .small-12.large-4.columns= f.input :email
+  .row
+    .small-12.large-6.columns= f.input :roles, as: :check_boxes
+  .row
+    .small-12.columns.large-4= f.submit 'Save'

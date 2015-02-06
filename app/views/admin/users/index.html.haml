@@ -1,0 +1,27 @@
+.row
+  .small-12.columns
+    %h2 Users
+
+.row
+  .small-12.columns= link_to 'Export as CSV', admin_users_path(format: :csv)
+.row
+  .small-12.columns.cms_grid
+    %table
+      %thead
+        %th= sortable_column "ID"
+        %th= sortable_column "Name"
+        %th= sortable_column "Email"
+        %th Access level
+        %th &nbsp;
+      %tbody
+        - @users.each do |user|
+          %tr
+            %td= user.id.to_s
+            %td= user.name
+            %td= user.email
+            %td= user.roles.collect(&:name).join(', ')
+            %td
+              - if can? :edit, user
+                = link_to t(:edit), edit_admin_user_path(user), :class => [:button, :radius, :small]
+              - if can? :destroy, user
+                = link_to t(:delete), [:admin, user], :method => :delete,  :class => [:button, :radius, :small, :alert], :data => {:confirm => 'Are you sure?'}
