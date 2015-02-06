@@ -94,7 +94,7 @@ class ProjectsController < ApplicationController
         redirect_to projects_path
       end
     end
-    set_meta_tags :title => t(:project) + " - " + @project.name.html_safe, og: { title: @project.name.html_safe, url: url_for(@project), image: (@project.image? ? @project.image.url : 'http://villistadi.fi/assets/vs_black_small.png') }
+    set_meta_tags :title => t(:project) + " - " + @project.name.html_safe, og: { title: @project.name.html_safe, url: url_for(@project), image: { :secure_url => (@project.image? ? @project.image.url : 'http://villistadi.fi/assets/vs_black_small.png') } }
   end
   
   def update
