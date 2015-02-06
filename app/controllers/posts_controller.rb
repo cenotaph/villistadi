@@ -30,7 +30,7 @@ class PostsController < ApplicationController
   
   def show
     @post = Post.find(params[:id])
-    set_meta_tags :title => @post.name.html_safe
+    set_meta_tags :title => @post.name.html_safe, og: { title: @post.name.html_safe, url: url_for(@post), image: (@post.icon? ? @post.icon.url : 'http://villistadi.fi/assets/vs_black_small.png') }
     if @post.project
       render :template => 'projects/post'
     end
