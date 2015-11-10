@@ -35,7 +35,14 @@ class ProjectsController < ApplicationController
   def index
     @active = Project.active
     @archived = Project.archived
-    set_meta_tags :title => t(:projects)
+    
+    
+    set_meta_tags :title => t(:projects),
+    canonical: url_for(@projects),
+    og: { title: t(:projects), 
+          url: url_for(@projects), 
+          image:'http://villistadi.fi/assets/vs_black_small.png'
+        }
   end
   
   def join
@@ -94,7 +101,26 @@ class ProjectsController < ApplicationController
         redirect_to projects_path
       end
     end
-    set_meta_tags :title => t(:project) + " - " + @project.name.html_safe, og: { title: @project.name.html_safe, url: url_for(@project), image: { :secure_url => (@project.image? ? @project.image.url : 'http://villistadi.fi/assets/vs_black_small.png') } }
+    
+    if @project.description(:en) != @project.description(:fi)
+      a = Hash.new
+      a["en"] = url_for(@project) + "?locale=en"
+      a["fi"] = url_for(@project) + "?locale=fi"
+    else
+      a = {}
+    end
+
+    
+    set_meta_tags :title => t(:project) + " - " + @project.name.html_safe, 
+      canonical: url_for(@project),
+      og: { title:t(:project) + " - " + @project.name.html_safe, 
+            url: url_for(@project), 
+            image: (@project.image? ? [ @project.image.url(:box).gsub(/^https/, 'http'),
+                           { secure_url: @project.image.url(:box) } ] : 
+                       'http://villistadi.fi/assets/vs_black_small.png') 
+          },
+      alternate: a
+
   end
   
   def update

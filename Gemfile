@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
-ruby '2.1.1'
-gem 'rails', '4.2.0'
+ruby '2.2.2'
+gem 'rails', '4.2.2'
 gem 'pg'
 
 # Use SCSS for stylesheets
@@ -9,7 +9,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails', '3.1'
 gem 'jquery-ui-rails'
-gem 'therubyracer',  platforms: :ruby
+# gem 'therubyracer',  platforms: :ruby
 
 gem 'capistrano', '~> 3.1.0'
 gem 'capistrano-rails', '~> 1.1.0'

@@ -9,7 +9,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   # Choose what kind of storage to use for this uploader:
   storage :aws
   def store_dir
-      "/images/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+      "images/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
   
   version :twelvehundred do
