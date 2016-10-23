@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
-ruby '2.2.2'
-gem 'rails', '4.2.2'
+ruby '2.3.1'
+gem 'rails', '4.2.7.1'
 gem 'pg'
 
 # Use SCSS for stylesheets
@@ -11,11 +11,11 @@ gem 'jquery-rails', '3.1'
 gem 'jquery-ui-rails'
 # gem 'therubyracer',  platforms: :ruby
 
-gem 'capistrano', '~> 3.1.0'
-gem 'capistrano-rails', '~> 1.1.0'
+gem 'capistrano'
+gem 'capistrano-rails'#, '1.1.3'
 gem 'capistrano-rvm'
-gem 'capistrano-bundler'
-
+gem 'capistrano-bundler'#, '1.1.4'
+gem 'capistrano3-puma'
 
 
 gem 'auto_html'
