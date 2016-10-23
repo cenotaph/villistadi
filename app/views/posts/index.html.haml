@@ -23,7 +23,7 @@
           .row.body
             .small-9.columns
               - c = AutoHtml::SimpleFormat.new
-              = c.call (truncate_html(post.body, :length => 350))  
+              = raw c.call(truncate_html(post.body, :length => 350))  
               - if post.body.size > 350
                 = link_to t(:read_more), post
               
