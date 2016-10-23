@@ -10,14 +10,17 @@
       
   .row
     .small-12.medium-8.columns.body
-      = auto_html(@post.body) { simple_format; link(:target => 'blank') }
+      - c = AutoHtml::SimpleFormat.new
+      = c.call(@post.body)
       
   - unless @post.comments.empty?
     .comments
       - @post.comments.each do |c|
         .comment.row
           .small-12.medium-2.columns.metadata= t(:comment_posted_by, :poster => c.user.name, :when => l(c.created_at, :format => :long))
-          .small-12.medium-8.columns.end= auto_html(c.content) { simple_format; link(:target => 'blank') }
+          .small-12.medium-8.columns.end
+            - cc = AutoHtml::SimpleFormat.new
+            = cc.call(c.content)
       
       
       - if user_signed_in?

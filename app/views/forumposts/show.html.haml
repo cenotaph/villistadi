@@ -12,7 +12,8 @@
       - if can? :delete, @forumpost
         = link_to t(:delete_this_post), @forumpost, :method => :delete, class: [:button, :tiny, :radius, :alert], :data => {:confirm => t(:are_you_sure) }
     .small-12.medium-8.columns.post_body
-      = auto_html(@forumpost.body) { simple_format; link(:target => 'blank') }
+      - c = AutoHtml::SimpleFormat.new
+      = c.call(@forumpost.body)
   - unless @forumpost.comments.empty?
     .row
       .small-6.columns
@@ -25,7 +26,9 @@
               .date= t(:posted_by, :poster => comment.user.name, :when => l(comment.created_at, :format => :long))
               - if can? :destroy, comment
                 = link_to t(:delete), comment, :method => :delete, class: [:button, :radius, :alert, :tiny], data: {confirm: t(:delete_comment_confirmation)}
-            .small-12.medium-8.columns.comment_content= auto_html(comment.content) { simple_format; link(:target => 'blank') }
+            .small-12.medium-8.columns.comment_content
+              - cf = AutoHtml::SimpleFormat.new
+              = cf.call(comment.content)
               
   
   .row.comment_row

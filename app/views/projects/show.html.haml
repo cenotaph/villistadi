@@ -10,7 +10,9 @@
     .small-8.columns.end
       %h5.administrators
         %strong= raw @project.tagline
-      %p= auto_html(@project.description) { simple_format; link(:target => 'blank') }
+      %p
+        - c = AutoHtml::SimpleFormat.new
+        = c.call(@project.description)
   .row.actions
     .small-12.columns
       - if can? :create, @project.posts.build

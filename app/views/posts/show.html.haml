@@ -19,12 +19,15 @@
           - else
             = image_tag @post.icon.url(:box)
       .small-12.medium-8.columns
-        .body_show= auto_html(@post.body) { simple_format; link(:target => 'blank') }
+        .body_show
+          - c = AutoHtml::SimpleFormat.new
+          = c.call(@post.body) 
   - else
     .small-12.columns
       .row.body
         .small-9.columns
-          = auto_html(@post.body) { simple_format; link(:target => 'blank') }
+          - c = AutoHtml::SimpleFormat.new
+          = c.call(@post.body)
           
   .row
     .small-12.columns
